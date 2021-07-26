@@ -18,7 +18,7 @@
             .shadow-lg {
                 box-shadow: 0 1rem 3rem rgba(0,0,0,.175) !important;
             }
-            .transform-minus-100 {
+            /* .transform-minus-100 {
                     display: none;
                     transform: translateX(-100vW);
                 }
@@ -28,7 +28,7 @@
                     display: flex;
                     transform: translateX(0);
                 }
-            }
+            } */
         </style>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
@@ -37,62 +37,160 @@
         
     </head>
     <body class="font-sans antialiased">
-        <button id="showNav" class="block absolute right-3 top-3 px-2 py-2 sm:hidden text-black dark:text-white focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-        </button>
-        <div class="flex flex-col container mx-auto md:px-10">
-            <header class="text-gray-600 body-font">
+		<nav
+		class="flex items-center bg-white justify-between flex-wrap p-3 sm:p-6 fixed w-full z-10 top-0 shadow-xl"
+		x-data="{ isOpen: false }"
+		@keydown.escape="isOpen = false"
+		{{-- :class="{ 'shadow-xl ' : isOpen , 'bg-white' : !isOpen}" --}}
+	  >
+		<!--Logo etc-->
+		<div class="flex items-center flex-shrink-1 text-white mr-6">
+			<a class="flex title-font items-center text-gray-700" href="#">
+				<img src="{{ asset('images/logo_ric.png') }}" alt="" class="w-12 h-12">
+					<div class="flex flex-col ml-2">
+						<h1 class="text-base font-extrabold md:text-lg leading-5 mb-2 md:mb-0">Редакционно-издательский центр</h1>
+						<span class="text-xs md:text-sm leading-4">Информационно-справочный ресурс</span>
+					</div>
+			</a>
+		</div>
+  
+		<!--Toggle button (hidden on large screens)-->
+		<button
+		  @click="isOpen = !isOpen"
+		  type="button"
+		  class="absolute sm:relative right-6 top-6 bg-white sm:top-0 sm:right-0 block lg:hidden px-2 text-gray-500 focus:outline-none"
+		  :class="{ 'transition transform-180': isOpen }"
+		>
+		  <svg
+			class="h-6 w-6 fill-current"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+		  >
+			<path
+			  x-show="isOpen"
+			  fill-rule="evenodd"
+			  clip-rule="evenodd"
+			  d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"
+			/>
+			<path
+			  x-show="!isOpen"
+			  fill-rule="evenodd"
+			  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
+			/>
+		  </svg>
+		</button>
+  
+		<!--Menu-->
+		<div
+		  class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
+		  :class="{ 'block shadow-3xl': isOpen, 'hidden': !isOpen }"
+		  @click.away="isOpen = false"
+		  x-show.transition="true"
+		>
+		  <ul
+			class="pt-6 lg:pt-0 list-reset lg:flex justify-center flex-1 items-center"
+		  >
+			<li class="mr-3">
+			  <a
+				class="inline-block py-2 px-4 text-gray-800 font-bold no-underline"
+				href="#"
+				@click="isOpen = false"
+				>План изданий 2021
+			  </a>
+			</li>
+			<li class="mr-3">
+			  <a
+				class="inline-block text-gray-600 no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+				href="#"
+				@click="isOpen = false"
+				>В помощь автору
+			  </a>
+			</li>
+			<li class="mr-3">
+			  <a
+				class="inline-block text-gray-600 no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+				href="#"
+				@click="isOpen = false"
+				>Платные услуги
+			  </a>
+			</li>
+			<li class="mr-3">
+			  <a
+				class="inline-block text-gray-600 no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+				href="#"
+				@click="isOpen = false"
+				>Контакты
+			  </a>
+			</li>
+		  </ul>
+		</div>
+	  </nav>
+        <div class="flex flex-col container mx-auto mt-24 md:mt-40 md:px-10">
+				
+            {{-- <header class="text-gray-600 body-font">
                 <div class="container mx-auto flex flex-wrap p-5 flex-col items-center">
-                  <a 
-                    class="flex title-font items-center text-gray-700 mb-6"
-                    href="#">
-                    <img 
-                        src="{{ asset('images/logo_ric.png') }}"
-                        alt=""
-                        class="w-20 h-20 p-2">
-                    <div class="flex flex-col ml-3">
-                        <h1 class="text-2xl font-extrabold md:text-3xl leading-6 mb-2 md:mb-0">Редакционно-издательский центр</h1>
-                        <span class="text-sm md:text-base leading-5">Информационно-справочный ресурс</span>
-                    </div>
-                  </a>
-                  <nav id="menu" class="transform-minus-100 mx-auto flex-col sm:flex-row flex-wrap items-center text-base font-bold text-gray-700 justify-center space-y-3 sm:space-x-5 sm:space-y-0">
-                    <a 
-                        class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
-                        href="#">
-                        План издания 2021
-                    </a>
-                    <a 
-                        class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
-                        href="#">
-                        План издания 2020
-                    </a>
-                    <a 
-                        class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
-                        href="#">
-                        В помощь автору
-                    </a>
-                    <a 
-                        class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
-                        href="#">
-                        Платные услуги
-                    </a>
-                    <a 
-                        class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
-                        href="#">
-                        Контакты
-                    </a>
-                  </nav>
-                  {{-- <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
-                      <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg>
-                  </button> --}}
+					<a class="flex title-font items-center text-gray-700 mb-6" href="#">
+						<img src="{{ asset('images/logo_ric.png') }}" alt="" class="w-20 h-20 p-2">
+							<div class="flex flex-col ml-3">
+								<h1 class="text-2xl font-extrabold md:text-3xl leading-6 mb-2 md:mb-0">Редакционно-издательский центр</h1>
+								<span class="text-sm md:text-base leading-5">Информационно-справочный ресурс</span>
+							</div>
+					</a>
+					<nav x-data="{ isOpen: false }">
+						<button @click="isOpen = !isOpen" class="absolute right-3 top-3 px-2 py-2 sm:hidden text-black dark:text-white focus:outline-none">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+						</button>
+
+						<div
+							id="menu"
+							class="mx-auto flex flex-col sm:flex-row flex-wrap items-center text-base font-bold text-gray-700 justify-center space-y-3 sm:space-x-5 sm:space-y-0"
+							
+							@click.away="isOpen = false"
+							x-show="isOpen"
+							x-transition:enter="transition ease-out duration-300"
+							x-transition:enter-start="opacity-0 transform scale-90"
+							x-transition:enter-end="opacity-100 transform scale-100"
+							x-transition:leave="transition ease-in duration-300"
+							x-transition:leave-start="opacity-100 transform scale-100"
+							x-transition:leave-end="opacity-0 transform scale-90">
+							<a 
+								class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
+								href="#"
+								>
+								План издания 2021
+							</a>
+							<a 
+								class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
+								href="#"
+								>
+								План издания 2020
+							</a>
+							<a 
+								class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
+								href="#"
+								>
+								В помощь автору
+							</a>
+							<a 
+								class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
+								href="#"
+								>
+								Платные услуги
+							</a>
+							<a 
+								class="py-2 px-3 rounded-md hover:bg-indigo-500 hover:text-white"
+								href="#"
+								>
+								Контакты
+							</a>
+						</div>
+					</nav>
                 </div>
-              </header>
+              </header> --}}
               <section class="text-gray-600 body-font">
-                <div class="container px-5 py-10 mx-auto">
+                <div class="container px-5 py-5 mx-auto">
                   <div class="flex flex-col text-center w-full mb-20">
                     <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">Pricing</h1>
                     <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Banh mi cornhole echo park skateboard authentic crucifix neutra tilde lyft biodiesel artisan direct trade mumblecore 3 wolf moon twee</p>
@@ -171,7 +269,7 @@
             </div>
             <div class="flex-1 bg-gray-300"></div> --}}
         </div>
-		<script>
+		{{-- <script>
 			document.getElementById('showNav').addEventListener('click', function() {
 
 				var menu = document.getElementById('menu').classList;
@@ -187,6 +285,6 @@
 				}
 
 			});
-		</script>        
+		</script>         --}}
     </body>
 </html>
