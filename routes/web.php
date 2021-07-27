@@ -15,7 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/paid-services', function () {
+    return view('paid-services');
+})->name('paid-services');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,3 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@layer base {
+    .entry-content a {
+        @apply text-indigo-600 border-b-2 border-indigo-100 hover:text-indigo-700 hover:border-indigo-700 transition-colors ease-in-out duration-300
+    }
+}
