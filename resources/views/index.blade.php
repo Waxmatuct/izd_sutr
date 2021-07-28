@@ -171,7 +171,7 @@
 						<td class="text-center py-3 px-4">50</td>
 						<td class="text-center py-3 px-4">Апрель</td>
 						<td class="text-center py-3 px-4">Июнь</td>
-						<td class="text-center py-3 px-4">В работе</td>
+						<td class="text-center py-3 px-4">Отпечатано</td>
 					</tr>
 				</tbody>
 			</table>
