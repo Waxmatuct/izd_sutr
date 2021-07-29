@@ -30,8 +30,8 @@ class CreateBooksTable extends Migration
             $table->float('size', 3, 2);
             $table->unsignedSmallInteger('amount');
             $table->year('year');
-            $table->string('month', 8);
-            $table->string('handed_in', 8)->nullable();
+            $table->unsignedInteger('month');
+            $table->unsignedInteger('handed_in')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
 

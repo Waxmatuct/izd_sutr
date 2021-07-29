@@ -23,4 +23,12 @@ class Book extends Model
         'handed_in',
         'status',
     ];
+
+    public function faculty() {
+        return $this->belongsTo(Faculty::class);
+    }
+
+    public function type() {
+        return $this->belongsTo(Type::class);
+    }
 }

@@ -14,4 +14,8 @@ class Faculty extends Model
         'short_title',
         'slug',
     ];
+
+    public function books() {
+        return $this->hasMany(Book::class);
+    }
 }

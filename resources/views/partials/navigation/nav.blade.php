@@ -51,6 +51,14 @@
 					class="{{ request()->is('/') ? 'bg-indigo-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300"
 					href="/"
 					@click="isOpen = true"
+					>Главная
+				</a>
+			</li>
+			<li class="mr-3">
+				<a
+					class="{{ request()->is('plan-*') ? 'bg-indigo-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300"
+					href="/plan-2021"
+					@click="isOpen = false"
 					>План издания 2021
 				</a>
 			</li>

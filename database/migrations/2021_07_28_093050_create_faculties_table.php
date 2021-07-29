@@ -18,7 +18,6 @@ class CreateFacultiesTable extends Migration
             $table->string('title');
             $table->string('short_title', 7);
             $table->string('slug')->unique();
-            $table->timestamps();
         });
     }
 
