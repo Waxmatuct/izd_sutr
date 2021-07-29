@@ -22,14 +22,49 @@
 					<p class="text-muted" style="font-size: 0.9rem">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
 					<p class="text-muted" style="font-size: 0.9rem">** Литература приобретает статус «издано» после передачи на склад материально-технического снабжения.</p>
                     
-                    {{-- @foreach ($months as $month)
-                    <p>
-                        {{ $month }}
-                    </p>
-                    @endforeach --}}
-
-                    <p>{{ $months }}</p>
-                    <p>{{ $month_count }}</p>
+					<div class="overflow-auto p-7 rounded-lg shadow-2xl mt-7">
+						<canvas id="myChart" data-months="{{ $months }}" data-values="{{ $counts }}" width="400" height="200"></canvas>
+					</div>
+						<script>
+							var ctx = document.getElementById('myChart').getContext('2d');
+							var months = document.getElementById('myChart').getAttribute('data-months').split(',');
+							var values = document.getElementById('myChart').getAttribute('data-values').split(',');
+							console.log(months);
+							var myChart = new Chart(ctx, {
+								type: 'bar',
+								data: {
+									labels: months,
+									datasets: [{
+										label: 'Выполнение плана изданий',
+										data: values,
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255, 99, 132, 1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1
+									}]
+								},
+								options: {
+									scales: {
+										y: {
+											beginAtZero: true
+										}
+									}
+								}
+							});
+						</script>
 
 				</div>
 
@@ -67,7 +102,7 @@
 						<td class="text-center py-3 px-4">{{ $book->disciple }}</td>
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
-						<td class="text-center py-3 px-4">{{ $book->month }}</td>
+						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
 						<td class="text-center py-3 px-4">{{ $book->handed_in }}</td>
 						<td class="text-center py-3 px-4">{{ $book->status }}</td>
 					</tr>
@@ -84,3 +119,7 @@
 
 	</section>
 @endsection
+
+@push('chartjs')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endpush

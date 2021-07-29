@@ -16,8 +16,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             FacultySeeder::class,
             TypeSeeder::class,
+            MonthSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
-        \App\Models\Book::factory(50)->create();
+        \App\Models\Book::factory(150)->create();
     }
 }

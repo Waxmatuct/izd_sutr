@@ -30,12 +30,15 @@ class CreateBooksTable extends Migration
             $table->float('size', 3, 2);
             $table->unsignedSmallInteger('amount');
             $table->year('year');
-            $table->unsignedInteger('month');
-            $table->unsignedInteger('handed_in')->nullable();
+            $table->foreignId('month_id')
+                    ->constrained('months')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->string('handed_in', 9)->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
 
-            $table->index('month');
+            $table->index('month_id');
             $table->index('created_at');
             $table->index('year');
             

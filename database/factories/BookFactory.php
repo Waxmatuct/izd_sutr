@@ -34,8 +34,8 @@ class BookFactory extends Factory
             'size' => $this->faker->randomFloat(2, 3, 8),
             'amount' => $this->faker->randomDigitNotNull(),
             'year' => Arr::random(['2020','2021']),
-            'month' => $this->faker->month(),
-            'handed_in' => $this->faker->month(),
+            'month_id' => Arr::random(['1','2','3','4','5','6','7','8','9']),
+            'handed_in' => Arr::random(['1','2','3','4','5','6','7','8','9']),
             'status' => Arr::random(['В работе','В печати', 'Отпечатано', 'На складе МТЗ']),
             'created_at' => $this->faker->dateTimeThisYear(),
         ];

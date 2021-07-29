@@ -19,7 +19,7 @@ class Book extends Model
         'size',
         'amount',
         'year',
-        'month',
+        'month_id',
         'handed_in',
         'status',
     ];
@@ -30,5 +30,9 @@ class Book extends Model
 
     public function type() {
         return $this->belongsTo(Type::class);
+    }
+
+    public function month() {
+        return $this->belongsTo(Month::class);
     }
 }

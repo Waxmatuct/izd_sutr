@@ -57,6 +57,50 @@
 					<p class="text-muted" style="font-size: 0.9rem">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
 					<p class="text-muted" style="font-size: 0.9rem">** Литература приобретает статус «издано» после передачи на склад материально-технического снабжения.</p>
 				</div>
+
+				<div class="overflow-auto p-7 rounded-lg shadow-2xl">
+					<canvas id="myChart" data-months="{{ $months }}" data-values="{{ $counts }}" width="400" height="200"></canvas>
+				</div>
+					<script>
+						var ctx = document.getElementById('myChart').getContext('2d');
+						var months = document.getElementById('myChart').getAttribute('data-months').split(',');
+						var values = document.getElementById('myChart').getAttribute('data-values').split(',');
+						console.log(months);
+						var myChart = new Chart(ctx, {
+							type: 'bar',
+							data: {
+								labels: months,
+								datasets: [{
+									label: 'Запланировано',
+									data: values,
+									backgroundColor: [
+										'rgba(99, 102, 241, 0.5)',
+									],
+									borderColor: [
+										'rgba(99, 102, 241, 1)',
+									],
+									borderWidth: 0
+								}]
+							},
+							options: {
+								animations: {
+									tension: {
+										duration: 1000,
+										easing: 'linear',
+										from: 1,
+										to: 0,
+										loop: true
+									}
+								},
+								scales: {
+									y: {
+										beginAtZero: true,
+									}
+								}
+							}
+						});
+					</script>
+
 			</div>
 		</div>
 
@@ -91,7 +135,7 @@
 						<td class="text-center py-3 px-4">{{ $book->disciple }}</td>
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
-						<td class="text-center py-3 px-4">{{ $book->month }}</td>
+						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
 						<td class="text-center py-3 px-4">{{ $book->handed_in }}</td>
 						<td class="text-center py-3 px-4">{{ $book->status }}</td>
 					</tr>
@@ -108,3 +152,7 @@
 
 	</section>
 @endsection
+
+@push('chartjs')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endpush
