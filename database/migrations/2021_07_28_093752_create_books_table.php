@@ -35,6 +35,7 @@ class CreateBooksTable extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->string('handed_in', 9)->nullable();
+            $table->boolean('is_handed')->default(false);
             $table->string('status')->nullable();
             $table->timestamps();
 

@@ -21,6 +21,7 @@ class Book extends Model
         'year',
         'month_id',
         'handed_in',
+        'is_handed',
         'status',
     ];
 

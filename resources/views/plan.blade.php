@@ -59,28 +59,42 @@
 				</div>
 
 				<div class="overflow-auto p-7 rounded-lg shadow-2xl">
-					<canvas id="myChart" data-months="{{ $months }}" data-values="{{ $counts }}" width="400" height="200"></canvas>
+					<canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}" width="400" height="200"></canvas>
 				</div>
 					<script>
 						var ctx = document.getElementById('myChart').getContext('2d');
-						var months = document.getElementById('myChart').getAttribute('data-months').split(',');
+						// var months = document.getElementById('myChart').getAttribute('data-months').split(',');
 						var values = document.getElementById('myChart').getAttribute('data-values').split(',');
-						console.log(months);
+						var is_handed = document.getElementById('myChart').getAttribute('data-handed').split(',');
+						console.log(is_handed);
 						var myChart = new Chart(ctx, {
 							type: 'bar',
 							data: {
-								labels: months,
-								datasets: [{
-									label: 'Запланировано',
-									data: values,
-									backgroundColor: [
-										'rgba(99, 102, 241, 0.5)',
-									],
-									borderColor: [
-										'rgba(99, 102, 241, 1)',
-									],
-									borderWidth: 0
-								}]
+								labels: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Cентябрь'],
+								datasets: [
+									{
+										label: 'Запланировано',
+										data: values,
+										backgroundColor: [
+											'rgba(99, 102, 241, 0.5)',
+										],
+										borderColor: [
+											'rgba(99, 102, 241, 1)',
+										],
+										borderWidth: 0
+									},
+									{
+										label: 'Сдано',
+										data: is_handed,
+										backgroundColor: [
+											'rgba(75, 192, 192, 0.2)',
+										],
+										borderColor: [
+											'rgba(75, 192, 192, 1)',
+										],
+										borderWidth: 0
+									},
+								]
 							},
 							options: {
 								animations: {
@@ -136,7 +150,7 @@
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
 						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
-						<td class="text-center py-3 px-4">{{ $book->handed_in }}</td>
+						<td class="text-center py-3 px-4">{{ $book->is_handed }}</td>
 						<td class="text-center py-3 px-4">{{ $book->status }}</td>
 					</tr>
 					
