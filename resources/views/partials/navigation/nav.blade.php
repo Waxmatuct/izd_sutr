@@ -1,10 +1,11 @@
 <nav
+	id="navbar"
 	class="flex items-center bg-white justify-between flex-wrap p-3 sm:px-6 sm:py-3 fixed w-full z-10 top-0 shadow-lg"
 	x-data="{ isOpen: false }"
 	@keydown.escape="isOpen = false">
 	<!--Logo etc-->
 	<div class="flex items-center flex-shrink-1 text-white mr-6">
-		<a class="flex title-font items-center text-gray-700" href="/">
+		<a class="flex title-font items-center text-gray-700" href="{{ route('index') }}">
 			<img src="{{ asset('images/logo_ric.png') }}" alt="" class="w-16 h-16">
 				<div class="hidden sm:flex flex-col ml-2">
 					<h1 class="text-base font-extrabold md:text-lg leading-5 mb-2 md:mb-0">Редакционно-издательский центр</h1>
@@ -46,15 +47,15 @@
 		x-show.transition="true"
 		>
 		<ul class="pt-6 lg:pt-0 list-reset lg:flex justify-center flex-1 items-center text-gray-600">
-			<li class="ml-auto mr-3">
+			{{-- <li class="ml-auto mr-3">
 				<a
 					class="{{ request()->is('/') ? 'bg-indigo-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300"
-					href="/"
+					href="{{ route('index') }}"
 					@click="isOpen = true"
 					>Главная
 				</a>
-			</li>
-			<li class="mr-3">
+			</li> --}}
+			<li class="ml-auto mr-3">
 				<a
 					class="{{ request()->is('plan-*') ? 'bg-indigo-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300"
 					href="/plan-2021"
@@ -104,7 +105,7 @@
 				@if (Route::has('register'))
 					<a 
 						href="{{ route('register') }}" 
-						class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300">
+						class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg">
 						Регистрация
 					</a>
 				@endif

@@ -5,68 +5,28 @@
 @section('main')
 
 	<section class="text-gray-600 body-font">
-		<div class="flex flex-col w-full mb-10">
+		<div class="flex flex-col w-full mb-5">
 			<h1 
 				class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12 text-gray-700">
-				{{ $title }}. Статистика на {{ $year }} год
+				{{ $faculty->title }}. Статистика на {{ $year }} год
 			</h1>
 			<div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
 				<p>
-                    {{ $title }}
+                    {{ $faculty->title }} запланировал в {{ $year }} году <strong>{{ $count }}</strong> изданий общим объемом <strong>{{ $total }}</strong> уч. изд. л. На текщий момент сдано в РИЦ <strong>{{ $sdano }}</strong> работ. План издания {{ $faculty->title }} выполнил на <strong>{{ $proc }}%</strong>. 
                 </p>
                 <div>
-					<h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Статистика выполнения</h2>
-					<div class="count">
-						<p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем: <strong>{{ $total }}</strong> уч. изд. л.<br>Сдано в РИЦ <strong>{{ $sdano }}</strong> работ, что составляет <strong>{{ $proc }}%</strong> от общего количества за выбранный период.</p>
-					</div>
-					<p class="text-muted" style="font-size: 0.9rem">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
-					<p class="text-muted" style="font-size: 0.9rem">** Литература приобретает статус «издано» после передачи на склад материально-технического снабжения.</p>
+					<h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая динамика сдачи изданий</h2>
                     
-					<div class="overflow-auto p-7 rounded-lg shadow-2xl mt-7">
-						<canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}" width="400" height="200"></canvas>
+					<div class="overflow-auto p-7 rounded-lg shadow-2xl my-7">
+						<canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
 					</div>
-						<script>
-							var ctx = document.getElementById('myChart').getContext('2d');
-							var values = document.getElementById('myChart').getAttribute('data-values').split(',');
-							var is_handed = document.getElementById('myChart').getAttribute('data-handed').split(',');
-							var myChart = new Chart(ctx, {
-								type: 'bar',
-								data: {
-									labels: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Cентябрь'],
-									datasets: [
-										{
-											label: 'Запланировано',
-											data: values,
-											backgroundColor: [
-												'rgba(99, 102, 241, 0.5)',
-											],
-											borderColor: [
-												'rgba(99, 102, 241, 1)',
-											],
-											borderWidth: 0
-										},
-										{
-											label: 'Сдано',
-											data: is_handed,
-											backgroundColor: [
-												'rgba(75, 192, 192, 0.2)',
-											],
-											borderColor: [
-												'rgba(75, 192, 192, 1)',
-											],
-											borderWidth: 0
-										},
-									]
-								},
-								options: {
-									scales: {
-										y: {
-											beginAtZero: true
-										}
-									}
-								}
-							});
-						</script>
+
+					<h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-12 mb-5">План издания учебной литературы {{ $faculty->short_title }} на {{ $year }} год</h2>
+
+					<div class="mx-auto">
+						<p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
+						<p class="text-sm">** Литература приобретает статус «издано» после передачи на склад материально-технического снабжения.</p>
+					</div>
 
 				</div>
 
@@ -105,7 +65,7 @@
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
 						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
-						<td class="text-center py-3 px-4">{{ $book->is_handed }}</td>
+						<td class="text-center py-3 px-4 text-green-500 text-lg">@if ($book->is_handed == 1) ✔ @endif</td>
 						<td class="text-center py-3 px-4">{{ $book->status }}</td>
 					</tr>
 					
@@ -118,8 +78,58 @@
 			<span>Нет данных</span>
 		@endif
 
-
 	</section>
+
+	<script>
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var values = document.getElementById('myChart').getAttribute('data-values').split(',');
+		var is_handed = document.getElementById('myChart').getAttribute('data-handed').split(',');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Cентябрь'],
+				datasets: [
+					{
+						label: 'Запланировано',
+						data: values,
+						backgroundColor: [
+							'rgba(99, 102, 241, 0.4)',
+						],
+						borderColor: [
+							'rgba(99, 102, 241, 0.7)',
+						],
+						borderWidth: 2,
+
+					},
+					{
+						label: 'Сдано',
+						data: is_handed,
+						backgroundColor: [
+							'rgba(75, 192, 192, 0.4)',
+						],
+						borderColor: [
+							'rgba(75, 192, 192, 0.7)',
+						],
+						borderWidth: 2,
+
+					},
+				]
+			},
+			options: {
+				scales: {
+					y: {
+						beginAtZero: true,
+					}
+				},
+				plugins: {
+					legend: {
+						position: 'bottom',
+					},
+				},
+				responsive: true,				
+			}
+		});
+	</script>
 @endsection
 
 @push('chartjs')

@@ -12,37 +12,21 @@ use Carbon\Carbon;
 class PlanController extends Controller
 {
     public function index() {
-        $books = Book::where('year', '2021')->with('faculty', 'type', 'month')->get();
+        // $books = Book::where('year', '2021')->with('faculty', 'type', 'month')->get();
 
-        return view('index', [
-            'books' => $books,
-        ]);
+        // return view('index', [
+        //     'books' => $books,
+        // ]);
     }
 
     public function year($year) {
         $books = Book::where('year', $year)->with('faculty', 'type', 'month')->orderBy('month_id', 'asc')->get();
         $total = $books->sum('size');
-        $sdano = $books->whereNotNull('handed_in')->count();
+        $sdano = $books->where('is_handed')->count();
         $proc = $sdano / $books->count() * 100;
         $proc = round($proc, 2);
         $date = Book::where('year', $year)->orderBy('updated_at', 'desc')->first();
 
-        // $query1 = Book::where(['year' => $year])->orderBy('month_id')->pluck('month_id'); //массив месяцев
-        // $query2 = Month::whereIn('id', $query1)->pluck('name','id'); // получение имен месяцев
-        // $query3 = Book::where(['year' => $year])->orderBy('month_id')->groupBy('month_id')->pluck('month_id'); //айдишники месяцев в массиве             
-
-        // \App\Models\Book::where(['year' => '2021'])->whereNotNull('handed_in')->orderBy('month_id')->get('month_id')->pluck('month_id')->countBy()->collect();
-
-        // $months = $query2
-        //             ->collect()
-        //             ->unique()->values()
-        //             ->implode(', '); //объединение уникальных месяцев
-
-        // $counts = $query1
-        //             ->countBy()
-        //             ->collect()
-        //             ->implode(', '); //подсчет кол-ва каждого месяца
-        
         //запросы на подсчет запланированных
         $jan = Book::where(['year' => $year, 'month_id' => '1'])->pluck('month_id')->count();
         $feb = Book::where(['year' => $year, 'month_id' => '2'])->pluck('month_id')->count();            
@@ -81,7 +65,6 @@ class PlanController extends Controller
             'sdano' => $sdano,
             'proc' => $proc,
             'date' => $date,
-            // 'months' => $months,
             'counts' => $counts,
             'is_handed' => $is_handed,
         ]);
@@ -95,7 +78,7 @@ class PlanController extends Controller
                         ->get();
         
         $total = $books->sum('size');
-        $sdano = $books->whereNotNull('handed_in')->count();
+        $sdano = $books->where('is_handed')->count();
         $proc = $sdano / $books->count() * 100;
         $proc = round($proc, 2);
         $date = Book::where(['year' => $year, 'faculty_id' => $faculty->id])
@@ -135,11 +118,11 @@ class PlanController extends Controller
 
         return view('plan-faculty', [
             'books' => $books,
+            'faculty' => $faculty,
             'year' => $year,
             'count'=> $books->count(),
             'total' => $total,
             'sdano' => $sdano,
-            'title' => $faculty->title,
             'proc' => $proc,
             'date' => $date,
             'counts' => $counts,

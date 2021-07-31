@@ -36,7 +36,7 @@
         </div>
 
         <footer class="flex flex-col items-center container w-full text-center mx-auto my-10 text-gray-500 px-5">
-            <p>© 2021, Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный университет»</p>
+            <p>© 2020–2021, Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный университет»</p>
             <small>Разработка сайта - <a href="mailto:pletnevsochi@yandex.ru">Дмитрий Плетнев</a></small>
         </footer>    
     
