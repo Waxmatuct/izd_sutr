@@ -7,10 +7,21 @@ use App\Models\Faculty;
 use App\Models\Type;
 use App\Models\Month;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
+use App\Services\BooksService;
 
 class PlanController extends Controller
 {
+
+    protected $booksService;
+    
+    public function __construct(
+        BooksService $booksService
+    )
+
+    {
+        $this->booksService = $booksService;
+    }
+    
     public function index() {
         // $books = Book::where('year', '2021')->with('faculty', 'type', 'month')->get();
 
@@ -19,13 +30,13 @@ class PlanController extends Controller
         // ]);
     }
 
-    public function year($year) {
-        $books = Book::where('year', $year)->with('faculty', 'type', 'month')->orderBy('month_id', 'asc')->get();
-        $total = $books->sum('size');
-        $sdano = $books->where('is_handed')->count();
-        $proc = $sdano / $books->count() * 100;
-        $proc = round($proc, 2);
-        $date = Book::where('year', $year)->orderBy('updated_at', 'desc')->first();
+    public function year($year)
+    {
+        $books = $this->booksService->getBooksOfYear($year);
+
+        $stats = $this->booksService->getStatsOfYear($year);
+        
+        $date = $this->booksService->getDateOfLastUpdatedBook($year);
 
         //запросы на подсчет запланированных
         $jan = Book::where(['year' => $year, 'month_id' => '1'])->pluck('month_id')->count();
@@ -61,9 +72,9 @@ class PlanController extends Controller
             'books' => $books,
             'year' => $year,
             'count'=> $books->count(),
-            'total' => $total,
-            'sdano' => $sdano,
-            'proc' => $proc,
+            'total' => $stats['total'],
+            'sdano' => $stats['sdano'],
+            'proc' => $stats['proc'],
             'date' => $date,
             'counts' => $counts,
             'is_handed' => $is_handed,
