@@ -52,7 +52,7 @@
 				<div>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая информация и статистика</h2>
 					<div class="count">
-						<p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем: <strong>{{ $total }}</strong> уч. изд. л. Сдано в РИЦ <strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет <strong>{{ $proc }}%</strong>.</p>
+						<p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем: <strong>{{ $size }}</strong> уч. изд. л. Сдано в РИЦ <strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет <strong>{{ $perc }}%</strong>.</p>
 					</div>
 					<div class="w-full p-7 rounded-lg shadow-2xl my-7">
 						<canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>

@@ -4,8 +4,9 @@ namespace App\Services;
 
 use App\Repositories\Books\BooksRepositoryInterface;
 use App\Models\Book;
-use Carbon\Carbon;
+// use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 class BooksService
 {
@@ -26,32 +27,49 @@ class BooksService
         return $books;
     }
 
-    public function getBooksOfYearIsHanded($year): int
+    public function getStatsOfYear($year)
     {
-        return $this->booksRepository->booksOfYearIsHanded($year)->count();
-    }
+        $books = $this->booksRepository->booksOfYear($year)->get();
+        $size = $books->sum('size');
+        $sdano = $this->booksRepository->booksOfYearIsHanded($year)->count();
+        $perc = $sdano / $books->count() * 100;
+        $perc = round($perc);
 
-    public function getStatsOfYear($year): array
-    {
-        $books = $this->booksRepository->booksOfYear($year);
-        $total = $books->sum('size');
-        $sdano = $this->getBooksOfYearIsHanded($year);
-        $proc = $sdano / $books->count() * 100;
-        $proc = round($proc, 2);
-
-        $stats = array([
-            // 'books' => $books,
+        $stats = collect([
             'sdano' => $sdano,
-            'total' => $total,
-            'proc' => $proc,
+            'size' => $size,
+            'perc' => $perc,
         ]);
 
-        return $stats[0];
-
+        return $stats;
     }
 
     public function getDateOfLastUpdatedBook($year)
     {
         return $this->booksRepository->booksOfYear($year)->orderBy('updated_at', 'desc')->first();
+    }
+
+    public function getCountOfBooksForBarChart($year)
+    {
+        for ($i = 1; $i < 10; $i++)
+        {
+            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('month_id')->count();
+        }
+        
+        $array = collect($array);
+
+        return $array;
+    }
+
+    public function getCountOfHandedBooksForBarChart($year)
+    {
+        for ($i = 1; $i < 10; $i++)
+        {
+            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('is_handed')->sum();
+        }
+        
+        $array = collect($array);
+
+        return $array;
     }
 }

@@ -13,5 +13,4 @@ interface BooksRepositoryInterface
 
     public function booksOfYearIsHanded($year): Builder;
 
-    // public function dateOfLastUpdatedBook($year);
 }

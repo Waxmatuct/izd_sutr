@@ -23,8 +23,4 @@ class BooksRepository implements BooksRepositoryInterface
         return Book::where(['year' => $year, 'is_handed' => true]);
     }
 
-    // public function dateOfLastUpdatedBook($year)
-    // {
-
-    // }
 }
