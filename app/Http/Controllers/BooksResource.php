@@ -3,18 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Repositories\Books\BooksRepositoryInterface;
+use App\Services\BooksService;
 use Illuminate\Http\Request;
 
 class BooksResource extends Controller
 {
+    private $booksRepository;
+    private $booksService;
+
+    public function __construct(
+        BooksRepositoryInterface $booksRepository,
+        BooksService $booksService
+    )
+
+    {
+        $this->booksRepository = $booksRepository;
+        $this->booksService = $booksService;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($year)
     {
-        //
+        $books = $this->booksService->getBooksOfYear($year);
+
+        return view('dashboard.plan', [
+            'books' => $books,
+            'year' => $year,
+        ]);
     }
 
     /**
@@ -78,8 +97,12 @@ class BooksResource extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy(Book $id)
     {
-        //
+        $this->booksRepository->findBook($id)->delete();
+        
+        // return redirect()->route('posts.index')
+        //     ->with('success', 'Запись успешно удалена');
+
     }
 }

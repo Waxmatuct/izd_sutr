@@ -5,12 +5,18 @@ namespace App\Repositories\Books;
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 
 class BooksRepository implements BooksRepositoryInterface
 {
     public function all()
     {
         return Book::all();
+    }
+
+    public function findBook($id): Model
+    {
+        return Book::find($id);
     }
 
     public function booksOfYear($year): Builder
