@@ -12,7 +12,7 @@
 			</h1>
 			<div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
 				<p>
-                    {{ $faculty->title }} запланировал в {{ $year }} году <strong>{{ $count }}</strong> изданий общим объемом <strong>{{ $total }}</strong> уч. изд. л. На текщий момент сдано в РИЦ <strong>{{ $sdano }}</strong> работ. План издания {{ $faculty->title }} выполнил на <strong>{{ $proc }}%</strong>. 
+                    {{ $faculty->title }} запланировал в {{ $year }} году <strong>{{ $count }}</strong> изданий общим объемом <strong>{{ $size }}</strong> уч. изд. л. На текщий момент сдано в РИЦ <strong>{{ $sdano }}</strong> работ. План издания {{ $faculty->title }} выполнил на <strong>{{ $perc }}%</strong>. 
                 </p>
                 <div>
 					<h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая динамика сдачи изданий</h2>

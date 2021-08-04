@@ -23,4 +23,15 @@ class BooksRepository implements BooksRepositoryInterface
         return Book::where(['year' => $year, 'is_handed' => true]);
     }
 
+    public function booksOfFaculty($year, $id): Builder
+    {
+        return Book::where(['year' => $year, 'faculty_id' => $id]);
+    }
+
+    public function booksOfFacultyIsHanded($year, $id): Builder
+    {
+        return Book::where(['year' => $year, 'is_handed' => true, 'faculty_id' => $id]);
+
+    }
+
 }

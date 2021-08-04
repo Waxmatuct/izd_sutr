@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Repositories\Books\BooksRepositoryInterface;
 use App\Models\Book;
-// use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
+use App\Repositories\Books\BooksRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class BooksService
@@ -13,21 +13,21 @@ class BooksService
     private $booksRepository;
 
     public function __construct(
-        BooksRepositoryInterface $booksRepository
+        BooksRepositoryInterface $booksRepository,
     )
 
     {
         $this->booksRepository = $booksRepository;
     }
 
-    public function getBooksOfYear($year): Collection
+    public function getBooksOfYear($year): EloquentCollection
     {
         $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
 
         return $books;
     }
 
-    public function getStatsOfYear($year)
+    public function getStatsOfYear($year): Collection
     {
         $books = $this->booksRepository->booksOfYear($year)->get();
         $size = $books->sum('size');
@@ -44,32 +44,32 @@ class BooksService
         return $stats;
     }
 
-    public function getDateOfLastUpdatedBook($year)
+    public function getDateOfLastUpdatedBook($year): Book
     {
         return $this->booksRepository->booksOfYear($year)->orderBy('updated_at', 'desc')->first();
     }
 
-    public function getCountOfBooksForBarChart($year)
+    public function getCountOfBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++)
         {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('month_id')->count();
         }
         
-        $array = collect($array);
+        $collection = collect($array);
 
-        return $array;
+        return $collection;
     }
 
-    public function getCountOfHandedBooksForBarChart($year)
+    public function getCountOfHandedBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++)
         {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('is_handed')->sum();
         }
         
-        $array = collect($array);
+        $collection = collect($array);
 
-        return $array;
+        return $collection;
     }
 }

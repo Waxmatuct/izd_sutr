@@ -76,6 +76,10 @@
 								Факультет экономики и процессов управления
 							</a><br>
 							<a class="inline-block"
+								href="{{ route('faculty', ['year'=> $year, 'faculty'=> 'ief'] ) }}">
+								Инженерно-экологический факультет
+							</a><br>
+							<a class="inline-block"
 								href="{{ route('faculty', ['year'=> $year, 'faculty'=> 'college'] ) }}">
 								Университетский экономико-технологический колледж
 							</a>
