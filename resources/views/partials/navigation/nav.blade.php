@@ -91,7 +91,7 @@
 			<li class="ml-auto mr-3">
 			@auth
 				<a
-					href="{{ route('dashboard') }}" 
+					href="{{ route('dashboard.index') }}" 
 					class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-indigo-500 rounded-lg transition-all ease-in-out duration-300">
 					Админка
 				</a>

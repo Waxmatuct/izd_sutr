@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PlanController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BooksResource;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,15 @@ Route::get('/paid-services', function () {
     return view('paid-services');
 })->name('paid-services');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function() {
 
-Route::resource('/dashboard/plan-{year}', BooksResource::class);
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    Route::get('/plan-{year}', [DashboardController::class, 'year'])->name('year');
+
+    Route::resource('/dashboard/books', BooksResource::class);
+});
+
 
 // Route::get('/dashboard/plan-{year}', function () {
 //     return view('dashboard.plan');

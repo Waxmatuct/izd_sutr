@@ -26,14 +26,9 @@ class BooksResource extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($year)
+    public function index()
     {
-        $books = $this->booksService->getBooksOfYear($year);
-
-        return view('dashboard.plan', [
-            'books' => $books,
-            'year' => $year,
-        ]);
+        //
     }
 
     /**
