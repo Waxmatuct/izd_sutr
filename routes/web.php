@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BooksResource;
+use App\Http\Controllers\BookResource;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,9 +37,9 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
 
     Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-    Route::get('/plan-{year}', [DashboardController::class, 'year'])->name('year');
+    Route::get('plan-{year}', [DashboardController::class, 'year'])->name('year');
 
-    Route::resource('/dashboard/books', BooksResource::class);
+    Route::resource('book', BookResource::class);
 });
 
 

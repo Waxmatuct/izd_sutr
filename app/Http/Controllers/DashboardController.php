@@ -23,7 +23,7 @@ class DashboardController extends Controller
     
     public function index() 
     {
-        return view('dashboard.index');
+        return redirect()->route('dashboard.year', '2021');
     }
 
     public function year($year)

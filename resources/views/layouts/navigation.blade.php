@@ -18,6 +18,12 @@
                     <x-nav-link :href="route('index')">
                         Главная
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard.year', '2020')">
+                        План 2020
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.year', '2021')">
+                        План 2021
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -71,6 +77,12 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('index')">
                 {{ __('Главная') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.year', '2020')">
+                План 2020
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('dashboard.year', '2021')">
+                План 2021
             </x-responsive-nav-link>
         </div>
 
