@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Faculty;
+use App\Models\Month;
+use App\Models\Type;
 use App\Repositories\Books\BooksRepositoryInterface;
 use App\Services\BooksService;
 use Illuminate\Http\Request;
@@ -38,7 +41,11 @@ class BookResource extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.book.create', [
+            'faculties' => Faculty::all(),
+            'types' => Type::all(),
+            'months' => Month::all(),
+        ]);
     }
 
     /**
@@ -49,7 +56,33 @@ class BookResource extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'item' => 'required',
+            'faculty_id' => 'required',
+            'author' => 'required',
+            'title' => 'required',
+            'type_id' => 'required',
+            'disciple' => 'required',
+            'size' => 'required',
+            'amount' => 'required',
+            'month_id' => 'required',
+        ]);
+
+        Book::create([
+            'item' => $request->get('item'),
+            'faculty_id' => $request->get('faculty_id'),
+            'author' => $request->get('author'),
+            'title' => $request->get('title'),
+            'type_id' => $request->get('type_id'),
+            'disciple' => $request->get('disciple'),
+            'size' => $request->get('size'),
+            'amount' => $request->get('amount'),
+            'month_id' => $request->get('month_id'),
+            'year' => date("Y"),
+        ]);
+
+        return redirect()->route('dashboard.book.create')
+            ->with('success', 'Издание успешно добавлено');
     }
 
     /**
