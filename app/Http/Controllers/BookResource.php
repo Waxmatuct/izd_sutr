@@ -123,7 +123,7 @@ class BookResource extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $book
+     * @param  \App\Models\Book  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Book $id)
@@ -141,7 +141,20 @@ class BookResource extends Controller
         ]);
 
         // dd($request);
-        Book::find($id)->save([$request->all()]);
+        $book = Book::find($id);
+        $book->save([
+            'item' => $request->get('item'),
+            'faculty_id' => $request->get('faculty_id'),
+            'author' => $request->get('author'),
+            'title' => $request->get('title'),
+            'type_id' => $request->get('type_id'),
+            'disciple' => $request->get('disciple'),
+            'size' => $request->get('size'),
+            'amount' => $request->get('amount'),
+            'month_id' => $request->get('month_id'),
+            'handed_in' => $request->get('handed_in'),
+            'status' => $request->get('status'),
+        ]);
 
         return redirect()->route('dashboard.index')
         ->with('success', 'Издание успешно обновлено');
