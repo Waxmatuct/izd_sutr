@@ -20,6 +20,11 @@ class BooksService
         $this->booksRepository = $booksRepository;
     }
 
+    public function findBook($id)
+    {
+        return $this->booksRepository->findBook($id);
+    }
+
     public function getBooksOfYear($year): EloquentCollection
     {
         $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();

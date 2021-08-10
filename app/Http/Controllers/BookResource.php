@@ -9,6 +9,9 @@ use App\Models\Type;
 use App\Repositories\Books\BooksRepositoryInterface;
 use App\Services\BooksService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Collection;
+
 
 class BookResource extends Controller
 {
@@ -102,9 +105,18 @@ class BookResource extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function edit(Book $book)
+    public function edit($id)
     {
-        //
+        $book = [
+            'book' => $this->booksService->findBook($id),
+            'faculties' => Faculty::all(),
+            'types' => Type::all(),
+            'months' => Month::all(),
+            'statuses' => ['-', 'В работе', 'В печати', 'Отпечатано', 'На складе МТЗ'],
+        ];
+        // dd($book);
+        return view('dashboard.book.edit', $book);
+        
     }
 
     /**
@@ -114,9 +126,25 @@ class BookResource extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Book $id)
     {
-        //
+        $request->validate([
+            'item' => 'required',
+            'faculty_id' => 'required',
+            'author' => 'required',
+            'title' => 'required',
+            'type_id' => 'required',
+            'disciple' => 'required',
+            'size' => 'required',
+            'amount' => 'required',
+            'month_id' => 'required',
+        ]);
+
+        // dd($request);
+        Book::find($id)->save([$request->all()]);
+
+        return redirect()->route('dashboard.index')
+        ->with('success', 'Издание успешно обновлено');
     }
 
     /**

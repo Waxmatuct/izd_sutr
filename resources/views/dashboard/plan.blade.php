@@ -40,6 +40,9 @@
                                 Месяц сдачи
                             </th>
                             <th class="text-center py-3 px-4">
+                                Когда сдано
+                            </th>
+                            <th class="text-center py-3 px-4">
                                 Сдано
                             </th>
                             <th class="text-center py-3 px-4 whitespace-nowrap">
@@ -53,7 +56,7 @@
                         
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-indigo-100">
                             <th class="text-center py-3 px-4">
-                                <a href="{{ route('dashboard.book.edit', $book->id) }}" title="Правка">
+                                <a href="{{ route('dashboard.book.edit', $book) }}" title="Правка">
                                     {{ $book->item }}
                                 </a>
                             </th>
@@ -80,6 +83,13 @@
                             </td>
                             <td class="text-center py-3 px-4">
                                 {{ $book->month->name }}
+                            </td>
+                            <td class="text-center py-3 px-4">
+                                @foreach ($months as $month)
+                                    @if ($book->handed_in === $month->id)
+                                        {{ $month->name }}
+                                    @endif
+                                @endforeach
                             </td>
                             <td class="text-center py-3 px-4 text-green-500 text-lg">
                                 @if ($book->is_handed == 1) ✔ @endif

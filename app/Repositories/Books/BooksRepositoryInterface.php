@@ -10,7 +10,7 @@ interface BooksRepositoryInterface
 {
     public function all();
 
-    public function findBook($id): Model;
+    public function findBook($id);
 
     public function booksOfYear($year): Builder;
 

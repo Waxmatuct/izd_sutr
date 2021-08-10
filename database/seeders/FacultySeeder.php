@@ -21,7 +21,7 @@ class FacultySeeder extends Seeder
                 'slug' => 'fts',
             ],
             [
-                'title' => 'Инженерно-экономический факультет',
+                'title' => 'Инженерно-экологический факультет',
                 'short_title' => 'ИЭФ',
                 'slug' => 'ief',
             ],

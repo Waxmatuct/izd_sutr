@@ -82,4 +82,5 @@ class Book extends Model
     public function month() {
         return $this->belongsTo(Month::class);
     }
+    
 }

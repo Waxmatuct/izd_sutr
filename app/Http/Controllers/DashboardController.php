@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Books\BooksRepositoryInterface;
 use App\Services\BooksService;
+use App\Models\Month;
+
 
 class DashboardController extends Controller
 {
@@ -33,6 +35,7 @@ class DashboardController extends Controller
         return view('dashboard.plan', [
             'books' => $books,
             'year' => $year,
+            'months' => Month::all(),
         ]);
     }
 }

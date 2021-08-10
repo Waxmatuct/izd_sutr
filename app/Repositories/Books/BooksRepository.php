@@ -14,7 +14,7 @@ class BooksRepository implements BooksRepositoryInterface
         return Book::all();
     }
 
-    public function findBook($id): Model
+    public function findBook($id)
     {
         return Book::find($id);
     }
