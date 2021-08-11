@@ -8,18 +8,27 @@ use App\Models\Month;
 use App\Models\Type;
 use App\Services\BooksService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Collection;
 
 class BookResource extends Controller
-{
+{    
+    /**
+     * booksService
+     *
+     * @var mixed
+     */
     private $booksService;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         BooksService $booksService
     ) {
         $this->booksService = $booksService;
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -93,21 +102,21 @@ class BookResource extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * edit
      *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id
+     * @return void
      */
-    public function edit($id)
+    public function edit(Book $id)
     {
         $book = [
             'book' => $this->booksService->findBook($id),
             'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
-            'statuses' => ['-', 'В работе', 'В печати', 'Отпечатано', 'На складе МТЗ'],
+            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'На складе МТЗ'],
         ];
-        // dd($book);
+
         return view('dashboard.book.edit', $book);
     }
 
@@ -120,10 +129,10 @@ class BookResource extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $book = $this->booksService->findBook($book)->update($request->all());
+        $this->booksService->findBook($book)->update($request->all());
 
         return redirect()->route('dashboard.index')
-        ->with('success', 'Издание успешно обновлено');
+            ->with('success', 'Издание успешно обновлено');
     }
 
     /**
@@ -135,7 +144,7 @@ class BookResource extends Controller
     public function destroy(Book $id)
     {
         $this->booksService->findBook($id)->delete();
-        
+
         // return redirect()->route('posts.index')
         //     ->with('success', 'Запись успешно удалена');
     }

@@ -10,19 +10,41 @@ use Illuminate\Support\Facades\DB;
 
 class BooksService
 {
+    /**
+     * booksRepository
+     *
+     * @var mixed
+     */
     private $booksRepository;
 
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         BooksRepositoryInterface $booksRepository,
     ) {
         $this->booksRepository = $booksRepository;
     }
 
-    public function findBook($id)
+    /**
+     * findBook
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function findBook($id): Book
     {
         return $this->booksRepository->findBook($id);
     }
 
+    /**
+     * getBooksOfYear
+     *
+     * @param  mixed $year
+     * @return EloquentCollection
+     */
     public function getBooksOfYear($year): EloquentCollection
     {
         $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
@@ -30,6 +52,12 @@ class BooksService
         return $books;
     }
 
+    /**
+     * getStatsOfYear
+     *
+     * @param  mixed $year
+     * @return Collection
+     */
     public function getStatsOfYear($year): Collection
     {
         $books = $this->booksRepository->booksOfYear($year)->get();
@@ -47,28 +75,46 @@ class BooksService
         return $stats;
     }
 
+    /**
+     * getDateOfLastUpdatedBook
+     *
+     * @param  mixed $year
+     * @return Book
+     */
     public function getDateOfLastUpdatedBook($year): Book
     {
         return $this->booksRepository->booksOfYear($year)->orderBy('updated_at', 'desc')->first();
     }
 
+    /**
+     * getCountOfBooksForBarChart
+     *
+     * @param  mixed $year
+     * @return Collection
+     */
     public function getCountOfBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('month_id')->count();
         }
-        
+
         $collection = collect($array);
 
         return $collection;
     }
 
+    /**
+     * getCountOfHandedBooksForBarChart
+     *
+     * @param  mixed $year
+     * @return Collection
+     */
     public function getCountOfHandedBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('is_handed')->sum();
         }
-        
+
         $collection = collect($array);
 
         return $collection;

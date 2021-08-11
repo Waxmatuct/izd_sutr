@@ -2,32 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Repositories\Books\BooksRepositoryInterface;
-use App\Services\BooksService;
 use App\Models\Month;
-
+use App\Services\BooksService;
 
 class DashboardController extends Controller
 {
-    private $booksRepository;
     private $booksService;
 
     public function __construct(
-        BooksRepositoryInterface $booksRepository,
         BooksService $booksService
-    )
-
-    {
-        $this->booksRepository = $booksRepository;
+    ) {
         $this->booksService = $booksService;
     }
-    
-    public function index() 
+
+    /**
+     * index
+     *
+     * @return void
+     */
+    public function index()
     {
         return redirect()->route('dashboard.year', '2021');
     }
 
+    /**
+     * year
+     *
+     * @param  mixed $year
+     * @return void
+     */
     public function year($year)
     {
         $books = $this->booksService->getBooksOfYear($year);

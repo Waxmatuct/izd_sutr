@@ -8,39 +8,54 @@ use App\Services\BooksService;
 class PlanController extends Controller
 {
 
+    /**
+     * booksService
+     *
+     * @var mixed
+     */
     protected $booksService;
+    /**
+     * booksOfFacultyService
+     *
+     * @var mixed
+     */
     protected $booksOfFacultyService;
-    
+
     public function __construct(
         BooksService $booksService,
         BooksOfFacultyService $booksOfFacultyService
-    )
-
-    {
+    ) {
         $this->booksService = $booksService;
         $this->booksOfFacultyService = $booksOfFacultyService;
     }
-    
-    public function index() {
+
+    public function index()
+    {
         //
     }
 
+    /**
+     * year
+     *
+     * @param  mixed $year
+     * @return void
+     */
     public function year($year)
     {
         $books = $this->booksService->getBooksOfYear($year);
-        
+
         $stats = $this->booksService->getStatsOfYear($year);
-        
+
         $date = $this->booksService->getDateOfLastUpdatedBook($year);
 
         $counts = $this->booksService->getCountOfBooksForBarChart($year);
 
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
-        
+
         return view('plan', [
             'books' => $books,
             'year' => $year,
-            'count'=> $books->count(),
+            'count' => $books->count(),
             'size' => $stats['size'],
             'sdano' => $stats['sdano'],
             'perc' => $stats['perc'],
@@ -50,11 +65,19 @@ class PlanController extends Controller
         ]);
     }
 
-    public function faculty($year, $slug) {
+    /**
+     * faculty
+     *
+     * @param  mixed $year
+     * @param  mixed $slug
+     * @return void
+     */
+    public function faculty($year, $slug)
+    {
         $faculty = $this->booksOfFacultyService->getFaculty($slug);
 
         $books = $this->booksOfFacultyService->getBooksOfFaculty($year, $faculty->id);
-       
+
         $stats = $this->booksOfFacultyService->getStatsOfFaculty($year, $faculty->id);
 
         $date = $this->booksOfFacultyService->getDateOfLastUpdatedBookOfFaculty($year, $faculty->id);
@@ -67,7 +90,7 @@ class PlanController extends Controller
             'books' => $books,
             'faculty' => $faculty,
             'year' => $year,
-            'count'=> $books->count(),
+            'count' => $books->count(),
             'size' => $stats['size'],
             'sdano' => $stats['sdano'],
             'perc' => $stats['perc'],

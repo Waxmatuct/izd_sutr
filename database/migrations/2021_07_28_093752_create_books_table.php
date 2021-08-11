@@ -18,22 +18,22 @@ class CreateBooksTable extends Migration
             $table->unsignedInteger('item');
             $table->text('title');
             $table->foreignId('faculty_id')
-                    ->constrained('faculties')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained('faculties')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->string('author');
             $table->foreignId('type_id')
-                    ->constrained('types')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained('types')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->text('disciple')->nullable();
             $table->unsignedDecimal('size', 4, 2);
             $table->unsignedSmallInteger('amount');
             $table->year('year');
             $table->foreignId('month_id')
-                    ->constrained('months')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+                ->constrained('months')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->unsignedInteger('handed_in')->nullable();
             $table->boolean('is_handed')->default(false);
             $table->string('status')->nullable();
@@ -42,9 +42,9 @@ class CreateBooksTable extends Migration
             $table->index('month_id');
             $table->index('created_at');
             $table->index('year');
-            
+
             $table->softDeletes();
-            
+
         });
     }
 
