@@ -107,10 +107,10 @@ class BookResource extends Controller
      * @param  mixed $id
      * @return void
      */
-    public function edit(Book $id)
+    public function edit(Book $book)
     {
         $book = [
-            'book' => $this->booksService->findBook($id),
+            'book' => $this->booksService->findBook($book),
             'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
@@ -134,18 +134,18 @@ class BookResource extends Controller
         return redirect()->route('dashboard.index')
             ->with('success', 'Издание успешно обновлено');
     }
-
+    
     /**
-     * Remove the specified resource from storage.
+     * destroy
      *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
+     * @param  mixed $book
+     * @return void
      */
-    public function destroy(Book $id)
+    public function destroy(Book $book)
     {
-        $this->booksService->findBook($id)->delete();
+        $this->booksService->findBook($book)->delete();
 
-        // return redirect()->route('posts.index')
-        //     ->with('success', 'Запись успешно удалена');
+        return redirect()->route('dashboard.index')
+            ->with('success', 'Запись успешно удалена');
     }
 }
