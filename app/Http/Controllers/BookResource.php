@@ -6,25 +6,18 @@ use App\Models\Book;
 use App\Models\Faculty;
 use App\Models\Month;
 use App\Models\Type;
-use App\Repositories\Books\BooksRepositoryInterface;
 use App\Services\BooksService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
 
-
 class BookResource extends Controller
 {
-    private $booksRepository;
     private $booksService;
 
     public function __construct(
-        BooksRepositoryInterface $booksRepository,
         BooksService $booksService
-    )
-
-    {
-        $this->booksRepository = $booksRepository;
+    ) {
         $this->booksService = $booksService;
     }
     /**
@@ -116,7 +109,6 @@ class BookResource extends Controller
         ];
         // dd($book);
         return view('dashboard.book.edit', $book);
-        
     }
 
     /**
@@ -126,35 +118,9 @@ class BookResource extends Controller
      * @param  \App\Models\Book  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Book $id)
+    public function update(Request $request, Book $book)
     {
-        $request->validate([
-            'item' => 'required',
-            'faculty_id' => 'required',
-            'author' => 'required',
-            'title' => 'required',
-            'type_id' => 'required',
-            'disciple' => 'required',
-            'size' => 'required',
-            'amount' => 'required',
-            'month_id' => 'required',
-        ]);
-
-        // dd($request);
-        $book = Book::find($id);
-        $book->save([
-            'item' => $request->get('item'),
-            'faculty_id' => $request->get('faculty_id'),
-            'author' => $request->get('author'),
-            'title' => $request->get('title'),
-            'type_id' => $request->get('type_id'),
-            'disciple' => $request->get('disciple'),
-            'size' => $request->get('size'),
-            'amount' => $request->get('amount'),
-            'month_id' => $request->get('month_id'),
-            'handed_in' => $request->get('handed_in'),
-            'status' => $request->get('status'),
-        ]);
+        $book = $this->booksService->findBook($book)->update($request->all());
 
         return redirect()->route('dashboard.index')
         ->with('success', 'Издание успешно обновлено');
@@ -168,10 +134,9 @@ class BookResource extends Controller
      */
     public function destroy(Book $id)
     {
-        $this->booksRepository->findBook($id)->delete();
+        $this->booksService->findBook($id)->delete();
         
         // return redirect()->route('posts.index')
         //     ->with('success', 'Запись успешно удалена');
-
     }
 }

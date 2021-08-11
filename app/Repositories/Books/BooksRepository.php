@@ -16,7 +16,7 @@ class BooksRepository implements BooksRepositoryInterface
 
     public function findBook($id)
     {
-        return Book::find($id);
+        return Book::all()->find($id);
     }
 
     public function booksOfYear($year): Builder

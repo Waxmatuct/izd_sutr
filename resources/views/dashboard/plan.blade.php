@@ -85,11 +85,13 @@
                                 {{ $book->month->name }}
                             </td>
                             <td class="text-center py-3 px-4">
-                                @foreach ($months as $month)
-                                    @if ($book->handed_in === $month->id)
-                                        {{ $month->name }}
-                                    @endif
-                                @endforeach
+                                @unless ($book->is_handed == 0)
+                                    @foreach ($months as $month)
+                                        @if ($book->handed_in === $month->id)
+                                            {{ $month->name }}
+                                        @endif
+                                    @endforeach
+                                @endunless
                             </td>
                             <td class="text-center py-3 px-4 text-green-500 text-lg">
                                 @if ($book->is_handed == 1) ✔ @endif

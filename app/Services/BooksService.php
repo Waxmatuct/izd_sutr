@@ -14,9 +14,7 @@ class BooksService
 
     public function __construct(
         BooksRepositoryInterface $booksRepository,
-    )
-
-    {
+    ) {
         $this->booksRepository = $booksRepository;
     }
 
@@ -56,8 +54,7 @@ class BooksService
 
     public function getCountOfBooksForBarChart($year): Collection
     {
-        for ($i = 1; $i < 10; $i++)
-        {
+        for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('month_id')->count();
         }
         
@@ -68,8 +65,7 @@ class BooksService
 
     public function getCountOfHandedBooksForBarChart($year): Collection
     {
-        for ($i = 1; $i < 10; $i++)
-        {
+        for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('is_handed')->sum();
         }
         

@@ -27,7 +27,7 @@ class CreateBooksTable extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->text('disciple')->nullable();
-            $table->float('size', 3, 2);
+            $table->unsignedDecimal('size', 4, 2);
             $table->unsignedSmallInteger('amount');
             $table->year('year');
             $table->foreignId('month_id')

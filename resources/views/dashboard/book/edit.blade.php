@@ -10,18 +10,9 @@
 
             @include('dashboard.includes.message')
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Ой!</strong> Тут какая-то проблема с полями.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            @include('dashboard.includes.errors')
 
-            <form action="{{ route('dashboard.book.update', $book) }}" method="POST" class="w-full">
+            <form action="{{ route('dashboard.book.update', $book ) }}" method="POST" class="w-full">
                 @csrf
                 @method('PATCH')
                 <div class="grid md:grid-cols-3 gap-0 md:gap-5">
@@ -125,7 +116,7 @@
                             <div class="mt-5">
                                 <label class="block text-sm text-gray-600" for="category">Сдано</label>
                                 <div class="relative w-max">
-                                    <select id="is_handed" name="is_handed"
+                                    <select id="handed_in" name="handed_in"
                                         class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
                                         @foreach ($months as $month)
                                             @if ($book->handed_in === $month->id)
@@ -141,22 +132,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-5">
-                            <label class="block text-sm text-gray-600" for="category">Статус</label>
-                            <div class="relative w-max">
-                                <select id="status" name="status"
-                                    class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                                    @foreach ($statuses as $status)
-                                        @if ($book->status === $status)
-                                            <option selected="selected" value="{{ $book->status }}">{{ $book->status }}</option>
-                                        @else
-                                            <option value="{{ $status }}">{{ $status }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                                <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
-                                </span>
+                        <div class="flex flex-row justify-between">
+                            <div class="mt-5">
+                                <label class="block text-sm text-gray-600" for="category">Сдано</label>
+                                <div class="w-max">
+                                    <input type="hidden" name="is_handed" value="0">
+                                    <input type="checkbox" name="is_handed" id="is_handed" value="1" @if ($book->is_handed === 1) checked @endif>
+                                </div>
+                            </div>
+                            <div class="mt-5">
+                                <label class="block text-sm text-gray-600" for="category">Статус</label>
+                                <div class="relative w-max">
+                                    <select id="status" name="status"
+                                        class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                        @foreach ($statuses as $status)
+                                            @if ($book->status === $status)
+                                                <option selected="selected" value="{{ $book->status }}">{{ $book->status }}</option>
+                                            @else
+                                                <option value="{{ $status }}">{{ $status }}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                    <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
+                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"></path></svg>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
