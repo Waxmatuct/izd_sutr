@@ -61,18 +61,19 @@ class BookResource extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'item' => 'required',
-            'faculty_id' => 'required',
-            'author' => 'required',
-            'title' => 'required',
-            'type_id' => 'required',
-            'disciple' => 'required',
-            'size' => 'required',
-            'amount' => 'required',
-            'month_id' => 'required',
-        ]);
-
+        // $request->validate([
+        //     'item' => 'required',
+        //     'faculty_id' => 'required',
+        //     'author' => 'required',
+        //     'title' => 'required',
+        //     'type_id' => 'required',
+        //     'disciple' => 'required',
+        //     'size' => 'required',
+        //     'amount' => 'required',
+        //     'month_id' => 'required',
+        // ]);
+        
+        dd($request->all());
         Book::create([
             'item' => $request->get('item'),
             'faculty_id' => $request->get('faculty_id'),

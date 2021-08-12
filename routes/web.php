@@ -41,8 +41,4 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::resource('book', BookResource::class);
 });
 
-// Route::get('/dashboard/plan-{year}', function () {
-//     return view('dashboard.plan');
-// })->middleware(['auth'])->name('dashboard-plan');
-
 require __DIR__ . '/auth.php';
