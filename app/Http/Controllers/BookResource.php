@@ -115,7 +115,7 @@ class BookResource extends Controller
             'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
-            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'На складе МТЗ'],
+            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'Передано на склад'],
         ];
 
         return view('dashboard.book.edit', $book);

@@ -65,7 +65,7 @@
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
 						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
-						<td class="text-center py-3 px-4 text-green-500 text-lg">@if ($book->is_handed == 1) ✔ @endif</td>
+						<td class="text-center py-3 px-4 text-secondary-500 text-lg">@if ($book->is_handed == 1) ✔ @endif</td>
 						<td class="text-center py-3 px-4">{{ $book->status }}</td>
 					</tr>
 					
