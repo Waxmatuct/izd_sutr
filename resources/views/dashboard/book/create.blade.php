@@ -28,14 +28,14 @@
                         <div class="">
                             <label class="block text-sm text-gray-600" for="title">Номер</label>
                             <input id="item" name="item"
-                                class="w-42 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500" type="text" required value="{{ old('item') }}">
+                                class="w-42 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500" type="text" required value="{{ old('item') }}">
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="category">Факультет</label>
                             <div class="relative w-max">
                                 <select id="faculty_id" name="faculty_id"
-                                    class="text-gray-600 bg-gray-200 rounded appearance-none border-gray-400 py-2 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                    class="text-gray-600 bg-gray-200 rounded appearance-none border-gray-400 py-2 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
                                     @foreach ($faculties as $faculty)
                                         <option value="{{ $faculty->id }}">{{ $faculty->title }}</option>
                                     @endforeach
@@ -48,20 +48,20 @@
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="author">Авторы</label>
-                            <input id="author" name="author" class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500"  type="text" required="" value="{{ old('author') }}">
+                            <input id="author" name="author" class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"  type="text" required="" value="{{ old('author') }}">
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="slug">Наименование издания</label>
                             <textarea id="title" name="title"
-                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded leading-normal border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500" rows="3" required>{{ old('title') }}</textarea>
+                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded leading-normal border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500" rows="3" required>{{ old('title') }}</textarea>
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="category">Вид издания</label>
                             <div class="relative w-max">
                                 <select id="type_id" name="type_id"
-                                    class="text-gray-600 bg-gray-200 rounded appearance-none border-gray-400 py-2 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                    class="text-gray-600 bg-gray-200 rounded appearance-none border-gray-400 py-2 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
                                     @foreach ($types as $type)
                                         <option value="{{ $type->id }}">{{ $type->title }}</option>
                                     @endforeach
@@ -79,26 +79,26 @@
                         <div class="">
                             <label class="block text-sm text-gray-600" for="author">Дисциплина</label>
                             <textarea id="disciple" name="disciple"
-                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded leading-normal border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500" rows="3" required>{{ old('disciple') }}</textarea>
+                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded leading-normal border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500" rows="3" required>{{ old('disciple') }}</textarea>
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="title">Объем</label>
                             <input id="size" name="size"
-                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500" type="text" required value="{{ old('size') }}">
+                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500" type="text" required value="{{ old('size') }}">
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="title">Тираж</label>
                             <input id="amount" name="amount"
-                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500" type="text" required value="{{ old('amount') }}">
+                                class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500" type="text" required value="{{ old('amount') }}">
                         </div>
 
                         <div class="mt-5">
                             <label class="block text-sm text-gray-600" for="category">Месяц сдачи</label>
                             <div class="relative w-max">
                                 <select id="month_id" name="month_id"
-                                    class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
+                                    class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
                                     @foreach ($months as $month)
                                         <option value="{{ $month->id }}">{{ $month->name }}</option>
                                     @endforeach
@@ -112,7 +112,7 @@
 
                     <div class="md:col-span-3 mt-5 md:mt-0">
                         <button type="submit"
-                            class="px-10 py-2 text-white tracking-wider bg-purple-700 hover:bg-green-500 rounded">
+                            class="px-10 py-2 text-white tracking-wider bg-purple-700 hover:bg-secondary-500 rounded">
                             Отправить
                         </button>
                     </div>

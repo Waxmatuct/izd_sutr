@@ -46,7 +46,7 @@
 
     @foreach ($books as $book)
         
-        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-indigo-100">
+        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100">
             <th class="text-center py-3 px-4">
                 <a href="{{ route('dashboard.book.edit', $book) }}" title="Правка">
                     {{ $book->item }}
@@ -85,7 +85,7 @@
                     @endforeach
                 @endif
             </td>
-            <td class="text-center py-3 px-4 text-green-500 text-lg">
+            <td class="text-center py-3 px-4 text-secondary-500 text-lg">
                 @if ($book->is_handed == 1) ✔ @endif
             </td>
             <td class="text-center py-3 px-4">

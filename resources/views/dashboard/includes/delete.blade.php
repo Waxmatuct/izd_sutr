@@ -29,8 +29,8 @@
 
                 <!--Footer-->
                 <div class="flex justify-end pt-2">
-                    <button class="text-base px-4 bg-transparent p-3 rounded-lg text-indigo-500 hover:bg-gray-100 hover:text-indigo-400 mr-2" type="submit">Удалить</button>
-                    <button class="text-base modal-close px-4 bg-indigo-500 p-3 rounded-lg text-white hover:bg-indigo-400" type="button" @click="showModal = false">Нет</button>
+                    <button class="text-base px-4 bg-transparent p-3 rounded-lg text-primary-500 hover:bg-gray-100 hover:text-primary-400 mr-2" type="submit">Удалить</button>
+                    <button class="text-base modal-close px-4 bg-primary-500 p-3 rounded-lg text-white hover:bg-primary-400" type="button" @click="showModal = false">Нет</button>
                 </div>
             </div>
             <!--/Dialog -->

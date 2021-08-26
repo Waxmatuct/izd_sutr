@@ -116,7 +116,7 @@
 
 					@foreach ($books as $book)
 					
-					<tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-indigo-100" id="{{ $book->id }}">
+					<tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
 						<th class="text-center py-3 px-4">{{ $book->item }}</th>
 						<td class="text-center py-3 px-4">{{ $book->faculty->short_title }}</td>
 						<td class="text-center py-3 px-4">{{ $book->author }}</td>
@@ -126,7 +126,7 @@
 						<td class="text-center py-3 px-4">{{ $book->size }}</td>
 						<td class="text-center py-3 px-4">{{ $book->amount }}</td>
 						<td class="text-center py-3 px-4">{{ $book->month->name }}</td>
-						<td class="text-center py-3 px-4 text-green-500 text-lg">@if ($book->is_handed == 1) ✔ @endif</td>
+						<td class="text-center py-3 px-4 text-secondary-500 text-lg">@if ($book->is_handed == 1) ✔ @endif</td>
 						<td class="text-center py-3 px-4">@if ($book->is_handed == 1) {{ $book->status }} @endif</td>
 					</tr>
 					
