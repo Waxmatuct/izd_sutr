@@ -23,7 +23,7 @@ class BooksService
      * @return void
      */
     public function __construct(
-        BooksRepositoryInterface $booksRepository,
+        BooksRepositoryInterface $booksRepository
     ) {
         $this->booksRepository = $booksRepository;
     }

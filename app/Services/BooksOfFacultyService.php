@@ -13,7 +13,7 @@ class BooksOfFacultyService
     private $booksRepository;
 
     public function __construct(
-        BooksRepositoryInterface $booksRepository,
+        BooksRepositoryInterface $booksRepository
     )
 
     {
