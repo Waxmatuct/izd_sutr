@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookResource;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,17 +25,16 @@ Route::get('/plan-{year}', [PlanController::class, 'year'])->name('year');
 
 Route::get('/plan-{year}/{faculty}', [PlanController::class, 'faculty'])->name('faculty');
 
-Route::get('/about', function () {
-    return view('about');
-})->name('about');
+Route::get('/about', [PagesController::class, 'about'])->name('about');
 
-Route::get('/help', function () {
-    return view('help');
-})->name('help');
+Route::get('/help', [PagesController::class, 'help'])->name('help');
 
-Route::get('/paid-services', function () {
-    return view('paid-services');
-})->name('paid-services');
+Route::get('/paid-service', [PagesController::class, 'paidServices'])->name('paid-services');
+
+Route::get('/blanks', [PagesController::class, 'blanks'])->name('blanks');
+
+Route::get('/types', [PagesController::class, 'types'])->name('types');
+
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
 

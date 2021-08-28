@@ -52,7 +52,7 @@ class PlanController extends Controller
 
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
 
-        return view('plan', [
+        return view('pages.plan', [
             'books' => $books,
             'year' => $year,
             'count' => $books->count(),
@@ -86,7 +86,7 @@ class PlanController extends Controller
 
         $is_handed = $this->booksOfFacultyService->getCountOfHandedBooksOfFacultyForBarChart($year, $faculty->id);
 
-        return view('plan-faculty', [
+        return view('pages.plan-faculty', [
             'books' => $books,
             'faculty' => $faculty,
             'year' => $year,

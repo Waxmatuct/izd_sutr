@@ -7,6 +7,7 @@
             <img src="{{ asset('images/logo_ric.png') }}" alt="" class="w-16 h-16">
             <div class="hidden sm:flex flex-col ml-2">
                 <h1 class="text-base font-extrabold md:text-lg leading-5 mb-2 md:mb-0">Редакционно-издательский центр
+                    СГУ
                 </h1>
                 <span class="text-xs md:text-sm leading-4">Информационно-справочный ресурс</span>
             </div>
@@ -35,10 +36,10 @@
                     href="/plan-2021" @click="isOpen = false">План издания 2021
                 </a>
             </li>
-            <li class="relative mr-3" x-data="{ open: false }" @click="open = !open" @mouseover="open = true" @mouseover.away = "open = false" @click.away="open = false">
+            <li class="relative mr-3" x-data="{ open: false }" @click="open = !open" @mouseover="open = true"
+                @mouseover.away="open = false" @click.away="open = false">
                 <button
-                    class="{{ request()->is('help') ? 'bg-primary-500 text-white' : null }} flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                    >
+                    class="{{ request()->is('help') || request()->is('blanks')|| request()->is('types') ? 'bg-primary-500 text-white' : null }} flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
                     <div>В помощь автору</div>
                     <div class="ml-1">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -54,12 +55,14 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-50 mt-2 min-w-max rounded-md shadow-lg origin-top-left" style="display: none;"
-                    >
+                    class="absolute z-50 mt-2 min-w-max rounded-md shadow-lg origin-top-left" style="display: none;">
                     <div
                         class="bg-white rounded-md ring-1 ring-black ring-opacity-5 flex flex-col py-2 px-5 space-y-3 white-space-nowrap ">
-                        <a href="{{ route('help') }}" class="hover:text-primary-500" href="http://">Авторская
+                        <a href="{{ route('help') }}" class="hover:text-primary-500">Авторская
                             редакция. Требования к оформлению</a>
+                        <a href="{{ route('blanks') }}" class="hover:text-primary-500">Формы заявок на
+                            тиражирование</a>
+                        <a href="{{ route('types') }}" class="hover:text-primary-500">Виды вузовского учебно-методического обеспечения</a>
 
                     </div>
                 </div>
