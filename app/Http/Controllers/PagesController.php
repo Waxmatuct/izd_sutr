@@ -31,9 +31,9 @@ class PagesController extends Controller
         return view('pages.types');
     }
 
-    public function team()
+    public function contacts()
     {
-        return view('pages.team');
+        return view('pages.contacts');
     }
 
     

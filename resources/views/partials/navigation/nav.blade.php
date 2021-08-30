@@ -78,6 +78,11 @@
                     href="{{ route('about') }}" @click="isOpen = false">О нас
                 </a>
             </li>
+            <li class="mr-3">
+                <a class="{{ request()->is('contacts') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                    href="{{ route('contacts') }}" @click="isOpen = false">Контакты
+                </a>
+            </li>
             @if (Route::has('login'))
                 <li class="ml-auto mr-3">
                     @auth
