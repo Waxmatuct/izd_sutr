@@ -39,7 +39,7 @@
             <li class="relative mr-3" x-data="{ open: false }" @click="open = !open" @mouseover="open = true"
                 @mouseover.away="open = false" @click.away="open = false">
                 <button
-                    class="{{ request()->is('help') || request()->is('blanks')|| request()->is('types') ? 'bg-primary-500 text-white' : null }} flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
+                    class="{{ request()->is('help') || request()->is('blanks') || request()->is('types') ? 'bg-primary-500 text-white' : null }} flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
                     <div>В помощь автору</div>
                     <div class="ml-1">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -62,7 +62,8 @@
                             редакция. Требования к оформлению</a>
                         <a href="{{ route('blanks') }}" class="hover:text-primary-500">Формы заявок на
                             тиражирование</a>
-                        <a href="{{ route('types') }}" class="hover:text-primary-500">Виды вузовского учебно-методического обеспечения</a>
+                        <a href="{{ route('types') }}" class="hover:text-primary-500">Виды вузовского
+                            учебно-методического обеспечения</a>
 
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                             class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
                             Админка
                         </a>
-                    @else
+                        {{-- @else
                         <a href="{{ route('login') }}"
                             class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
                             Вход
@@ -95,7 +96,7 @@
                                 class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg">
                                 Регистрация
                             </a>
-                        @endif
+                        @endif --}}
                     @endauth
                 </li>
             @endif

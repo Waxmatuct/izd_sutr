@@ -35,6 +35,8 @@ Route::get('/blanks', [PagesController::class, 'blanks'])->name('blanks');
 
 Route::get('/types', [PagesController::class, 'types'])->name('types');
 
+Route::get('/team', [PagesController::class, 'team'])->name('team');
+
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
 

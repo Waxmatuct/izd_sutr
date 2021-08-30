@@ -31,5 +31,10 @@ class PagesController extends Controller
         return view('pages.types');
     }
 
+    public function team()
+    {
+        return view('pages.team');
+    }
+
     
 }
