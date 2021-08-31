@@ -24,7 +24,9 @@
             </div>
 
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl mt-10">
-                <x-table.table :headers="['№', 'Вид издания', 'Термин и определение', 'Рекомендуемый объем, уч.изд. л']">
+                <x-table.table text="sm"
+                    :headers="['№', 'Вид издания', 'Термин и определение', 'Рекомендуемый объем, уч.изд. л']"
+                    class="text-xs md:text-sm">
                     <tr class="border-b text-sm md:text-base">
                         <x-table.td font="bold">
                             1
