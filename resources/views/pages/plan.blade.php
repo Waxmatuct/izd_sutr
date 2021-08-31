@@ -97,53 +97,54 @@
 
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl">
-                <table class="table-auto w-full text-xs">
-                    <thead class="bg-gray-300 text-gray-800">
-                        <tr>
-                            <th class="text-center py-3 px-4">№ в плане</th>
-                            <th class="text-center py-3 px-4">Факультет</th>
-                            <th class="text-center py-3 px-4">Авторы</th>
-                            <th class="text-center py-3 px-4">Наименование рукописи</th>
-                            <th class="text-center py-3 px-4">Вид издания</th>
-                            <th class="text-center py-3 px-4">Дисциплина</th>
-                            <th class="text-center py-3 px-4">Объем, уч.изд. л</th>
-                            <th class="text-center py-3 px-4">Тираж</th>
-                            <th class="text-center py-3 px-4">Месяц сдачи</th>
-                            <th class="text-center py-3 px-4">Сдано</th>
-                            <th class="text-center py-3 px-4 whitespace-nowrap">Статус **</th>
+                <x-table.table head-size="text-xs" class="text-xs" :headers="[
+                                '№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **'
+                                ]">
+                    @foreach ($books as $book)
+                        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
+                            <x-table.td font="bold">
+                                {{ $book->item }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->faculty->short_title }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->author }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->title }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->type->title }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->disciple }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->size }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->amount }}
+                            </x-table.td>
+                            <x-table.td>
+                                {{ $book->month->name }}
+                            </x-table.td>
+                            <x-table.td>
+                                @if ($book->is_handed == 1)
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="3" class="text-secondary-500 text-lg w-4 h-4 flex-shrink-0 mr-4"
+                                        viewBox="0 0 24 24">
+                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+                                        <path d="M22 4L12 14.01l-3-3"></path>
+                                    </svg>
+                                @endif
+                            </x-table.td>
+                            <x-table.td>
+                                @if ($book->is_handed == 1) {{ $book->status }} @endif
+                            </x-table.td>
                         </tr>
-                    </thead>
-                    <tbody>
-
-                        @foreach ($books as $book)
-
-                            <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
-                                <th class="text-center py-3 px-4">{{ $book->item }}</th>
-                                <td class="text-center py-3 px-4">{{ $book->faculty->short_title }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->author }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->title }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->type->title }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->disciple }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->size }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->amount }}</td>
-                                <td class="text-center py-3 px-4">{{ $book->month->name }}</td>
-                                <td class="text-center py-3 px-4 text-secondary-500 text-lg">
-                                    @if ($book->is_handed == 1)
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="3"
-                                            class="text-indigo-500 w-4 h-4 flex-shrink-0 mr-4" viewBox="0 0 24 24">
-                                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                            <path d="M22 4L12 14.01l-3-3"></path>
-                                        </svg>
-                                    @endif
-                                </td>
-                                <td class="text-center py-3 px-4">@if ($book->is_handed == 1) {{ $book->status }} @endif</td>
-                            </tr>
-
-                        @endforeach
-
-                    </tbody>
-                </table>
+                    @endforeach
+                </x-table.table>
             </div>
         @else
             <span>Нет данных</span>

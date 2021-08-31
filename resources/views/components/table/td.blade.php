@@ -1,4 +1,4 @@
-@props(['align' => 'center', 'font' => 'normal'])
+@props(['align' => 'center', 'font' => ''])
 
 @php
 switch ($align) {

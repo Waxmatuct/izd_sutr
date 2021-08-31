@@ -8,14 +8,30 @@ class Table extends Component
 {
 
     public array $headers;
+    public $textSize;
+
+    protected $availableSizes = [
+        'text-xs', 
+        'text-xs md:text-sm',
+        'text-sm md:text-base',
+        'text-lg md:text-xl'
+    ];
+    
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(array $headers)
+    public function __construct(array $headers, $headSize='')
     {
         $this->headers = $headers;
+        if(!in_array($headSize, $this->availableSizes))
+        {
+            $this->textSize = 'text-sm md:text-base';
+        } else {
+            $this->textSize = $headSize;
+        }
+
     }
 
     /**
