@@ -38,7 +38,7 @@
             </li>
 
             <x-menu.dropdown title="В помощь автору"
-                class="{{ request()->is('help') || request()->is('blanks') || request()->is('types') ? 'bg-primary-500 text-white' : null }}">
+                class="{{ request()->is('help') || request()->is('blanks') || request()->is('types') || request()->is('glossary') || request()->is('biblio-links') ? 'bg-primary-500 text-white' : null }}">
                 <x-slot name="content">
                     <a href="{{ route('help') }}" class="hover:text-primary-500">
                         Авторская редакция. Требования к оформлению

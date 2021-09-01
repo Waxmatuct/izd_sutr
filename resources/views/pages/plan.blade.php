@@ -98,9 +98,8 @@
 
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl">
-                <x-table.table head-size="text-xs" class="text-xs" :headers="[
-                                        '№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **'
-                                        ]">
+                <x-table.table head-size="text-xs" class="text-xs"
+                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **']">
                     @foreach ($books as $book)
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
                             <x-table.td font="bold">
@@ -132,11 +131,11 @@
                             </x-table.td>
                             <x-table.td>
                                 @if ($book->is_handed == 1)
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="3" class="text-secondary-500 text-lg w-4 h-4 flex-shrink-0 mr-4"
-                                        viewBox="0 0 24 24">
-                                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
-                                        <path d="M22 4L12 14.01l-3-3"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary-500 h-5 w-5 mx-auto"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 @endif
                             </x-table.td>

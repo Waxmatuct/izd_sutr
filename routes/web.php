@@ -31,7 +31,7 @@ Route::view('/blanks', 'pages.blanks')->name('blanks');
 Route::view('/contacts', 'pages.contacts')->name('contacts');
 Route::view('/glossary', 'pages.glossary')->name('glossary');
 Route::view('/help', 'pages.help')->name('help');
-Route::view('/paid-service', 'pages.paid-services')->name('paid-services');
+Route::view('/paid-services', 'pages.paid-services')->name('paid-services');
 Route::view('/types', 'pages.types')->name('types');;
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
