@@ -32,57 +32,56 @@
         x-show.transition="true">
         <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-center flex-1 items-center text-gray-600">
             <li class="ml-auto mr-3">
-                <a class="{{ request()->is('plan-*') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                <a class="{{ request()->is('plan-2021') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
                     href="/plan-2021" @click="isOpen = false">План издания 2021
                 </a>
             </li>
-            <li class="relative mr-3" x-data="{ open: false }" @click="open = !open" @mouseover="open = true"
-                @mouseover.away="open = false" @click.away="open = false">
-                <button
-                    class="{{ request()->is('help') || request()->is('blanks') || request()->is('types') ? 'bg-primary-500 text-white' : null }} flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
-                    <div>В помощь автору</div>
-                    <div class="ml-1">
-                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                </button>
-                <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                    x-transition:enter-start="transform opacity-0 scale-95"
-                    x-transition:enter-end="transform opacity-100 scale-100"
-                    x-transition:leave="transition ease-in duration-75"
-                    x-transition:leave-start="transform opacity-100 scale-100"
-                    x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute z-50 mt-2 min-w-max rounded-md shadow-lg origin-top-left" style="display: none;">
-                    <div
-                        class="bg-white rounded-md ring-1 ring-black ring-opacity-5 flex flex-col py-2 px-5 space-y-3 white-space-nowrap ">
-                        <a href="{{ route('help') }}" class="hover:text-primary-500">Авторская
-                            редакция. Требования к оформлению</a>
-                        <a href="{{ route('blanks') }}" class="hover:text-primary-500">Формы заявок на
-                            тиражирование</a>
-                        <a href="{{ route('types') }}" class="hover:text-primary-500">Виды вузовского
-                            учебно-методического обеспечения</a>
 
-                    </div>
-                </div>
-            </li>
-            <li class="mr-3">
-                <a class="{{ request()->is('paid-services') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                    href="{{ route('paid-services') }}" @click="isOpen = false">Платные услуги
-                </a>
-            </li>
-            <li class="mr-3">
-                <a class="{{ request()->is('about') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                    href="{{ route('about') }}" @click="isOpen = false">О нас
-                </a>
-            </li>
-            <li class="mr-3">
-                <a class="{{ request()->is('contacts') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                    href="{{ route('contacts') }}" @click="isOpen = false">Контакты
-                </a>
-            </li>
+            <x-menu.dropdown title="В помощь автору"
+                class="{{ request()->is('help') || request()->is('blanks') || request()->is('types') ? 'bg-primary-500 text-white' : null }}">
+                <x-slot name="content">
+                    <a href="{{ route('help') }}" class="hover:text-primary-500">
+                        Авторская редакция. Требования к оформлению
+                    </a>
+                    <a href="{{ route('blanks') }}" class="hover:text-primary-500">
+                        Формы заявок на тиражирование
+                    </a>
+                    <a href="{{ route('types') }}" class="hover:text-primary-500">
+                        Виды вузовского учебно-методического обеспечения
+                    </a>
+                    <a href="{{ route('glossary') }}" class="hover:text-primary-500">
+                        Краткий словарь издательских терминов
+                    </a>
+                    <a href="{{ route('biblio') }}" class="hover:text-primary-500">
+                        Примеры оформления библиографических ссылок
+                    </a>
+                </x-slot>
+            </x-menu.dropdown>
+
+            <x-menu.dropdown title="РИЦ"
+                class="{{ request()->is('about') || request()->is('contacts') || request()->is('paid-services') ? 'bg-primary-500 text-white' : null }}">
+                <x-slot name="content">
+                    <a href="{{ route('about') }}" class="hover:text-primary-500">
+                        О нашем центре
+                    </a>
+                    <a href="{{ route('paid-services') }}" class="hover:text-primary-500">
+                        Платные услуги
+                    </a>
+                    <a href="{{ route('contacts') }}" class="hover:text-primary-500">
+                        Контакты
+                    </a>
+                </x-slot>
+            </x-menu.dropdown>
+
+            <x-menu.dropdown title="Архив"
+                class="{{ request()->is('plan-2020') ? 'bg-primary-500 text-white' : null }}">
+                <x-slot name="content">
+                    <a href="{{ url('plan-2020') }}" class="hover:text-primary-500">
+                        План издания 2020
+                    </a>
+                </x-slot>
+            </x-menu.dropdown>
+
             @if (Route::has('login'))
                 <li class="ml-auto mr-3">
                     @auth

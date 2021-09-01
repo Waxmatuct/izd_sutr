@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\BookResource;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,22 +20,19 @@ Route::get('/', function () {
     return redirect()->route('year', ['year' => 2021]);
 })->name('index');
 
+
 Route::get('/plan-{year}', [PlanController::class, 'year'])->name('year');
 
 Route::get('/plan-{year}/{faculty}', [PlanController::class, 'faculty'])->name('faculty');
 
-Route::get('/about', [PagesController::class, 'about'])->name('about');
-
-Route::get('/help', [PagesController::class, 'help'])->name('help');
-
-Route::get('/paid-service', [PagesController::class, 'paidServices'])->name('paid-services');
-
-Route::get('/blanks', [PagesController::class, 'blanks'])->name('blanks');
-
-Route::get('/types', [PagesController::class, 'types'])->name('types');
-
-Route::get('/contacts', [PagesController::class, 'contacts'])->name('contacts');
-
+Route::view('/about', 'pages.about')->name('about');
+Route::view('/biblio-links', 'pages.biblio')->name('biblio');
+Route::view('/blanks', 'pages.blanks')->name('blanks');
+Route::view('/contacts', 'pages.contacts')->name('contacts');
+Route::view('/glossary', 'pages.glossary')->name('glossary');
+Route::view('/help', 'pages.help')->name('help');
+Route::view('/paid-service', 'pages.paid-services')->name('paid-services');
+Route::view('/types', 'pages.types')->name('types');;
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
 

@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: План издания 2021')
+@section('title', 'РИЦ :: План издания ' . $year)
 
 @section('main')
 
@@ -10,7 +10,8 @@
                 План издания учебной и учебно-методической литературы на {{ $year }} год
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <p><a href="#plan" rel="noreferrer noopener">План издания учебной и учебно-методической литературы на 2021
+                <p><a href="#plan" rel="noreferrer noopener">План издания учебной и учебно-методической литературы на
+                        {{ $year }}
                         год</a> утвержден и подписан ректором.</p>
                 <p>Срок предоставления рукописи указан в плане издания. Последний рабочий день месяца является конечной
                     датой сдачи рукописи с полным комплектом сопроводительных документов. </p>
@@ -98,8 +99,8 @@
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl">
                 <x-table.table head-size="text-xs" class="text-xs" :headers="[
-                                '№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **'
-                                ]">
+                                        '№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **'
+                                        ]">
                     @foreach ($books as $book)
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
                             <x-table.td font="bold">
