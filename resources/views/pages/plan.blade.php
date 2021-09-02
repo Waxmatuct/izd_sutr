@@ -51,15 +51,35 @@
                     </li>
                 </ul>
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая информация и статистика</h2>
-                    <div class="count">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10 mb-5">
+                        Показатели и статистика выполнения
+                    </h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
+                        <div class="p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $count }}</h2>
+                            <p class="leading-relaxed">изданий в плане</p>
+                        </div>
+                        <div class="p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $sdano }}</h2>
+                            <p class="leading-relaxed">изданий сдано</p>
+                        </div>
+                        <div class="p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $perc }}%</h2>
+                            <p class="leading-relaxed">выполнения</p>
+                        </div>
+                        <div class="p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $size }}</h2>
+                            <p class="leading-relaxed">общий объем уч.-изд. л.</p>
+                        </div>
+                    </div>
+                    {{-- <div class="count">
                         <p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем:
                             <strong>{{ $size }}</strong> уч. изд. л. Сдано в РИЦ
                             <strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет
                             <strong>{{ $perc }}%</strong>.
                         </p>
-                    </div>
-                    <div class="w-full p-7 rounded-lg shadow-2xl my-7">
+                    </div> --}}
+                    <div class="w-full p-7 rounded-lg shadow-xl my-7">
                         <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
                     </div>
                     <div class="mx-auto mt-12">
@@ -97,7 +117,7 @@
         </div>
 
         @if ($books->isNotEmpty())
-            <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl">
+            <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs"
                     :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **']">
                     @foreach ($books as $book)

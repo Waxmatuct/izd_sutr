@@ -4,12 +4,14 @@
     <!--Logo etc-->
     <div class="flex items-center flex-shrink-1 text-white mr-6">
         <a class="flex title-font items-center text-gray-700" href="{{ route('index') }}">
-            <img src="{{ asset('images/logo_ric.png') }}" alt="" class="w-16 h-16">
+            <img src="{{ asset('images/logo.png') }}" alt="" class="w-16 h-16">
             <div class="hidden sm:flex flex-col ml-2">
-                <h1 class="text-base font-extrabold md:text-lg leading-5 mb-2 md:mb-0">Редакционно-издательский центр
-                    СГУ
+                <h1 class="text-base font-extrabold md:text-lg leading-5 mb-2 md:mb-0">
+                    Редакционно-издательский центр СГУ
                 </h1>
-                <span class="text-xs md:text-sm leading-4">Информационно-справочный ресурс</span>
+                <span class="text-xs md:text-sm leading-4">
+                    Информационно-справочный ресурс
+                </span>
             </div>
         </a>
     </div>

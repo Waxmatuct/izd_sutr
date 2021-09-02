@@ -97,7 +97,6 @@
                     @endempty
                 </td>
             </tr>
-
         @endforeach
 
     </tbody>

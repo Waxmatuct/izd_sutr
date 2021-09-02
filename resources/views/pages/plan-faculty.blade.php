@@ -6,20 +6,41 @@
 
     <section class="text-gray-600 body-font">
         <div class="flex flex-col w-full mb-5">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12 text-gray-700">
-                {{ $faculty->title }}. Статистика на {{ $year }} год
+            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-2">
+                {{ $faculty->title }}
             </h1>
+            <span class="sm:text-2xl text-center text-xl font-bold title-font mb-6 sm:mb-12">
+                Анализ выполнения плана издания в {{ $year }} году
+            </span>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <p>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
+                    <div class="p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $count }}</h2>
+                        <p class="leading-relaxed">изданий в плане</p>
+                    </div>
+                    <div class="p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $sdano }}</h2>
+                        <p class="leading-relaxed">изданий сдано</p>
+                    </div>
+                    <div class="p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $perc }}%</h2>
+                        <p class="leading-relaxed">выполнения</p>
+                    </div>
+                    <div class="p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $size }}</h2>
+                        <p class="leading-relaxed">общий объем уч.-изд. л.</p>
+                    </div>
+                </div>
+                {{-- <p>
                     {{ $faculty->title }} запланировал в {{ $year }} году <strong>{{ $count }}</strong>
                     изданий общим объемом <strong>{{ $size }}</strong> уч. изд. л. На текщий момент сдано в РИЦ
                     <strong>{{ $sdano }}</strong> работ. План издания {{ $faculty->title }} выполнил на
                     <strong>{{ $perc }}%</strong>.
-                </p>
+                </p> --}}
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая динамика сдачи изданий</h2>
+                    {{-- <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Общая динамика сдачи изданий</h2> --}}
 
-                    <div class="overflow-auto p-7 rounded-lg shadow-2xl my-7">
+                    <div class="overflow-auto p-7 rounded-lg shadow-xl mb-7">
                         <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
                     </div>
 
@@ -38,7 +59,7 @@
         </div>
 
         @if ($books->isNotEmpty())
-            <div class="w-full mx-auto overflow-auto rounded-lg shadow-2xl">
+            <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs"
                     :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **']">
                     @foreach ($books as $book)
@@ -137,6 +158,13 @@
                     legend: {
                         position: 'bottom',
                     },
+                    title: {
+                        display: true,
+                        text: 'Динамика сдачи изданий по месяцам',
+                        font: {
+                            size: 16
+                        },
+                    }
                 },
                 responsive: true,
             }
