@@ -52,6 +52,19 @@ class BooksService
         return $books;
     }
 
+        /**
+     * getBooksOfYear
+     *
+     * @param  mixed $year
+     * @return EloquentCollection
+     */
+    public function getBooksOfYearWithTrashed($year): EloquentCollection
+    {
+        $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->withTrashed()->orderBy('item', 'asc')->get();
+
+        return $books;
+    }
+
     /**
      * getStatsOfYear
      *
@@ -95,7 +108,7 @@ class BooksService
     public function getCountOfBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
-            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('month_id')->count();
+            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => NULL])->pluck('month_id')->count();
         }
 
         $collection = collect($array);
@@ -112,7 +125,7 @@ class BooksService
     public function getCountOfHandedBooksForBarChart($year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
-            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i])->pluck('is_handed')->sum();
+            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => NULL])->pluck('is_handed')->sum();
         }
 
         $collection = collect($array);

@@ -43,6 +43,9 @@ class MonthSeeder extends Seeder
             [
                 'name' => 'Сентябрь',
             ],
+            [
+                'name' => 'Октябрь',
+            ],
         ]);
     }
 }

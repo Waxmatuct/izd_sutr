@@ -34,7 +34,7 @@ class DashboardController extends Controller
      */
     public function year($year)
     {
-        $books = $this->booksService->getBooksOfYear($year);
+        $books = $this->booksService->getBooksOfYearWithTrashed($year);
 
         return view('dashboard.plan', [
             'books' => $books,

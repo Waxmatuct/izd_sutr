@@ -73,21 +73,10 @@ class BookResource extends Controller
         //     'month_id' => 'required',
         // ]);
         
-        dd($request->all());
-        Book::create([
-            'item' => $request->get('item'),
-            'faculty_id' => $request->get('faculty_id'),
-            'author' => $request->get('author'),
-            'title' => $request->get('title'),
-            'type_id' => $request->get('type_id'),
-            'disciple' => $request->get('disciple'),
-            'size' => $request->get('size'),
-            'amount' => $request->get('amount'),
-            'month_id' => $request->get('month_id'),
-            'year' => date("Y"),
-        ]);
+        // dd($request->all());
+        Book::create($request->all());
 
-        return redirect()->route('dashboard.book.create')
+        return redirect()->route('dashboard.year', $request->year)
             ->with('success', 'Издание успешно добавлено');
     }
 
@@ -115,7 +104,7 @@ class BookResource extends Controller
             'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
-            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'Передано на склад'],
+            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'Издано'],
         ];
 
         return view('dashboard.book.edit', $book);
@@ -130,9 +119,12 @@ class BookResource extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        $this->booksService->findBook($book)->update($request->all());
 
-        return redirect()->route('dashboard.index')
+        
+        $this->booksService->findBook($book)->update($request->all());
+        $book = $book->id + 1;
+        // dd($book);
+        return redirect()->route('dashboard.book.edit', $book)
             ->with('success', 'Издание успешно обновлено');
     }
     
@@ -146,7 +138,7 @@ class BookResource extends Controller
     {
         $this->booksService->findBook($book)->delete();
 
-        return redirect()->route('dashboard.index')
+        return redirect()->route('dashboard.year', $book->year)
             ->with('success', 'Запись успешно удалена');
     }
 }

@@ -19,6 +19,6 @@ class DatabaseSeeder extends Seeder
             MonthSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
-        \App\Models\Book::factory(150)->create();
+        // \App\Models\Book::factory(150)->create();
     }
 }

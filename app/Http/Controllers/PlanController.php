@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use App\Services\BooksOfFacultyService;
 use App\Services\BooksService;
 
@@ -100,4 +101,5 @@ class PlanController extends Controller
 
         ]);
     }
+
 }

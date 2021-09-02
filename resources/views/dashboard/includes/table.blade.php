@@ -39,64 +39,66 @@
             </th>
             <th class="text-center py-3 px-4 whitespace-nowrap">
                 Удалить
-            </th>            
+            </th>
         </tr>
     </thead>
     <tbody>
 
-    @foreach ($books as $book)
-        
-        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100">
-            <th class="text-center py-3 px-4">
-                <a href="{{ route('dashboard.book.edit', $book) }}" title="Правка">
-                    {{ $book->item }}
-                </a>
-            </th>
-            <td class="text-center py-3 px-4">
-                {{ $book->faculty->short_title }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->author }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->title }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->type->title }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->disciple }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->size }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->amount }}
-            </td>
-            <td class="text-center py-3 px-4">
-                {{ $book->month->name }}
-            </td>
-            <td class="text-center py-3 px-4">
-                @if ($book->is_handed == 1)
-                    @foreach ($months as $month)
-                        @if ($book->handed_in === $month->id)
-                            {{ $month->name }}
-                        @endif
-                    @endforeach
-                @endif
-            </td>
-            <td class="text-center py-3 px-4 text-secondary-500 text-lg">
-                @if ($book->is_handed == 1) ✔ @endif
-            </td>
-            <td class="text-center py-3 px-4">
-                @if ($book->is_handed == 1) {{ $book->status }} @endif
-            </td>
-            <td class="text-center py-3 px-4">
-                @include('dashboard.includes.delete')
-            </td>
-        </tr>
-        
-    @endforeach
+        @foreach ($books as $book)
+
+            <tr class="@if ($loop->even) bg-gray-100 @endif @if ($book->deleted_at) text-red-400 @endif hover:bg-primary-100">
+                <th class="text-center py-3 px-4">
+                    <a href="{{ route('dashboard.book.edit', $book) }}" title="Правка">
+                        {{ $book->item }}
+                    </a>
+                </th>
+                <td class="text-center py-3 px-4">
+                    {{ $book->faculty->short_title }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->author }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->title }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->type->title }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->disciple }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->size }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->amount }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    {{ $book->month->name }}
+                </td>
+                <td class="text-center py-3 px-4">
+                    @if ($book->is_handed == 1)
+                        @foreach ($months as $month)
+                            @if ($book->handed_in === $month->id)
+                                {{ $month->name }}
+                            @endif
+                        @endforeach
+                    @endif
+                </td>
+                <td class="text-center py-3 px-4 text-secondary-500 text-lg">
+                    @if ($book->is_handed == 1) ✔ @endif
+                </td>
+                <td class="text-center py-3 px-4">
+                    @if ($book->is_handed == 1) {{ $book->status }} @endif
+                </td>
+                <td class="text-center py-3 px-4">
+                    @empty($book->deleted_at)
+                        @include('dashboard.includes.delete')
+                    @endempty
+                </td>
+            </tr>
+
+        @endforeach
 
     </tbody>
 </table>

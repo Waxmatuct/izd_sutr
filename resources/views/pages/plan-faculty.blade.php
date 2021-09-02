@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: План издания 2021')
+@section('title', 'РИЦ :: План издания ' . $year)
 
 @section('main')
 
