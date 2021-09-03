@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             FacultySeeder::class,
             TypeSeeder::class,
             MonthSeeder::class,
+            BookSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
         // \App\Models\Book::factory(150)->create();
