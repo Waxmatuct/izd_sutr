@@ -10,7 +10,7 @@
                 План издания учебной и учебно-методической литературы на {{ $year }} год
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <p><a href="#plan" rel="noreferrer noopener">План издания учебной и учебно-методической литературы на
+                <p><a href="#plan">План издания учебной и учебно-методической литературы на
                         {{ $year }}
                         год</a> утвержден и подписан ректором.</p>
                 <p>Срок предоставления рукописи указан в плане издания. Последний рабочий день месяца является конечной
@@ -23,29 +23,28 @@
                     <li>рецензия;</li>
                     <li>выписка из протокола заседания кафедры;</li>
                     <li>
-                        <a href="/wp-content/uploads/2021/01/Spravka-VKR-VUZ.docx" target="_blank"
-                            rel="noreferrer noopener">
+                        <a href="{{ asset('docs/Spravka-VKR-VUZ.docx') }}" target="_blank" rel="noreferrer noopener">
                             справка о результатах проверки на наличие заимствований
-                        </a> (утверждена <a href="/wp-content/uploads/2021/02/Prikaz-1100-ot-16-12-2020.pdf" target="_blank"
+                        </a> (утверждена <a href="{{ asset('docs/Prikaz-1100-ot-16-12-2020.pdf') }}" target="_blank"
                             rel="noreferrer noopener">
                             приказом № 1100
                         </a> от 16.12.2020);
                     </li>
                     <li>
-                        <a href="/wp-content/uploads/2021/01/zayavka-na-uchebnie-planovie-izdaniya.pdf" target="_blank"
+                        <a href="{{ asset('docs/zayavka-na-uchebnie-planovie-izdaniya.pdf') }}" target="_blank"
                             rel="noreferrer noopener">
                             заявка на учебное плановое издание
                         </a>;
                     </li>
-                    <li>лицензионный договор (<a href="/wp-content/uploads/2021/01/Tipovaya-forma-Litsenzionnyj-dogovor.pdf"
+                    <li>лицензионный договор (<a href="{{ asset('docs/Tipovaya-forma-Litsenzionnyj-dogovor.pdf') }}"
                             target="_blank" rel="noreferrer noopener">
                             pdf
-                        </a>, <a href="/wp-content/uploads/2021/02/Tipovaya-forma-Litsenzionnyj-dogovor.doc" target="_blank"
+                        </a>, <a href="{{ asset('docs/Tipovaya-forma-Litsenzionnyj-dogovor.doc') }}" target="_blank"
                             rel="noreferrer noopener">
                             doc</a>) и акт приема-передачи экземпляра произведения (<a
-                            href="/wp-content/uploads/2021/01/Akt-priema-peredachi-proizvedeniya.pdf" target="_blank"
+                            href="{{ asset('docs/Akt-priema-peredachi-proizvedeniya.pdf') }}" target="_blank"
                             rel="noreferrer noopener">pdf</a>, <a
-                            href="/wp-content/uploads/2021/02/Akt-priema-peredachi-proizvedeniya.docx" target="_blank"
+                            href="{{ asset('docs/Akt-priema-peredachi-proizvedeniya.docx') }}" target="_blank"
                             rel="noreferrer noopener">
                             doc</a>). Договор и акт передаются в двух экземплярах.
                     </li>
@@ -73,12 +72,12 @@
                         </div>
                     </div>
                     {{-- <div class="count">
-                        <p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем:
-                            <strong>{{ $size }}</strong> уч. изд. л. Сдано в РИЦ
-                            <strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет
-                            <strong>{{ $perc }}%</strong>.
-                        </p>
-                    </div> --}}
+						<p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем:
+							<strong>{{ $size }}</strong> уч. изд. л. Сдано в РИЦ
+							<strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет
+							<strong>{{ $perc }}%</strong>.
+						</p>
+					</div> --}}
                     <div class="w-full p-7 rounded-lg shadow-xl my-7">
                         <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
                     </div>
@@ -119,7 +118,7 @@
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs"
-                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Месяц сдачи','Сдано','Статус **']">
+                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Сдано','Статус **']">
                     @foreach ($books as $book)
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
                             <x-table.td font="bold">

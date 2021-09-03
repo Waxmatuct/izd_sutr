@@ -21,59 +21,60 @@
                         9:00 до 17:00.</p>
                 </div>
             </div>
-            <div class="flex flex-wrap -m-4">
-                <div class="p-4 lg:w-1/2">
-                    <div
-                        class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                        <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+            <div class="flex flex-wrap w-full mx-auto">
+                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                    <div class="h-full flex flex-col items-center justify-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="https://picsum.photos/200?random=1">
-                        <div class="flex-grow sm:pl-8">
-                            <h2 class="title-font font-medium text-lg text-gray-900">Дмитрий Плетнев</h2>
-                            <h3 class="text-gray-500 mb-3">Начальник РИЦ</h3>
-                            <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack
-                                vaporware.</p>
+                        <div class="flex-grow mt-5">
+                            <h2 class="title-font font-bold text-lg leading-snug">Плетнев<br> Дмитрий Витальевич</h2>
+                            <h3 class="text-gray-500 my-3">Начальник РИЦ</h3>
+                            {{-- <p class="mb-4">
+                                DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
+                            </p> --}}
                         </div>
                     </div>
                 </div>
-                <div class="p-4 lg:w-1/2">
-                    <div
-                        class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                        <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                    <div class="h-full flex flex-col items-center justify-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="https://picsum.photos/200?random=2">
-                        <div class="flex-grow sm:pl-8">
-                            <h2 class="title-font font-medium text-lg text-gray-900">Татьяна Юрьевна Карасевич</h2>
-                            <h3 class="text-gray-500 mb-3">Редактор</h3>
-                            <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack
-                                vaporware.</p>
+                        <div class="flex-grow mt-5">
+                            <h2 class="title-font font-bold text-lg leading-snug">Карасевич<br> Татьяна Юрьевна </h2>
+                            <h3 class="text-gray-500 my-3">Редактор</h3>
+                            {{-- <p class="mb-4">
+                                DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
+                            </p> --}}
                         </div>
                     </div>
                 </div>
-                <div class="p-4 lg:w-1/2">
-                    <div
-                        class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                        <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                    <div class="h-full flex flex-col items-center justify-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="https://picsum.photos/200?random=3">
-                        <div class="flex-grow sm:pl-8">
-                            <h2 class="title-font font-medium text-lg text-gray-900">Евгений Шебин</h2>
-                            <h3 class="text-gray-500 mb-3">Старший печатник</h3>
-                            <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack
-                                vaporware.</p>
+                        <div class="flex-grow mt-5">
+                            <h2 class="title-font font-bold text-lg leading-snug">Шебин<br> Евгений Павлович</h2>
+                            <h3 class="text-gray-500 my-3">Старший печатник</h3>
+                            {{-- <p class="mb-4">
+                                DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
+                            </p> --}}
                         </div>
                     </div>
                 </div>
-                <div class="p-4 lg:w-1/2">
-                    <div
-                        class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                        <img alt="team" class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                    <div class="h-full flex flex-col items-center justify-center text-center">
+                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="https://picsum.photos/200?random=4">
-                        <div class="flex-grow sm:pl-8">
-                            <h2 class="title-font font-medium text-lg text-gray-900">Екатерина Шмонова</h2>
-                            <h3 class="text-gray-500 mb-3">Документовед</h3>
-                            <p class="mb-4">DIY tote bag drinking vinegar cronut adaptogen squid fanny pack
-                                vaporware.</p>
+                        <div class="flex-grow mt-5">
+                            <h2 class="title-font font-bold text-lg leading-snug">Шмонова<br> Екатерина Дмитриевна</h2>
+                            <h3 class="text-gray-500 my-3">Документовед</h3>
+                            {{-- <p class="mb-4">
+                                DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
+                            </p> --}}
                         </div>
                     </div>
                 </div>
             </div>
-
-        @endsection
+        </div>
+    </section>
+@endsection

@@ -22,7 +22,7 @@ class CreateBooksTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
             $table->string('author');
-            $table->foreignId('type_id')->default('1')
+            $table->foreignId('type_id')
                 ->constrained('types')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
