@@ -10,14 +10,14 @@ use App\Services\BooksService;
 use Illuminate\Http\Request;
 
 class BookResource extends Controller
-{    
+{
     /**
      * booksService
      *
      * @var mixed
      */
     private $booksService;
-    
+
     /**
      * __construct
      *
@@ -28,7 +28,7 @@ class BookResource extends Controller
     ) {
         $this->booksService = $booksService;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -72,7 +72,7 @@ class BookResource extends Controller
         //     'amount' => 'required',
         //     'month_id' => 'required',
         // ]);
-        
+
         // dd($request->all());
         Book::create($request->all());
 
@@ -119,15 +119,12 @@ class BookResource extends Controller
      */
     public function update(Request $request, Book $book)
     {
-
-        
         $this->booksService->findBook($book)->update($request->all());
-        $book = $book->id + 1;
-        // dd($book);
+
         return redirect()->route('dashboard.book.edit', $book)
             ->with('success', 'Издание успешно обновлено');
     }
-    
+
     /**
      * destroy
      *
