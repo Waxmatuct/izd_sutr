@@ -17,7 +17,7 @@
         x-transition:leave-end="transform opacity-0 scale-95"
         class="absolute z-50 min-w-max rounded-md shadow-lg origin-top-left" style="display: none;">
         <div
-            class="bg-white rounded-md ring-1 ring-black ring-opacity-5 flex flex-col py-2 px-5 space-y-3 white-space-nowrap ">
+            class="bg-white dark:bg-gray-800 dark:text-gray-300 rounded-md ring-1 ring-black dark:ring-white ring-opacity-10 flex flex-col py-2 px-5 space-y-3 white-space-nowrap ">
             {{ $content }}
         </div>
     </div>

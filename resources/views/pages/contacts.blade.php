@@ -4,9 +4,9 @@
 
 @section('main')
 
-    <section class="text-gray-600 body-font">
+    <section class="body-font">
         <div class="flex flex-col w-full mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12 text-gray-700">
+            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
                 Контакты
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto leading-normal sm:text-lg">
@@ -67,7 +67,7 @@
                             src="https://picsum.photos/200?random=4">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Шмонова<br> Екатерина Дмитриевна</h2>
-                            <h3 class="text-gray-500 my-3">Документовед</h3>
+                            <h3 class="text-gray-500 dark:text-gray-400 my-3">Документовед</h3>
                             {{-- <p class="mb-4">
                                 DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.
                             </p> --}}

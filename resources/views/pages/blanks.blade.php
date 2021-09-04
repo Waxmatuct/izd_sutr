@@ -4,7 +4,7 @@
 
 @section('main')
 
-    <section class="text-gray-600 body-font">
+    <section class="body-font">
         <div class="flex flex-col w-full mb-10">
             <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12 text-gray-700">
                 Формы заявок на тиражирование

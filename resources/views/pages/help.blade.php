@@ -4,9 +4,9 @@
 
 @section('main')
 
-    <section class="text-gray-600 body-font">
+    <section class="body-font">
         <div class="flex flex-col w-full mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12 text-gray-700">
+            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
                 Авторская редакция. Требования к оформлению
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
@@ -28,7 +28,7 @@
                 <p>Все настройки документа ниже приведены на примере программы MS Word 2016.</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Поля страниц</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Поля страниц</h2>
                 </div>
 
                 <p>Для того чтобы получился качественный оригинал-макет формата А5, распечатанный на листе А4 (две страницы
@@ -48,7 +48,7 @@
                     «Файл/Печать/Число страниц на листе 2». Получится на одном листе А4 две страницы издания.</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Оформление текста</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Оформление текста</h2>
                 </div>
 
                 <p>Основной текст должен быть набран <strong>14 размером</strong> шрифта Times New Roman через один
@@ -61,12 +61,12 @@
                     <figcaption class="text-sm text-center mb-10">Настройки шрифта основного текста и абзацев</figcaption>
                 </figure>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold text-gray-700 mt-7">Заголовки и подзаголовки</h3>
+                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Заголовки и подзаголовки</h3>
 
                 <p>Заголовки и подзаголовки отделяют от основного текста сверху одной пробельной строкой и набирают
                     прописными (большими) буквами (без подчеркивания и разрядки) <strong>16 размера</strong> шрифта.</p>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold text-gray-700 mt-7">Пояснительные и дополнительные
+                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Пояснительные и дополнительные
                     тексты</h3>
 
                 <p>Пояснительные и дополнительные тексты (списки условных сокращений и обозначений, примечания, перечни
@@ -80,7 +80,7 @@
                         текстов</figcaption>
                 </figure>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold text-gray-700 mt-7">Пунктуационное оформление
+                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Пунктуационное оформление
                     перечней</h3>
 
                 <p>а) если после двоеточия стоит номер-цифра со скобкой, то перечисление нужно начинать со строчной буквы; в
@@ -94,7 +94,7 @@
                 </figure>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Иллюстрации</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Иллюстрации</h2>
                 </div>
 
                 <p>Иллюстрацию располагают после ссылки или возможно ближе к ней, а именно помещают на той же полосе или
@@ -119,7 +119,7 @@
                 </figure>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Таблицы</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Таблицы</h2>
                 </div>
 
                 <p>Таблицы набирают средствами программы MS Word с помощью меню «Вставка - Таблица». Ссылаться на таблицу
@@ -152,7 +152,7 @@
                 <p>Оставлять ячейки таблицы пустыми не допускается, при отсутствии сведений в ячейке ставят тире.</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Приложения</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Приложения</h2>
                 </div>
 
                 <p>Особенности набора приложений состоят в следующем. В приложения выносят вспомогательные материалы:
@@ -163,7 +163,7 @@
                     «Приложение 2». Если приложение одно, его не нумеруют, ограничиваясь надписью «Приложение».</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10">Аннотация</h2>
+                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Аннотация</h2>
                 </div>
 
                 <p>Аннотация — это краткая, точная, логические связанная и грамотно изложенная информация о содержании книги

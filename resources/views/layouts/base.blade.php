@@ -25,7 +25,7 @@
 
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
 
     <header>
         @include('partials.navigation.nav')
@@ -35,7 +35,8 @@
         @yield('main')
     </div>
 
-    <footer class="flex flex-col items-center container w-full text-center mx-auto my-10 text-gray-500 px-5">
+    <footer
+        class="flex flex-col items-center container w-full text-center mx-auto my-10 text-gray-600 dark:text-gray-400 px-5">
         <p>© 2020–2021, Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный университет»</p>
         <small class="mt-7">
             Разработка приложения - <a href="mailto:pletnevsochi@yandex.ru">Дмитрий Плетнев</a>

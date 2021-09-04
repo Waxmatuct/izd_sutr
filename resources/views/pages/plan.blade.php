@@ -4,9 +4,9 @@
 
 @section('main')
 
-    <section class="text-gray-600 body-font">
+    <section class="body-font">
         <div class="flex flex-col w-full mb-5">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12 text-gray-700">
+            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12">
                 План издания учебной и учебно-методической литературы на {{ $year }} год
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
@@ -50,39 +50,37 @@
                     </li>
                 </ul>
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mt-10 mb-5">
+                    <h2 class="text-2xl sm:text-3xl font-bold mt-10 mb-5">
                         Показатели и статистика выполнения
                     </h2>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
-                        <div class="p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $count }}</h2>
-                            <p class="leading-relaxed">изданий в плане</p>
+                        <div class="square p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
+                                {{ $count }}</h2>
+                            <p class="text-gray-600">изданий в плане</p>
                         </div>
-                        <div class="p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $sdano }}</h2>
-                            <p class="leading-relaxed">изданий сдано</p>
+                        <div class="square p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
+                                {{ $sdano }}</h2>
+                            <p class="text-gray-600">изданий сдано</p>
                         </div>
-                        <div class="p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $perc }}%</h2>
-                            <p class="leading-relaxed">выполнения</p>
+                        <div class="square p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
+                                {{ $perc }}%</h2>
+                            <p class="text-gray-600">выполнения</p>
                         </div>
-                        <div class="p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">{{ $size }}</h2>
-                            <p class="leading-relaxed">общий объем уч.-изд. л.</p>
+                        <div class="square p-4 w-full shadow-lg rounded-lg">
+                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
+                                {{ $size }}</h2>
+                            <p class="text-gray-600">общий объем уч.-изд. л.</p>
                         </div>
                     </div>
-                    {{-- <div class="count">
-						<p>Всего работ по плану: <strong>{{ $count }}</strong>. Общий объем:
-							<strong>{{ $size }}</strong> уч. изд. л. Сдано в РИЦ
-							<strong>{{ $sdano }}</strong>.<br> Текущее выполнение плана издания составляет
-							<strong>{{ $perc }}%</strong>.
-						</p>
-					</div> --}}
-                    <div class="w-full p-7 rounded-lg shadow-xl my-7">
+                    <div class="square w-full p-7 rounded-lg shadow-xl my-7">
                         <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
                     </div>
                     <div class="mx-auto mt-12">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-gray-700 mb-5">Статистика по факультетам</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
+                            факультетам</h2>
                         <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'uf']) }}">
                             Юридический факультет
                         </a><br>
@@ -104,7 +102,8 @@
                         </a>
                     </div>
                     <div class="mx-auto mt-12">
-                        <h2 id="plan" class="text-2xl sm:text-3xl font-bold text-gray-700 mb-5">План издания учебной
+                        <h2 id="plan" class="text-2xl sm:text-3xl font-bold mb-5">План
+                            издания учебной
                             литературы на {{ $year }} год</h2>
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
                         <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
@@ -184,25 +183,23 @@
                         label: 'Запланировано',
                         data: values,
                         backgroundColor: [
-                            'rgba(99, 102, 241, 0.4)',
+                            'rgba(99, 102, 241, 0.5)',
                         ],
                         borderColor: [
                             'rgba(99, 102, 241, 0.7)',
                         ],
                         borderWidth: 2,
-
                     },
                     {
                         label: 'Сдано',
                         data: is_handed,
                         backgroundColor: [
-                            'rgba(75, 192, 192, 0.4)',
+                            'rgba(75, 192, 192, 0.5)',
                         ],
                         borderColor: [
                             'rgba(75, 192, 192, 0.7)',
                         ],
                         borderWidth: 2,
-
                     },
                 ]
             },

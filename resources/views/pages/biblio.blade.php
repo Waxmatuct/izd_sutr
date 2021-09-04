@@ -4,9 +4,9 @@
 
 @section('main')
 
-    <section class="text-gray-600 body-font">
+    <section class="body-font">
         <div class="flex flex-col w-full mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12 text-gray-700">
+            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
                 Примеры оформления библиографических ссылок
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
@@ -62,7 +62,7 @@
                     серебряного века).</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Составная часть издания</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Составная часть издания</h2>
                 </div>
 
                 <p><strong>Статья из авторского сборника</strong><br>
@@ -85,7 +85,7 @@
                     Сикорский М. Н. Книговедение // БСЭ. — 3-е изд. — 1976. — Т. 10. —Стб. 79—81.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Депонированные научные работы</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Депонированные научные работы</h2>
                 </div>
 
                 <p>Семёнов В. В. Защита окружающей среды. Оценка распространения за-грязняющих примесей в водной среде /
@@ -101,7 +101,7 @@
                 </p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Стандарты</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Стандарты</h2>
                 </div>
 
                 <p>Система стандартов безопасности труда : сб. — М. : Изд-во стандартов, 2006. — 124 с.</p>
@@ -135,7 +135,7 @@
                 <p>Правила безопасной эксплуатации подъёмников : ПБ 10-256-98. — СПб. : ДЕАН, 2001.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Электронные ресурсы</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Электронные ресурсы</h2>
                 </div>
 
                 <p>• Жизнь прекрасна, жизнь трагична… : 1917 год в письмах А. В. Луначар-ского А. А. Луначарской / отв.
@@ -147,7 +147,7 @@
                     http://www.gilpravo.ru (дата обращения: 20.08.2007).</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Архивные документы</h2>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Архивные документы</h2>
                 </div>
 
                 <p>• Полторацкий С. Д. Материалы к «Словарю русских псевдонимов» // ОР РГБ. — Ф. 223 (С. Д. Полторацкий). —
