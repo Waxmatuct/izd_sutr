@@ -13,6 +13,8 @@ interface BooksRepositoryInterface
 
     public function booksOfYear($year): Builder;
 
+    public function booksOfCurrentMonth(): Builder;
+
     public function booksOfYearIsHanded($year): Builder;
 
     public function booksOfFaculty($year, $id): Builder;

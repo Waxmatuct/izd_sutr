@@ -6,7 +6,7 @@ use App\Models\Book;
 use Illuminate\Database\Eloquent\Builder;
 
 class BooksRepository implements BooksRepositoryInterface
-{    
+{
     /**
      * all
      *
@@ -16,7 +16,7 @@ class BooksRepository implements BooksRepositoryInterface
     {
         return Book::all();
     }
-    
+
     /**
      * findBook
      *
@@ -27,7 +27,7 @@ class BooksRepository implements BooksRepositoryInterface
     {
         return Book::all()->find($id);
     }
-    
+
     /**
      * booksOfYear
      *
@@ -38,7 +38,20 @@ class BooksRepository implements BooksRepositoryInterface
     {
         return Book::where('year', $year);
     }
-    
+
+    /**
+     * booksOfCurrentMonth
+     *
+     * @param  mixed $year
+     * @return Builder
+     */
+    public function booksOfCurrentMonth(): Builder
+    {
+        $m = date('n');
+        $year = date('Y');
+        return Book::where(['year' => $year, 'month_id' => $m]);
+    }
+
     /**
      * booksOfYearIsHanded
      *
@@ -49,7 +62,7 @@ class BooksRepository implements BooksRepositoryInterface
     {
         return Book::where(['year' => $year, 'is_handed' => true]);
     }
-    
+
     /**
      * booksOfFaculty
      *
@@ -61,7 +74,7 @@ class BooksRepository implements BooksRepositoryInterface
     {
         return Book::where(['year' => $year, 'faculty_id' => $id]);
     }
-    
+
     /**
      * booksOfFacultyIsHanded
      *
