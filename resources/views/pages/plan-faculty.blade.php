@@ -22,12 +22,12 @@
                     <div class="square p-4 w-full shadow-lg rounded-lg">
                         <h2 class="title-font font-bold sm:text-5xl text-3xl">
                             {{ $sdano }}</h2>
-                        <p class="text-gray-600">изданий сдано</p>
+                        <p class="text-gray-600">принято к изданию</p>
                     </div>
                     <div class="square p-4 w-full shadow-lg rounded-lg">
                         <h2 class="title-font font-bold sm:text-5xl text-3xl">
                             {{ $perc }}%</h2>
-                        <p class="text-gray-600">выполнения</p>
+                        <p class="text-gray-600">выполнение плана</p>
                     </div>
                     <div class="square p-4 w-full shadow-lg rounded-lg">
                         <h2 class="title-font font-bold sm:text-5xl text-3xl">
@@ -57,7 +57,7 @@
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs"
-                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Сдано','Статус **']">
+                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Принято к изданию','Статус **']">
                     @foreach ($books as $book)
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
                             <x-table.td font="bold">
