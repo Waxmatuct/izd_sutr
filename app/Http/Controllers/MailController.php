@@ -38,6 +38,6 @@ class MailController extends Controller
         // dd($stats);
         // Отправляем план ...
 
-        Mail::to('pletnevsochi@yandex.ru')->send(new SendPlan($plan, $stats));
+        Mail::to('izd-sgu@yandex.ru')->send(new SendPlan($plan, $stats));
     }
 }

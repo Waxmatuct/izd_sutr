@@ -1,7 +1,7 @@
 <p>Добрый день.</p>
 <p>Это ежемесячная рассылка РИЦ о ходе выполнения плана издания учебной и учебно методической литературы за
     {{ $year }} год.</p>
-В данный момент план издания выполнен на <strong>{{ $stats['perc'] }}%</strong>. Подробную информацию и отдельную
+На данный момент план издания выполнен на <strong>{{ $stats['perc'] }}%</strong>. Подробную информацию и отдельную
 статистику по
 факультетам вы можете посмотреть
 <a href="https://izd.sutr.ru/plan-{{ $year }}" target="_blank" rel="noopener noreferrer">на нашем сайте</a>.
@@ -52,7 +52,7 @@
     </thead>
     <tbody>
         @foreach ($plan as $book)
-            <tr @if ($book->is_handed == 1) style="background-color: #d2f4d2" @else – @endif>
+            <tr @if ($loop->even) style="background-color: #f3f4f6" @endif>
                 <td style="text-align: center; padding: 5px; border: 1px solid #eee;">
                     {{ $book->item }}
                 </td>

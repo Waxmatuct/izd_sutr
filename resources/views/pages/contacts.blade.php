@@ -21,11 +21,14 @@
                         9:00 до 17:00.</p>
                 </div>
             </div>
+            <div>
+                <h2 class="text-2xl sm:text-3xl text-center font-bold">Сотрудники РИЦ</h2>
+            </div>
             <div class="flex flex-wrap w-full mx-auto">
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4  w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
                         <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="https://picsum.photos/200?random=1">
+                            src="https://sutr.ru/upload/iblock/682/Pletnev.jpg">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Плетнев<br> Дмитрий Витальевич</h2>
                             <h3 class="text-gray-500 my-3">Начальник РИЦ</h3>
@@ -35,10 +38,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4  w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="https://picsum.photos/200?random=2">
+                        {{-- <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                            src="https://picsum.photos/200?random=2"> --}}
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Карасевич<br> Татьяна Юрьевна </h2>
                             <h3 class="text-gray-500 my-3">Редактор</h3>
@@ -48,10 +51,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4  w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="https://picsum.photos/200?random=3">
+                        {{-- <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                            src="https://picsum.photos/200?random=3"> --}}
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Шебин<br> Евгений Павлович</h2>
                             <h3 class="text-gray-500 my-3">Старший печатник</h3>
@@ -61,10 +64,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4  w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="https://picsum.photos/200?random=4">
+                        {{-- <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                            src="https://picsum.photos/200?random=4"> --}}
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Шмонова<br> Екатерина Дмитриевна</h2>
                             <h3 class="text-gray-500 dark:text-gray-400 my-3">Документовед</h3>
