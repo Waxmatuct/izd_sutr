@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: Виды вузовского учебно-методического обеспечения')
+@section('description', 'Виды вузовского учебно-методического обеспечения')
 
 @section('main')
 

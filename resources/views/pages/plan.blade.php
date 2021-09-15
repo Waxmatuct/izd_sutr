@@ -1,13 +1,14 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: План издания ' . $year)
+@section('description', 'План издания учебной и учебно-методической литературы на ' . $year . ' год')
 
 @section('main')
 
     <section class="body-font">
         <div class="flex flex-col w-full mb-5">
             <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12">
-                План издания учебной и учебно-методической литературы на {{ $year }} год
+                План издания учебной и учебно-методической литературы<br>на {{ $year }} год
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
                 <p><a href="#plan">План издания учебной и учебно-методической литературы на
@@ -18,7 +19,7 @@
                 <p>Решение о приеме учебных и учебно-методических работ в производство принимается в течение семи рабочих
                     дней со дня предоставления автором в РИЦ распечатки текста, его электронного варианта и сопроводительных
                     документов в полном объеме.</p>
-                <p>Список сопроводительных документов:</p>
+                <p class="text-2xl sm:text-3xl"><strong>Список сопроводительных документов:</strong></p>
                 <ul class="list-disc md:ml-10">
                     <li>рецензия;</li>
                     <li>выписка из протокола заседания кафедры;</li>

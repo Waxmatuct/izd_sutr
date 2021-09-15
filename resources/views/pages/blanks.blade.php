@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: Формы заявок на тиражирование')
+@section('description', 'Формы заявок на тиражирование в РИЦ СГУ')
 
 @section('main')
 

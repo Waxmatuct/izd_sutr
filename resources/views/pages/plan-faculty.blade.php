@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: План издания ' . $year)
+@section('title', $faculty->short_title . ': анализ выполнения плана издания в ' . $year . ' году')
+@section('description', $faculty->short_title . ': анализ выполнения плана издания в ' . $year . ' году')
 
 @section('main')
 

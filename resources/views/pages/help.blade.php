@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: Авторская редакция. Требования к оформлению')
+@section('description', 'Авторская редакция. Требования к оформлению')
 
 @section('main')
 

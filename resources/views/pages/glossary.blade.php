@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: Краткий словарь издательских терминов')
+@section('description', 'Краткий словарь издательских терминов')
 
 @section('main')
 

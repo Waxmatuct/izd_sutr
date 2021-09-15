@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: Примеры оформления библиографических ссылок')
+@section('description', 'Примеры оформления библиографических ссылок')
+
 
 @section('main')
 

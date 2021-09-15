@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('title', 'РИЦ :: О нас')
+@section('description', 'Платные услуги в РИЦ СГУ')
 
 @section('main')
 
