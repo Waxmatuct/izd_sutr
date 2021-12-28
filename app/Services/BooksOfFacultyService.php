@@ -36,6 +36,7 @@ class BooksOfFacultyService
         $books = $this->booksRepository->booksOfFaculty($year, $id)->get();
         $size = $books->sum('size');
         $sdano = $this->booksRepository->booksOfFacultyIsHanded($year, $id)->count();
+        $ne_sdano = $this->booksRepository->booksOfFacultyNotHanded($year, $id)->sum('size');
         $perc = $sdano / $books->count() * 100;
         $perc = round($perc);
 
@@ -43,6 +44,7 @@ class BooksOfFacultyService
             'sdano' => $sdano,
             'size' => $size,
             'perc' => $perc,
+            'ne_sdano' => $ne_sdano,
         ]);
 
         return $stats;

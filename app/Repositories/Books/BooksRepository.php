@@ -88,4 +88,10 @@ class BooksRepository implements BooksRepositoryInterface
 
     }
 
+    public function booksOfFacultyNotHanded($year, $id): Builder
+    {
+        return Book::where(['year' => $year, 'is_handed' => false, 'faculty_id' => $id]);
+
+    }
+
 }

@@ -32,8 +32,8 @@
                     </div>
                     <div class="square p-4 w-full shadow-lg rounded-lg">
                         <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                            {{ $size }}</h2>
-                        <p class="text-gray-600">общий объем уч.-изд. л.</p>
+                            {{ $ne_sdano }}<small class="text-sm font-normal text-gray-600">уч.-изд. л.</small></h2>
+                        <p class="text-gray-600">не реализовано</p>
                     </div>
                 </div>
                 <div>

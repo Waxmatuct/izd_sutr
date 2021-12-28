@@ -136,8 +136,9 @@
                                 <div class="relative w-max">
                                     <select id="year" name="year"
                                         class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
+                                        <option value="2022" selected>2022</option>
                                         <option value="2021">2021</option>
-                                        <option value="2020">2020</option>
+                                        {{-- <option value="2020">2020</option> --}}
                                     </select>
                                     <span
                                         class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">

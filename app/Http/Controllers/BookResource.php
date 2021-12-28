@@ -76,7 +76,7 @@ class BookResource extends Controller
         // dd($request->all());
         Book::create($request->all());
 
-        return redirect()->route('dashboard.year', $request->year)
+        return redirect()->route('dashboard.book.create')
             ->with('success', 'Издание успешно добавлено');
     }
 
