@@ -45,6 +45,11 @@ class FacultySeeder extends Seeder
                 'short_title' => 'УЭТК',
                 'slug' => 'college',
             ],
+            [
+                'title' => '-',
+                'short_title' => '-',
+                'slug' => 'none',
+            ],
         ]);
     }
 }

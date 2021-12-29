@@ -34,8 +34,8 @@
         x-show.transition="true">
         <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-center flex-1 items-center text-gray-600 dark:text-gray-300">
             <li class="ml-auto mr-3">
-                <a class="{{ request()->is('plan-2021') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                    href="/plan-2021" @click="isOpen = false">План издания 2021
+                <a class="{{ request()->is('plan-2022') ? 'bg-primary-500 text-white' : null }} inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                    href="/plan-2022" @click="isOpen = false">План издания 2022
                 </a>
             </li>
 
@@ -76,8 +76,11 @@
             </x-menu.dropdown>
 
             <x-menu.dropdown title="Архив"
-                class="{{ request()->is('plan-2020') ? 'bg-primary-500 text-white' : null }}">
+                class="{{ request()->is('plan-2021') ? 'bg-primary-500 text-white' : null }}">
                 <x-slot name="content">
+                    <a href="{{ url('plan-2021') }}" class="hover:text-primary-500">
+                        План издания 2021
+                    </a>
                     <a href="{{ url('plan-2020') }}" class="hover:text-primary-500">
                         План издания 2020
                     </a>

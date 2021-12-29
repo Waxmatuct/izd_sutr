@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,7 +21,10 @@ class DatabaseSeeder extends Seeder
             MonthSeeder::class,
             BookSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
-        // \App\Models\Book::factory(150)->create();
+        DB::table('users')->insert([
+            'name' => 'Admin',
+            'email' => 'test@test.ru',
+            'password' => Hash::make('qweasd'),
+        ]);
     }
 }
