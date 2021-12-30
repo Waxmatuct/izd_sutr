@@ -8,7 +8,7 @@
     <section class="body-font">
         <div class="flex flex-col w-full mb-5">
             <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12">
-                План издания учебной и учебно-методической литературы<br>на {{ $year }} год
+                План издания учебной, учебно-методической и научной литературы<br>на {{ $year }} год
             </h1>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
                 <p><a href="#plan">План издания учебной и учебно-методической литературы на
