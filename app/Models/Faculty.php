@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Models\Faculty
@@ -25,7 +26,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Faculty extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    public $timestamps = false;
 
     protected $fillable = [
         'title',
@@ -33,7 +36,8 @@ class Faculty extends Model
         'slug',
     ];
 
-    public function books() {
+    public function books()
+    {
         return $this->hasMany(Book::class);
     }
 }

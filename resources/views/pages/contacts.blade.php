@@ -61,7 +61,7 @@
                         <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="{{ asset('images/no-foto.jpg') }}">
                         <div class="flex-grow mt-5">
-                            <h2 class="title-font font-bold text-lg leading-snug">Шмонова<br> Екатерина Дмитриевна</h2>
+                            <h2 class="title-font font-bold text-lg leading-snug">Чуранова<br> Елена Валентиновна</h2>
                             <h3 class="text-gray-500 dark:text-gray-400 my-3">Документовед</h3>
                         </div>
                     </div>

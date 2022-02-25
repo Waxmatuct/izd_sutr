@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
+use App\Models\Faculty;
 use App\Services\BooksOfFacultyService;
 use App\Services\BooksService;
 
@@ -53,6 +53,12 @@ class PlanController extends Controller
 
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
 
+        if ($year < 2022) {
+            $faculties = Faculty::whereNotIn('slug', ['feip', 'fitim', 'none'])->withTrashed()->get();
+        } else {
+            $faculties = Faculty::where('slug', '!=', 'none')->get();
+        }
+
         return view('pages.plan', [
             'books' => $books,
             'year' => $year,
@@ -63,6 +69,7 @@ class PlanController extends Controller
             'date' => $date,
             'counts' => $counts->implode(', ', $counts),
             'is_handed' => $is_handed->implode(', ', $is_handed),
+            'faculties' => $faculties,
         ]);
     }
 

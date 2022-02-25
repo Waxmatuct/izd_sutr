@@ -72,16 +72,19 @@ class Book extends Model
         'status',
     ];
 
-    public function faculty() {
-        return $this->belongsTo(Faculty::class);
+    public function faculty()
+    {
+        return $this->belongsTo(Faculty::class)->withTrashed();
     }
 
-    public function type() {
+    public function type()
+    {
         return $this->belongsTo(Type::class);
     }
 
-    public function month() {
+    public function month()
+    {
         return $this->belongsTo(Month::class);
     }
-    
+
 }

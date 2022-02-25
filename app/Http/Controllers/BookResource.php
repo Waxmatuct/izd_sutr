@@ -47,7 +47,7 @@ class BookResource extends Controller
     public function create()
     {
         return view('dashboard.book.create', [
-            'faculties' => Faculty::all(),
+            'faculties' => Faculty::get(),
             'types' => Type::all(),
             'months' => Month::all(),
         ]);
@@ -101,7 +101,7 @@ class BookResource extends Controller
     {
         $book = [
             'book' => $this->booksService->findBook($book),
-            'faculties' => Faculty::all(),
+            'faculties' => Faculty::get(),
             'types' => Type::all(),
             'months' => Month::all(),
             'statuses' => ['В работе', 'В печати', 'Отпечатано', 'Издано'],

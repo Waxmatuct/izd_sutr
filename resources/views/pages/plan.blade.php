@@ -82,25 +82,12 @@
                     <div class="mx-auto mt-12">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
                             факультетам</h2>
-                        <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'uf']) }}">
-                            Юридический факультет
-                        </a><br>
-                        <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'spf']) }}">
-                            Социально-педагогический факультет
-                        </a><br>
-                        <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'fts']) }}">
-                            Факультет туризма и сервиса
-                        </a><br>
-                        <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'feipu']) }}">
-                            Факультет экономики и процессов управления
-                        </a><br>
-                        <a class="inline-block" href="{{ route('faculty', ['year' => $year, 'faculty' => 'ief']) }}">
-                            Инженерно-экологический факультет
-                        </a><br>
-                        <a class="inline-block"
-                            href="{{ route('faculty', ['year' => $year, 'faculty' => 'college']) }}">
-                            Университетский экономико-технологический колледж
-                        </a>
+                        @foreach ($faculties as $faculty)
+                            <a class="inline-block"
+                                href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
+                                {{ $faculty->title }}
+                            </a><br>
+                        @endforeach
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 id="plan" class="text-2xl sm:text-3xl font-bold mb-5">План
@@ -120,7 +107,8 @@
                 <x-table.table head-size="text-xs" class="text-xs"
                     :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Принято к изданию','Статус **']">
                     @foreach ($books as $book)
-                        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
+                        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100"
+                            id="{{ $book->id }}">
                             <x-table.td font="bold">
                                 {{ $book->item }}
                             </x-table.td>
@@ -159,7 +147,9 @@
                                 @endif
                             </x-table.td>
                             <x-table.td>
-                                @if ($book->is_handed == 1) {{ $book->status }} @endif
+                                @if ($book->is_handed == 1)
+                                    {{ $book->status }}
+                                @endif
                             </x-table.td>
                         </tr>
                     @endforeach

@@ -29,6 +29,7 @@ class FacultySeeder extends Seeder
                 'title' => 'Факультет экономики и процессов управления',
                 'short_title' => 'ФЭиПУ',
                 'slug' => 'feipu',
+                'deleted_at' => '2022-02-01 00:00:00',
             ],
             [
                 'title' => 'Социально-педагогический факультет',
@@ -39,11 +40,27 @@ class FacultySeeder extends Seeder
                 'title' => 'Юридический факультет',
                 'short_title' => 'ЮФ',
                 'slug' => 'uf',
+                'deleted_at' => '2022-02-01 00:00:00',
             ],
             [
                 'title' => 'Университетский экономико-технологический колледж',
                 'short_title' => 'УЭТК',
                 'slug' => 'college',
+            ],
+            [
+                'title' => 'Факультет инфомационных технологий и математики',
+                'short_title' => 'ФИТиМ',
+                'slug' => 'fitim',
+            ],
+            [
+                'title' => 'Факультет информационных технологий и математики',
+                'short_title' => 'ФИТиМ',
+                'slug' => 'fitim',
+            ],
+            [
+                'title' => 'Факультет экономики и права',
+                'short_title' => 'ФЭиП',
+                'slug' => 'feip',
             ],
             [
                 'title' => '-',
