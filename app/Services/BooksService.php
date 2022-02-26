@@ -88,8 +88,9 @@ class BooksService
     {
         $books = $this->booksRepository->booksOfYear($year)->get();
         $size = $books->sum('size');
+        $sdano_listov = $this->booksRepository->booksOfYearIsHanded($year)->sum('size');
         $sdano = $this->booksRepository->booksOfYearIsHanded($year)->count();
-        $perc = $sdano / $books->count() * 100;
+        $perc = $sdano_listov / $size * 100;
         $perc = round($perc);
 
         $stats = collect([

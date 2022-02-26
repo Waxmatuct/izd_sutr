@@ -20,7 +20,7 @@ class BooksOfFacultyService
 
     public function getFaculty($slug): Faculty
     {
-        return Faculty::where('slug', $slug)->first();
+        return Faculty::where('slug', $slug)->withTrashed()->first();
     }
 
     public function getBooksOfFaculty($year, $id): Collection
@@ -36,8 +36,9 @@ class BooksOfFacultyService
         $books = $this->booksRepository->booksOfFaculty($year, $id)->get();
         $size = $books->sum('size');
         $sdano = $this->booksRepository->booksOfFacultyIsHanded($year, $id)->count();
+        $sdano_listov = $this->booksRepository->booksOfFacultyIsHanded($year, $id)->sum('size');
         $ne_sdano = $this->booksRepository->booksOfFacultyNotHanded($year, $id)->sum('size');
-        $perc = $sdano / $books->count() * 100;
+        $perc = $sdano_listov / $size * 100;
         $perc = round($perc);
 
         $stats = collect([

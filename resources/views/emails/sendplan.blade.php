@@ -1,16 +1,14 @@
 <p>Добрый день.</p>
-<p>Это ежемесячная рассылка РИЦ о ходе выполнения плана издания учебной и учебно методической литературы за
+<p>Это ежемесячная рассылка РИЦ о ходе выполнения плана издания учебной, учебно-методической и научной литературы за
     {{ $year }} год.</p>
 На данный момент план издания выполнен на <strong>{{ $stats['perc'] }}%</strong>. Подробную информацию и отдельную
-статистику по
-факультетам вы можете посмотреть
-<a href="https://izd.sutr.ru/plan-{{ $year }}" target="_blank" rel="noopener noreferrer">на нашем сайте</a>.
+статистику по факультетам вы можете посмотреть
+<a href="https://izd.sutr.ru/plan-{{ $year }}" target="_blank" rel="noopener noreferrer">на нашем
+    сайте</a>.<br><br>
 
-<p>Напоминаем, что сентябрь - последний месяц сдачи работ по плану издания текущего года. В октябре начинается работа по
-    формированию плана издания на следующий год.</p>
-<small>Это информационное письмо. Отвечать на него не нужно.</small><br><br>
+<small style="text-align: left">Это информационное письмо. Отвечать на него не нужно.</small><br><br>
 <table style="border: 1px solid black; border-collapse: collapse; background: white; font-size: 13px;">
-    <caption style="font-weight: bold; text-align:center; font-size: 16px;">Список изданий к сдаче за
+    <caption style="font-weight: bold; text-align: center; font-size: 16px;">Список запланированных изданий на
         {{ $month }}
     </caption>
     <thead style="background-color: #d1d5db;">
@@ -40,10 +38,7 @@
                 Тираж
             </th>
             <th style="text-align: center; padding: 5px; border: 1px solid #eee;">
-                Месяц сдачи
-            </th>
-            <th style="text-align: center; padding: 5px; border: 1px solid #eee;">
-                Сдано
+                Принято
             </th>
             <th style="text-align: center; padding: 5px; border: 1px solid #eee;">
                 Статус
@@ -78,13 +73,16 @@
                     {{ $book->amount }}
                 </td>
                 <td style="text-align: center; padding: 5px; border: 1px solid #eee;">
-                    {{ $book->month->name }}
+                    @if ($book->is_handed == 1)
+                        ✔
+                    @else
+                    @endif
                 </td>
                 <td style="text-align: center; padding: 5px; border: 1px solid #eee;">
-                    @if ($book->is_handed == 1) ✔ @else – @endif
-                </td>
-                <td style="text-align: center; padding: 5px; border: 1px solid #eee;">
-                    @if ($book->is_handed == 1) {{ $book->status }} @else – @endif
+                    @if ($book->is_handed == 1)
+                        {{ $book->status }}
+                    @else
+                    @endif
                 </td>
             </tr>
         @endforeach
