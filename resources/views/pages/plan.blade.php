@@ -54,27 +54,9 @@
                     <h2 class="text-2xl sm:text-3xl font-bold mt-10 mb-5">
                         Показатели и статистика выполнения
                     </h2>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
-                        <div class="square p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                                {{ $count }}</h2>
-                            <p class="text-gray-600">изданий в плане</p>
-                        </div>
-                        <div class="square p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                                {{ $sdano }}</h2>
-                            <p class="text-gray-600">принято к изданию</p>
-                        </div>
-                        <div class="square p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                                {{ $perc }}%</h2>
-                            <p class="text-gray-600">выполнение плана</p>
-                        </div>
-                        <div class="square p-4 w-full shadow-lg rounded-lg">
-                            <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                                {{ $size }}</h2>
-                            <p class="text-gray-600">общий объем уч.-изд. л.</p>
-                        </div>
+                    <div id="app">
+                        <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}"
+                            :perc="{{ $perc }}" :size="{{ $size }}"></stats-component>
                     </div>
                     <div class="square w-full p-7 rounded-lg shadow-xl my-7">
                         <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
@@ -104,8 +86,19 @@
 
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
-                <x-table.table head-size="text-xs" class="text-xs"
-                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Принято к изданию','Статус **']">
+                <x-table.table head-size="text-xs" class="text-xs" :headers="[
+                    '№ в плане',
+                    'Факультет',
+                    'Авторы',
+                    'Наименование рукописи',
+                    'Вид издания',
+                    'Дисциплина',
+                    'Объем, уч.изд. л',
+                    'Тираж',
+                    'Срок сдачи',
+                    'Принято к изданию',
+                    'Статус **',
+                ]">
                     @foreach ($books as $book)
                         <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100"
                             id="{{ $book->id }}">

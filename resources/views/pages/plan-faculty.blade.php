@@ -14,27 +14,9 @@
                 Анализ выполнения плана издания в {{ $year }} году
             </span>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                            {{ $count }}</h2>
-                        <p class="text-gray-600">изданий в плане</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                            {{ $sdano }}</h2>
-                        <p class="text-gray-600">принято к изданию</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                            {{ $perc }}%</h2>
-                        <p class="text-gray-600">выполнение плана</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="title-font font-bold sm:text-5xl text-3xl">
-                            {{ $ne_sdano }}<small class="text-sm font-normal text-gray-600">уч.-изд. л.</small></h2>
-                        <p class="text-gray-600">не реализовано</p>
-                    </div>
+                <div id="app">
+                    <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
+                        :size="{{ $size }}"></stats-component>
                 </div>
                 <div>
                     <div class="square overflow-auto p-7 rounded-lg shadow-xl mb-7">
@@ -57,10 +39,22 @@
 
         @if ($books->isNotEmpty())
             <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
-                <x-table.table head-size="text-xs" class="text-xs"
-                    :headers="['№ в плане','Факультет','Авторы','Наименование рукописи','Вид издания','Дисциплина','Объем, уч.изд. л','Тираж','Срок сдачи','Принято к изданию','Статус **']">
+                <x-table.table head-size="text-xs" class="text-xs" :headers="[
+                    '№ в плане',
+                    'Факультет',
+                    'Авторы',
+                    'Наименование рукописи',
+                    'Вид издания',
+                    'Дисциплина',
+                    'Объем, уч.изд. л',
+                    'Тираж',
+                    'Срок сдачи',
+                    'Принято к изданию',
+                    'Статус **',
+                ]">
                     @foreach ($books as $book)
-                        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100" id="{{ $book->id }}">
+                        <tr class="@if ($loop->even) bg-gray-100 @endif hover:bg-primary-100"
+                            id="{{ $book->id }}">
                             <x-table.td font="bold">
                                 {{ $book->item }}
                             </x-table.td>
@@ -99,7 +93,9 @@
                                 @endif
                             </x-table.td>
                             <x-table.td>
-                                @if ($book->is_handed == 1) {{ $book->status }} @endif
+                                @if ($book->is_handed == 1)
+                                    {{ $book->status }}
+                                @endif
                             </x-table.td>
                         </tr>
                     @endforeach
