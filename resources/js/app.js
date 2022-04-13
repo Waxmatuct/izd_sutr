@@ -16,12 +16,19 @@ window.onscroll = function () {
 import Vue from "vue";
 // import ExampleComponent from "./components/ExampleComponent";
 import StatsComponent from "./components/StatsComponent";
+import BooksComponent from "./components/BooksComponent";
 
 window.onload = function () {
-    const app = new Vue({
-        el: "#app",
+    const stats = new Vue({
+        el: "#stats",
         components: {
             StatsComponent,
+        },
+    });
+    const books = new Vue({
+        el: "#books",
+        components: {
+            BooksComponent,
         },
     });
 };

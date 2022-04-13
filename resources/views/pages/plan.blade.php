@@ -54,7 +54,7 @@
                     <h2 class="text-2xl sm:text-3xl font-bold mt-10 mb-5">
                         Показатели и статистика выполнения
                     </h2>
-                    <div id="app">
+                    <div id="stats">
                         <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}"
                             :perc="{{ $perc }}" :size="{{ $size }}"></stats-component>
                     </div>
@@ -85,7 +85,10 @@
         </div>
 
         @if ($books->isNotEmpty())
-            <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
+            <div id="books">
+                <books-component :year="{{ $year }}"></books-component>
+            </div>
+            {{-- <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs" :headers="[
                     '№ в плане',
                     'Факультет',
@@ -147,7 +150,7 @@
                         </tr>
                     @endforeach
                 </x-table.table>
-            </div>
+            </div> --}}
         @else
             <span>Нет данных</span>
         @endif
