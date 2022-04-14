@@ -20,3 +20,13 @@ mix.js("resources/js/app.js", "public/js")
         require("autoprefixer"),
     ])
     .browserSync("izd.test");
+
+if (mix.inProduction()) {
+    mix.version();
+}
+
+mix.webpackConfig({
+    output: {
+        chunkFilename: "js/vuejs_code_split/[name].js",
+    },
+});

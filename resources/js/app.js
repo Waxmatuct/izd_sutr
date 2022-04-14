@@ -13,22 +13,21 @@ window.onscroll = function () {
     prevScrollpos = currentScrollPos;
 };
 
-import Vue from "vue";
-// import ExampleComponent from "./components/ExampleComponent";
-import StatsComponent from "./components/StatsComponent";
-import BooksComponent from "./components/BooksComponent";
+window.Vue = require("vue").default;
+
+Vue.component("stats-component", () =>
+    import("./components/StatsComponent.vue")
+);
+
+Vue.component("books-component", () =>
+    import("./components/BooksComponent.vue")
+);
 
 window.onload = function () {
     const stats = new Vue({
         el: "#stats",
-        components: {
-            StatsComponent,
-        },
     });
     const books = new Vue({
         el: "#books",
-        components: {
-            BooksComponent,
-        },
     });
 };

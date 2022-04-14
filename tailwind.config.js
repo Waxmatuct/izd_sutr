@@ -2,12 +2,12 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 
 module.exports = {
-    purge: [
+    content: [
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/views/**/*.blade.php",
     ],
-    darkMode: 'class',
+    darkMode: "class",
     theme: {
         extend: {
             fontFamily: {
@@ -19,16 +19,10 @@ module.exports = {
             current: "currentColor",
             black: colors.black,
             white: colors.white,
-            gray: colors.coolGray,
+            gray: colors.gray,
             primary: colors.indigo,
             secondary: colors.green,
             red: colors.red,
-        },
-    },
-
-    variants: {
-        extend: {
-            opacity: ["disabled"],
         },
     },
 
