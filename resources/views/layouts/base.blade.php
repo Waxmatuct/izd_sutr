@@ -31,12 +31,12 @@
         @include('partials.navigation.nav')
     </header>
 
-    <div class="flex flex-col container mx-auto px-5 mt-32 md:mt-32 md:px-10">
+    <div class="flex flex-col container mx-auto mt-32 md:mt-32 md:px-10">
         @yield('main')
     </div>
 
     <footer
-        class="flex flex-col items-center container w-full text-center mx-auto my-10 text-gray-600 dark:text-gray-400 px-5">
+        class="flex flex-col items-center container w-full text-sm md:text-base text-center mx-auto my-10 text-gray-600 dark:text-gray-400 px-5">
         <p>© 2020–{{ date('Y') }} Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный
             университет»</p>
         <small class="mt-7">

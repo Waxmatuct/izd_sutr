@@ -6,7 +6,7 @@
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full mb-5">
+        <div class="flex flex-col w-full px-5 mb-5">
             <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-2">
                 {{ $faculty->title }}
             </h1>
