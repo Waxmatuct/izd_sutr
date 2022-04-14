@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center">
+    <div>
         <input
             class="w-80 mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
             type="text"

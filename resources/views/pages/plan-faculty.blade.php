@@ -14,9 +14,31 @@
                 Анализ выполнения плана издания в {{ $year }} году
             </span>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <div id="app">
-                    <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                        :size="{{ $size }}"></stats-component>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
+                    <div class="square p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+                            {{ $count }}
+                        </h2>
+                        <p class="text-gray-600">изданий в плане</p>
+                    </div>
+                    <div class="square p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+                            {{ $sdano }}
+                        </h2>
+                        <p class="text-gray-600">принято к изданию</p>
+                    </div>
+                    <div class="square p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+                            {{ $perc }}%
+                        </h2>
+                        <p class="text-gray-600">выполнение плана</p>
+                    </div>
+                    <div class="square p-4 w-full shadow-lg rounded-lg">
+                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+                            {{ $size }}
+                        </h2>
+                        <p class="text-gray-600">общий объем уч.-изд. л.</p>
+                    </div>
                 </div>
                 <div>
                     <div class="square overflow-auto p-7 rounded-lg shadow-xl mb-7">
