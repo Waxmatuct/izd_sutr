@@ -18,11 +18,33 @@ mix.js("resources/js/app.js", "public/js")
         require("postcss-import"),
         require("tailwindcss"),
         require("autoprefixer"),
-    ])
-    .browserSync("izd.test");
+    ]);
 
 if (mix.inProduction()) {
     mix.version();
+} else {
+    mix.browserSync({
+        proxy: "izd.test",
+        files: [
+            "app/**/*.php",
+            "resources/views/**/*.php",
+            "resources/js/app.js",
+            "resources/js/components/*.vue",
+            "public/js/**/*.js",
+            "public/css/**/*.css",
+        ],
+        // browser: "firefox",
+        host: "izd.test",
+        port: 3000,
+        open: false,
+        watchOptions: {
+            usePolling: true,
+            interval: 500,
+            poll: true,
+            ignored: /node_modules/,
+        },
+        logSnippet: true,
+    });
 }
 
 mix.webpackConfig({

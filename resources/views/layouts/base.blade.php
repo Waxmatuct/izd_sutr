@@ -22,15 +22,18 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Scripts -->
+    @routes
     <script src="{{ mix('js/app.js') }}" defer></script>
     @stack('chartjs')
-
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
 
     <header>
-        @include('partials.navigation.nav')
+        <div id="navbar">
+            <navbar-component></navbar-component>
+        </div>
+        {{-- @include('partials.navigation.nav') --}}
     </header>
 
     <div class="flex flex-col container mx-auto mt-32 md:mt-32 md:px-10">

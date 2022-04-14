@@ -23,11 +23,18 @@ Vue.component("books-component", () =>
     import("./components/BooksComponent.vue")
 );
 
+Vue.component("navbar-component", () =>
+    import("./components/NavbarComponent.vue")
+);
+
 window.onload = function () {
     const stats = new Vue({
         el: "#stats",
     });
     const books = new Vue({
         el: "#books",
+    });
+    const navbar = new Vue({
+        el: "#navbar",
     });
 };
