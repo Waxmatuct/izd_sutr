@@ -1,9 +1,9 @@
 <template>
     <div>
         <input
-            class="w-80 mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
+            class="mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
             type="text"
-            placeholder="Поиск по автору или наименованию"
+            placeholder="Быстрый поиск по автору"
             v-model="filter"
         />
         <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
@@ -64,18 +64,11 @@
                         </td>
                         <td
                             class="text-center py-3 px-4 font-normal"
-                            v-html="
-                                highlightMatches(
-                                    [...book.author].sort().join(', ')
-                                )
-                            "
+                            v-html="highlightMatches(book.author)"
                         >
                             {{ book.author }}
                         </td>
-                        <td
-                            class="text-center py-3 px-4 font-normal"
-                            v-html="highlightMatches(book.title)"
-                        >
+                        <td class="text-center py-3 px-4 font-normal">
                             {{ book.title }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
@@ -147,7 +140,8 @@ export default {
             const re = new RegExp(this.filter, "ig");
             return text.replace(
                 re,
-                (matchedText) => `<strong>${matchedText}</strong>`
+                (matchedText) =>
+                    `<span style=\"color: red\">${matchedText}</span>`
             );
         },
     },
@@ -155,14 +149,18 @@ export default {
         filteredRows() {
             return this.books.filter((book) => {
                 const author = book.author.toString().toLowerCase();
-                const title = book.title.toLowerCase();
+                // const title = book.title.toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
-                return (
-                    title.includes(searchTerm) || author.includes(searchTerm)
-                );
+                return author.includes(searchTerm);
             });
         },
     },
 };
 </script>
+
+<style scoped>
+input {
+    width: 320px;
+}
+</style>
