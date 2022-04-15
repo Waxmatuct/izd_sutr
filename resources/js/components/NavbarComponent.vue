@@ -28,11 +28,10 @@
                 />
             </svg>
         </button>
-
         <!--Logo etc-->
         <div class="flex items-center flex-shrink-1 ml-12">
             <a class="flex title-font items-center" :href="homeUrl">
-                <img src="images/logo.png" alt="" class="w-16 h-16" />
+                <img src="/images/logo.png" alt="" class="w-16 h-16" />
                 <div class="sm:flex flex-col ml-2">
                     <h1
                         class="hidden sm:block text-sm font-extrabold md:text-lg leading-5 mb-2 md:mb-0"
@@ -48,7 +47,6 @@
                 </div>
             </a>
         </div>
-
         <!--Menu-->
         <div
             class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
@@ -60,100 +58,67 @@
                 <li class="ml-auto mr-3">
                     <a
                         class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                        :href="route.plan.y2022"
+                        :href="plan.y2022"
                         @click="isOpen = false"
                         >План издания 2022
                     </a>
                 </li>
-
-                <!-- <x-menu.dropdown title="В помощь автору" class="">
-                    <x-slot name="content">
-                        <a
-                            href="route('help')"
-                            class="hover:text-primary-500 dark:hover:text-primary-400"
+                <li
+                    class="relative mr-3"
+                    @click="menu.dropdown = !menu.dropdown"
+                    @mouseover="menu.dropdown = true"
+                    @mouseleave="menu.dropdown = false"
+                    v-for="menu in menus"
+                    :key="menu.index"
+                >
+                    <button
+                        class="flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                    >
+                        <span>{{ menu.title }}</span>
+                        <div class="ml-1">
+                            <svg
+                                class="fill-current h-4 w-4"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                        </div>
+                    </button>
+                    <transition name="fade">
+                        <div
+                            v-show="menu.dropdown"
+                            class="absolute z-50 min-w-max rounded-md shadow-lg origin-top-left"
                         >
-                            Авторская редакция. Требования к оформлению
-                        </a>
+                            <ul
+                                class="bg-white dark:bg-gray-800 dark:text-gray-300 rounded-md ring-1 ring-black dark:ring-white ring-opacity-10 flex flex-col py-2 px-5 space-y-3 white-space-nowrap"
+                            >
+                                <li v-for="item in menu.data" :key="item.index">
+                                    <a
+                                        :href="item.url"
+                                        class="hover:text-primary-500 dark:hover:text-primary-400"
+                                    >
+                                        {{ item.title }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </transition>
+                </li>
+                <li class="ml-auto mr-3" v-if="loginRouteExists">
+                    <div v-if="this.authUser">
                         <a
-                            href="route('blanks')"
-                            class="hover:text-primary-500 dark:hover:text-primary-400"
+                            :href="dashboardUrl"
+                            class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
                         >
-                            Формы заявок на тиражирование
-                        </a>
-                        <a
-                            href="route('types')"
-                            class="hover:text-primary-500 dark:hover:text-primary-400"
-                        >
-                            Виды вузовского учебно-методического обеспечения
-                        </a>
-                        <a
-                            href="route('glossary')"
-                            class="hover:text-primary-500 dark:hover:text-primary-400"
-                        >
-                            Краткий словарь издательских терминов
-                        </a>
-                        <a
-                            href="route('biblio')"
-                            class="hover:text-primary-500 dark:hover:text-primary-400"
-                        >
-                            Примеры оформления библиографических ссылок
-                        </a>
-                    </x-slot>
-                </x-menu.dropdown> -->
-
-                <!-- <x-menu.dropdown title="РИЦ" class="">
-                    <x-slot name="content">
-                        <a href="route('about')" class="hover:text-primary-500">
-                            О нашем центре
-                        </a>
-                        <a
-                            href="route('paid-services')"
-                            class="hover:text-primary-500"
-                        >
-                            Платные услуги
-                        </a>
-                        <a
-                            href="route('contacts')"
-                            class="hover:text-primary-500"
-                        >
-                            Контакты
-                        </a>
-                    </x-slot>
-                </x-menu.dropdown>
-
-                <x-menu.dropdown title="Архив" class="">
-                    <x-slot name="content">
-                        <a href="/plan-2021" class="hover:text-primary-500">
-                            План издания 2021
-                        </a>
-                        <a href="/plan-2020" class="hover:text-primary-500">
-                            План издания 2020
-                        </a>
-                    </x-slot>
-                </x-menu.dropdown> -->
-
-                <!-- @if (Route::has('login'))
-                <li class="ml-auto mr-3">
-                    @auth
-                        <a href="{{ route('dashboard.index') }}"
-                            class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
                             Админка
                         </a>
-                        {{-- @else
-                        <a href="{{ route('login') }}"
-                            class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300">
-                            Вход
-                        </a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}"
-                                class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg">
-                                Регистрация
-                            </a>
-                        @endif --}}
-                    @endauth
+                    </div>
                 </li>
-            @endif -->
             </ul>
         </div>
     </div>
@@ -163,33 +128,99 @@
 export default {
     data() {
         return {
-            // authUser: window.authUser,
+            authUser: window.authUser,
             isOpen: false,
             homeUrl: route("index"),
-            route: {
-                plan: {
-                    y2022: route("year", [2022]),
-                    y2021: route("year", [2021]),
-                    y2020: route("year", [2020]),
-                },
-                author: {
-                    help: route("help"),
-                    blanks: route("blanks"),
-                    types: route("types"),
-                    glossary: route("glossary"),
-                    biblio: route("biblio"),
-                },
-                RIC: {
-                    about: route("about"),
-                    paid_services: route("paid-services"),
-                    contacts: route("contacts"),
-                },
-                admin: route("dashboard.index"),
+            dashboardUrl: route("dashboard.index"),
+            loginRouteExists: route().has("login"),
+            plan: {
+                y2022: route("year", [2022]),
             },
+            menus: [
+                {
+                    id: "author",
+                    title: "В помощь автору",
+                    dropdown: false,
+                    data: [
+                        {
+                            url: route("help"),
+                            title: "Авторская редакция. Требования к оформлению",
+                        },
+                        {
+                            url: route("blanks"),
+                            title: "Формы заявок на тиражирование",
+                        },
+                        {
+                            url: route("types"),
+                            title: "Виды вузовского учебно-методического обеспечения",
+                        },
+                        {
+                            url: route("glossary"),
+                            title: "Краткий словарь издательских терминов",
+                        },
+                        {
+                            url: route("biblio"),
+                            title: "Примеры оформления библиографических ссылок",
+                        },
+                    ],
+                },
+                {
+                    id: "ric",
+                    title: "РИЦ",
+                    dropdown: false,
+                    data: [
+                        {
+                            url: route("about"),
+                            title: "О нашем центре",
+                        },
+                        {
+                            url: route("paid-services"),
+                            title: "Платные услуги",
+                        },
+                        {
+                            url: route("contacts"),
+                            title: "Контакты",
+                        },
+                    ],
+                },
+                {
+                    id: "archive",
+                    title: "Архив",
+                    dropdown: false,
+                    data: [
+                        {
+                            url: route("year", [2021]),
+                            title: "План издания 2021",
+                        },
+                        {
+                            url: route("year", [2020]),
+                            title: "План издания 2020",
+                        },
+                    ],
+                },
+            ],
         };
     },
     mounted() {
-        // console.log("Это работает");
+        // console.log(this.authUser);
+    },
+    methods: {
+        onLoaded() {
+            this.loaded = true;
+        },
     },
 };
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave {
+    opacity: 0;
+    transform: scale(0.95);
+}
+</style>

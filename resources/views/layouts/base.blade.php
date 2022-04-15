@@ -49,6 +49,15 @@
         </small>
     </footer>
 
+    @if (Auth::check())
+        <script>
+            window.authUser = {!! json_encode(Auth::user()) !!};
+        </script>
+    @else
+        <script>
+            window.authUser = null;
+        </script>
+    @endif
 </body>
 
 </html>
