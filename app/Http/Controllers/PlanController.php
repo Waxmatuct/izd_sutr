@@ -67,8 +67,8 @@ class PlanController extends Controller
             'sdano' => $stats['sdano'],
             'perc' => $stats['perc'],
             'date' => $date,
-            'counts' => $counts->implode(', ', $counts),
-            'is_handed' => $is_handed->implode(', ', $is_handed),
+            'counts' => $counts,
+            'is_handed' => $is_handed,
             'faculties' => $faculties,
         ]);
     }

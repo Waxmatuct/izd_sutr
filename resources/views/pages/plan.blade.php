@@ -54,12 +54,11 @@
                     <h2 class="text-2xl sm:text-3xl font-bold mt-10 mb-5">
                         Показатели и статистика выполнения
                     </h2>
-                    <div id="stats">
-                        <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}"
-                            :perc="{{ $perc }}" :size="{{ $size }}"></stats-component>
-                    </div>
+                    <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
+                        :size="{{ $size }}"></stats-component>
                     <div class="square w-full p-7 rounded-lg shadow-xl my-7">
-                        <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
+                        <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
+                        {{-- <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas> --}}
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
@@ -158,7 +157,7 @@
 
     </section>
 
-    <script>
+    {{-- <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var values = document.getElementById('myChart').getAttribute('data-values').split(',');
         var is_handed = document.getElementById('myChart').getAttribute('data-handed').split(',');
@@ -211,7 +210,7 @@
                 responsive: true,
             }
         });
-    </script>
+    </script> --}}
 @endsection
 
 @push('chartjs')

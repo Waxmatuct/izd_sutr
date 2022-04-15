@@ -89,18 +89,18 @@
                             </svg>
                         </div>
                     </button>
-                    <transition name="fade">
+                    <transition name="slide-fade">
                         <div
                             v-show="menu.dropdown"
                             class="absolute z-50 min-w-max rounded-md shadow-lg origin-top-left"
                         >
                             <ul
-                                class="bg-white dark:bg-gray-800 dark:text-gray-300 rounded-md ring-1 ring-black dark:ring-white ring-opacity-10 flex flex-col py-2 px-5 space-y-3 white-space-nowrap"
+                                class="bg-white dark:bg-gray-800 dark:text-gray-300 rounded-md ring-1 ring-black dark:ring-white ring-opacity-10 flex flex-col white-space-nowrap overflow-auto"
                             >
                                 <li v-for="item in menu.data" :key="item.index">
                                     <a
                                         :href="item.url"
-                                        class="hover:text-primary-500 dark:hover:text-primary-400"
+                                        class="block hover:text-white hover:bg-primary-500 dark:hover:text-primary-400 py-2 px-5"
                                     >
                                         {{ item.title }}
                                     </a>
@@ -213,14 +213,15 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s;
+.slide-fade-enter-active {
+    transition: all 0.3s ease;
 }
-
-.fade-enter,
-.fade-leave {
+.slide-fade-leave-active {
+    transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active до версии 2.1.8 */ {
+    transform: translateY(10px);
     opacity: 0;
-    transform: scale(0.95);
 }
 </style>

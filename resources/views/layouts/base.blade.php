@@ -23,23 +23,21 @@
 
     <!-- Scripts -->
     @routes
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/main.js') }}" defer></script>
     @stack('chartjs')
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
 
-    <header>
-        <div id="navbar">
-            <navbar-component></navbar-component>
+    <div id="app">
+        <header>
+            <navbar-component id="navbar"></navbar-component>
+            {{-- @include('partials.navigation.nav') --}}
+        </header>
+        <div class="flex flex-col container mx-auto mt-32 md:mt-32 md:px-10">
+            @yield('main')
         </div>
-        {{-- @include('partials.navigation.nav') --}}
-    </header>
-
-    <div class="flex flex-col container mx-auto mt-32 md:mt-32 md:px-10">
-        @yield('main')
     </div>
-
     <footer
         class="flex flex-col items-center container w-full text-sm md:text-base text-center mx-auto my-10 text-gray-600 dark:text-gray-400 px-5">
         <p>© 2020–{{ date('Y') }} Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный
@@ -48,7 +46,6 @@
             Разработка приложения - <a href="mailto:pletnevsochi@yandex.ru">Дмитрий Плетнев</a>
         </small>
     </footer>
-
     @if (Auth::check())
         <script>
             window.authUser = {!! json_encode(Auth::user()) !!};
