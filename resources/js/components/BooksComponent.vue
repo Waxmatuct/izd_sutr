@@ -1,11 +1,13 @@
 <template>
     <div>
-        <input
-            class="mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
-            type="text"
-            placeholder="Быстрый поиск по автору"
-            v-model="filter"
-        />
+        <div class="lg:w-3/4 lg:px-4 mx-auto">
+            <input
+                class="mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
+                type="text"
+                placeholder="Быстрый поиск по автору"
+                v-model="filter"
+            />
+        </div>
         <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
             <table class="table-auto w-full bg-white text-xs">
                 <thead

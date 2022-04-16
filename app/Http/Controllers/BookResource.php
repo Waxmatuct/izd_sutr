@@ -121,7 +121,8 @@ class BookResource extends Controller
     {
         $this->booksService->findBook($book)->update($request->all());
 
-        return redirect()->route('dashboard.book.edit', $book)
+        return redirect()
+            ->back()
             ->with('success', 'Издание успешно обновлено');
     }
 

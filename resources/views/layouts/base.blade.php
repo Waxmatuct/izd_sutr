@@ -19,12 +19,11 @@
         rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- Scripts -->
     @routes
     <script src="{{ mix('js/main.js') }}" defer></script>
-    @stack('chartjs')
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400">

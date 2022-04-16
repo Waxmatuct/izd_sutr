@@ -109,6 +109,9 @@
                         </div>
                     </transition>
                 </li>
+                <!-- <li class="mr-3">
+                    <switcher></switcher>
+                </li> -->
                 <li class="ml-auto mr-3" v-if="loginRouteExists">
                     <div v-if="this.authUser">
                         <a
@@ -125,11 +128,17 @@
 </template>
 
 <script>
+// import Switcher from "./Switcher.vue";
+
 export default {
+    // components: {
+    //     Switcher,
+    // },
     data() {
         return {
             authUser: window.authUser,
             isOpen: false,
+            currentRoute: route().current(),
             homeUrl: route("index"),
             dashboardUrl: route("dashboard.index"),
             loginRouteExists: route().has("login"),
@@ -202,12 +211,12 @@ export default {
         };
     },
     mounted() {
-        // console.log(this.authUser);
+        // console.log(this.plan.y2022);
     },
     methods: {
-        onLoaded() {
-            this.loaded = true;
-        },
+        // onLoaded() {
+        //     this.loaded = true;
+        // },
     },
 };
 </script>

@@ -49,11 +49,11 @@ export default {
         },
         width: {
             type: Number,
-            default: 400,
+            default: 200,
         },
         height: {
             type: Number,
-            default: 400,
+            default: 500,
         },
         cssClasses: {
             default: "",
@@ -69,41 +69,32 @@ export default {
         },
         value: {
             type: Object,
-            default: "value",
+            default: () => [],
         },
         handed: {
             type: Object,
-            default: "is_handed",
+            default: () => [],
         },
     },
     data() {
         return {
             chartData: {
-                // labels: [
-                //     "Январь",
-                //     "Февраль",
-                //     "Март",
-                //     "Апрель",
-                //     "Май",
-                //     "Июнь",
-                //     "Июль",
-                //     "Август",
-                //     "Cентябрь",
-                // ],
                 datasets: [
                     {
                         label: "Запланировано",
                         data: this.value,
                         backgroundColor: ["rgba(99, 102, 241, 0.5)"],
                         borderColor: ["rgba(99, 102, 241, 0.7)"],
-                        borderWidth: 2,
+                        borderWidth: 3,
+                        borderRadius: 10,
                     },
                     {
                         label: "Сдано",
                         data: this.handed,
                         backgroundColor: ["rgba(75, 192, 192, 0.5)"],
                         borderColor: ["rgba(75, 192, 192, 0.7)"],
-                        borderWidth: 2,
+                        borderWidth: 3,
+                        borderRadius: 10,
                     },
                 ],
             },
@@ -131,17 +122,18 @@ export default {
         };
     },
     mounted() {
-        console.log(this.value);
-        // this.getValues();
+        // console.log(this.value);
         // this.getHanded();
     },
     methods: {
-        getValues() {
-            this.chartData.datasets[0].data = this.value.split(", ");
-        },
-        getHanded() {
-            this.chartData.datasets[1].data = this.is_handed.split(", ");
-        },
+        // getValues() {
+        //     this.chartData.datasets[0].data = this.value;
+        //     console.log(this.chartData.datasets[0].data);
+        // },
+        // getHanded() {
+        //     this.chartData.datasets[1].data = this.handed;
+        //     console.log(this.chartData.datasets[1].data);
+        // },
     },
 };
 </script>

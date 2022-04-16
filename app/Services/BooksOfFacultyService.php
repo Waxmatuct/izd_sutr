@@ -64,7 +64,20 @@ class BooksOfFacultyService
 
         $collection = collect($array);
 
-        return $collection;
+        $months = collect(["Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Cентябрь"]);
+
+        $combined = $months->combine($collection);
+
+        return $combined;
+
     }
 
     public function getCountOfHandedBooksOfFacultyForBarChart($year, $id): Collection
@@ -75,7 +88,20 @@ class BooksOfFacultyService
 
         $collection = collect($array);
 
-        return $collection;
+        $months = collect(["Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Cентябрь"]);
+
+        $combined = $months->combine($collection);
+
+        return $combined;
+
     }
 
 }

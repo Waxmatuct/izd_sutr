@@ -127,7 +127,19 @@ class BooksService
 
         $collection = collect($array);
 
-        return $collection;
+        $months = collect(["Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Cентябрь"]);
+
+        $combined = $months->combine($collection);
+
+        return $combined;
     }
 
     /**
@@ -144,6 +156,19 @@ class BooksService
 
         $collection = collect($array);
 
-        return $collection;
+        $months = collect(["Январь",
+            "Февраль",
+            "Март",
+            "Апрель",
+            "Май",
+            "Июнь",
+            "Июль",
+            "Август",
+            "Cентябрь"]);
+
+        $combined = $months->combine($collection);
+
+        return $combined;
+
     }
 }

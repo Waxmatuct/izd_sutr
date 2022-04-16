@@ -6,7 +6,7 @@ module.exports = {
         "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
         "./storage/framework/views/*.php",
         "./resources/**/*.vue",
-        "./resources/views/**/*.blade.php",
+        "./resources/**/*.blade.php",
     ],
     darkMode: "class",
     theme: {
@@ -24,6 +24,7 @@ module.exports = {
             primary: colors.indigo,
             secondary: colors.green,
             red: colors.red,
+            green: colors.green,
         },
     },
 

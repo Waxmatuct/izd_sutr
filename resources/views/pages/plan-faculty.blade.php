@@ -14,35 +14,11 @@
                 Анализ выполнения плана издания в {{ $year }} году
             </span>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
-                            {{ $count }}
-                        </h2>
-                        <p class="text-gray-600">изданий в плане</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
-                            {{ $sdano }}
-                        </h2>
-                        <p class="text-gray-600">принято к изданию</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
-                            {{ $perc }}%
-                        </h2>
-                        <p class="text-gray-600">выполнение плана</p>
-                    </div>
-                    <div class="square p-4 w-full shadow-lg rounded-lg">
-                        <h2 class="data title-font font-bold sm:text-5xl text-3xl">
-                            {{ $size }}
-                        </h2>
-                        <p class="text-gray-600">общий объем уч.-изд. л.</p>
-                    </div>
-                </div>
+                <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
+                    :size="{{ $size }}"></stats-component>
                 <div>
                     <div class="square overflow-auto p-7 rounded-lg shadow-xl mb-7">
-                        <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas>
+                        <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
 
                     <h2 class="text-2xl sm:text-3xl font-bold mt-12 mb-5">План издания учебной литературы
@@ -129,7 +105,7 @@
 
     </section>
 
-    <script>
+    {{-- <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var values = document.getElementById('myChart').getAttribute('data-values').split(',');
         var is_handed = document.getElementById('myChart').getAttribute('data-handed').split(',');
@@ -184,7 +160,7 @@
                 responsive: true,
             }
         });
-    </script>
+    </script> --}}
 @endsection
 
 @push('chartjs')

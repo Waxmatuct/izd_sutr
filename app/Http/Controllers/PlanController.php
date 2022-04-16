@@ -104,8 +104,8 @@ class PlanController extends Controller
             'perc' => $stats['perc'],
             'ne_sdano' => $stats['ne_sdano'],
             'date' => $date,
-            'counts' => $counts->implode(', ', $counts),
-            'is_handed' => $is_handed->implode(', ', $is_handed),
+            'counts' => $counts,
+            'is_handed' => $is_handed,
 
         ]);
     }
