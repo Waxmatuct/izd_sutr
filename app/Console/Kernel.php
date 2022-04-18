@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('plan:send')->timezone('Europe/Moscow')->mondays()->at('9:00');
+        $schedule->command('plan:send')->everyFiveMinutes();
     }
 
     /**
