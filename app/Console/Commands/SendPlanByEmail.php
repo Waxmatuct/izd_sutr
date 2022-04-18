@@ -36,9 +36,9 @@ class SendPlanByEmail extends Command
      * @return void
      */
     public function __construct(
-        BooksService $booksService,
+        BooksService $booksService
     ) {
-        // parent::__construct();
+        parent::__construct();
         $this->booksService = $booksService;
 
     }
