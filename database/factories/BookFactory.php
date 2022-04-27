@@ -35,7 +35,7 @@ class BookFactory extends Factory
             'month_id' => Arr::random(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
             'handed_in' => Arr::random(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
             'is_handed' => Arr::random(['0', '1']),
-            'status' => Arr::random(['В работе', 'В печати', 'Отпечатано', 'Передано на склад']),
+            'status' => Arr::random(['В работе', 'В печати', 'Отпечатано', 'На калькуляции', 'Издано']),
             'created_at' => $this->faker->dateTimeThisYear(),
         ];
     }

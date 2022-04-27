@@ -59,16 +59,16 @@ class FacultySeeder extends Seeder
             ],
             [
                 'id' => 7,
-                'title' => 'Факультет информационных технологий и математики',
-                'short_title' => 'ФИТиМ',
-                'slug' => 'fitim',
+                'title' => 'Факультет экономики и права',
+                'short_title' => 'ФЭиП',
+                'slug' => 'feip',
                 'deleted_at' => null,
             ],
             [
                 'id' => 8,
-                'title' => 'Факультет экономики и права',
-                'short_title' => 'ФЭиП',
-                'slug' => 'feip',
+                'title' => 'Факультет информационных технологий и математики',
+                'short_title' => 'ФИТиМ',
+                'slug' => 'fitim',
                 'deleted_at' => null,
             ],
             [
