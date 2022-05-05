@@ -24,29 +24,26 @@
                     <li>рецензия;</li>
                     <li>выписка из протокола заседания кафедры;</li>
                     <li>
-                        <a href="{{ asset('docs/Spravka-VKR-VUZ.docx') }}" target="_blank" rel="noreferrer noopener">
+                        <a href="https://disk.yandex.ru/i/I1o6BxWCAaUEIQ" target="_blank" rel="noreferrer noopener">
                             справка о результатах проверки на наличие заимствований
-                        </a> (утверждена <a href="{{ asset('docs/Prikaz-1100-ot-16-12-2020.pdf') }}" target="_blank"
+                        </a> (утверждена <a href="https://disk.yandex.ru/i/_-2X9yooKtO4kg" target="_blank"
                             rel="noreferrer noopener">
                             приказом № 1100
                         </a> от 16.12.2020);
                     </li>
                     <li>
-                        <a href="{{ asset('docs/zayavka-na-uchebnie-planovie-izdaniya.pdf') }}" target="_blank"
-                            rel="noreferrer noopener">
+                        <a href="https://disk.yandex.ru/i/fPjK_6lWD6HN-Q" target="_blank" rel="noreferrer noopener">
                             заявка на учебное плановое издание
                         </a>;
                     </li>
-                    <li>лицензионный договор (<a href="{{ asset('docs/Tipovaya-forma-Litsenzionnyj-dogovor.pdf') }}"
-                            target="_blank" rel="noreferrer noopener">
+                    <li>лицензионный договор (<a href="https://disk.yandex.ru/i/bmoRYpdLiKTXSw" target="_blank"
+                            rel="noreferrer noopener">
                             pdf
-                        </a>, <a href="{{ asset('docs/Tipovaya-forma-Litsenzionnyj-dogovor.doc') }}" target="_blank"
-                            rel="noreferrer noopener">
+                        </a>, <a href="https://disk.yandex.ru/i/NL5JceTtToUn1w" target="_blank" rel="noreferrer noopener">
                             doc</a>) и акт приема-передачи экземпляра произведения (<a
-                            href="{{ asset('docs/Akt-priema-peredachi-proizvedeniya.pdf') }}" target="_blank"
-                            rel="noreferrer noopener">pdf</a>, <a
-                            href="{{ asset('docs/Akt-priema-peredachi-proizvedeniya.docx') }}" target="_blank"
-                            rel="noreferrer noopener">
+                            href="https://disk.yandex.ru/i/JUMnuBPAWVcEtQ" target="_blank"
+                            rel="noreferrer noopener">pdf</a>, <a href="https://disk.yandex.ru/i/IgDfuGVavA3knQ"
+                            target="_blank" rel="noreferrer noopener">
                             doc</a>). Договор и акт передаются в двух экземплярах.
                     </li>
                 </ul>

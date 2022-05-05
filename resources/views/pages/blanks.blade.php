@@ -13,21 +13,21 @@
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
                 <div class="grid sm:grid-cols-3 gap-4 text-sm">
                     <div class="flex flex-col">
-                        <a class="text-center" href="{{ asset('docs/zayavka-na-uchebnie-planovie-izdaniya.pdf') }}">
+                        <a class="text-center" href="https://disk.yandex.ru/i/fPjK_6lWD6HN-Q">
                             <img src="{{ asset('images/zayavka-na-uchebnie-planovie-izdaniya.png') }}"
                                 alt="Форма заявки на учебные плановые издания">
                         </a>
                         <span class="text-center my-3">Форма заявки на учебные плановые издания</span>
                     </div>
                     <div class="flex flex-col">
-                        <a class="text-center" href="{{ asset('docs/zayavka-za-schet-sredstv-zakazchika.doc') }}">
+                        <a class="text-center" href="https://disk.yandex.ru/i/ZxcnJKvoRqozeQ">
                             <img src="{{ asset('images/zayavka-za-schet-sredstv-zakazchika.png') }}"
                                 alt="Форма заявки на издание за счет средств заказчика">
                         </a>
                         <span class="text-center my-3">Форма заявки на издание за счет средств заказчика</span>
                     </div>
                     <div class="flex flex-col">
-                        <a class="text-center" href="{{ asset('docs/zayavka-na-blanochnuyu-produkciu.docx') }}">
+                        <a class="text-center" href="https://disk.yandex.ru/i/2vATSEgSA5-3bQ">
                             <img src="{{ asset('images/zayavka-na-blanochnuyu-produkciu.png') }}"
                                 alt=" Форма заявки на бланочную продукцию">
                         </a>
