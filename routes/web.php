@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookResource;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return redirect()->route('year', ['year' => 2022]);
-})->name('index');
+Route::get('/', [PagesController::class, 'index'])->name('index');
 
 Route::get('/plan-{year}', [PlanController::class, 'year'])->name('year');
 

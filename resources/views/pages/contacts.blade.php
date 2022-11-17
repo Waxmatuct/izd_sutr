@@ -4,7 +4,7 @@
 @section('description', 'Контакты и сотрудники РИЦ СГУ')
 
 @section('main')
-
+    {{-- // TODO пересмотреть информацию --}}
     <section class="body-font">
         <div class="flex flex-col w-full px-5 mb-10">
             <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
@@ -26,9 +26,10 @@
                 <h2 class="text-2xl sm:text-3xl text-center font-bold">Сотрудники РИЦ</h2>
             </div>
             <div class="flex flex-wrap w-full mx-auto">
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                        <img alt="team"
+                            class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="https://sutr.ru/upload/iblock/682/Pletnev.jpg">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Плетнев<br> Дмитрий Витальевич</h2>
@@ -36,29 +37,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                        <img alt="team"
+                            class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="{{ asset('images/no-foto.jpg') }}">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Карасевич<br> Татьяна Юрьевна </h2>
-                            <h3 class="text-gray-500 my-3">Редактор</h3>
+                            <h3 class="text-gray-500 my-3">Редактор I категории</h3>
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
+                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="{{ asset('images/no-foto.jpg') }}">
-                        <div class="flex-grow mt-5">
-                            <h2 class="title-font font-bold text-lg leading-snug">Шебин<br> Евгений Павлович</h2>
-                            <h3 class="text-gray-500 my-3">Старший печатник</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/4 w-full">
-                    <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team" class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
+                        <img alt="team"
+                            class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
                             src="{{ asset('images/no-foto.jpg') }}">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Чуранова<br> Елена Валентиновна</h2>

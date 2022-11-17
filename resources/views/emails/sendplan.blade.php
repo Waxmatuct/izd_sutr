@@ -6,7 +6,7 @@
 <a href="https://izd.sutr.ru/plan-{{ $year }}" target="_blank" rel="noopener noreferrer">на нашем
     сайте</a>.<br><br>
 
-<small style="text-align: left">Это информационное письмо. Отвечать на него не нужно.</small><br><br>
+<p><small style="text-align: left">Это информационное письмо. Отвечать на него не нужно.</small></p><br><br>
 <table style="border: 1px solid black; border-collapse: collapse; background: white; font-size: 13px;">
     <caption style="font-weight: bold; text-align: center; font-size: 16px;">Список запланированных изданий на
         {{ $month }}

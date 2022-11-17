@@ -52,7 +52,7 @@ class SendPlan extends Mailable
             $month = 'сентябрь';
         }
 
-        return $this->subject('Информация: список запланированных изданий на ' . $month)->view('emails.sendplan')
+        return $this->subject('Рассылка РИЦ: список запланированных изданий на ' . $month)->view('emails.sendplan')
             ->with([
                 'year' => $year,
                 'month' => $month,

@@ -23,6 +23,10 @@
     .entry-content a {
         @apply text-primary-600 dark:text-primary-400 border-b-2 border-primary-100 dark:border-gray-700 hover:text-primary-700 dark:hover:text-primary-300 hover:border-primary-700 dark:hover:border-primary-300 transition-colors ease-in-out duration-300;
     }
+
+    .entry-content li {
+        @apply ml-7;
+    }
 }
 
 @layer utilities {
