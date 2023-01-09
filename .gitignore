@@ -15,4 +15,4 @@ yarn-error.log
 /.vscode
 /public/css/*
 /public/js/*
-/.vagrant
+/.vagrant/
