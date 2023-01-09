@@ -58,9 +58,9 @@
                 <li class="ml-auto mr-3">
                     <a
                         class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
-                        :href="plan.y2022"
+                        :href="plan.y2023"
                         @click="isOpen = false"
-                        >План издания 2022
+                        >План издания 2023
                     </a>
                 </li>
                 <li
@@ -143,7 +143,7 @@ export default {
             dashboardUrl: route("dashboard.index"),
             loginRouteExists: route().has("login"),
             plan: {
-                y2022: route("year", [2022]),
+                y2023: route("year", [2023]),
             },
             menus: [
                 {
@@ -197,6 +197,10 @@ export default {
                     title: "Архив",
                     dropdown: false,
                     data: [
+                        {
+                            url: route("year", [2022]),
+                            title: "План издания 2022",
+                        },
                         {
                             url: route("year", [2021]),
                             title: "План издания 2021",

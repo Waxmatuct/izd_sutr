@@ -26,7 +26,7 @@
                 <h2 class="text-2xl sm:text-3xl text-center font-bold">Сотрудники РИЦ</h2>
             </div>
             <div class="flex flex-wrap w-full mx-auto">
-                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
+                <div class="p-4 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
                         <img alt="team"
                             class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
+                <div class="p-4 sm:w-1/2 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
                         <img alt="team"
                             class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 lg:w-1/3 w-full">
+                <div class="p-4 sm:w-1/2 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
                         <img alt="team"
                             class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
