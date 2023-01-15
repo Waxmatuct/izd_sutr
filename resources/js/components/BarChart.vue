@@ -112,7 +112,7 @@ export default {
                     },
                     title: {
                         display: true,
-                        text: "Динамика сдачи изданий по месяцам",
+                        text: "Динамика выполнения плана по месяцам",
                         font: {
                             size: 16,
                         },

@@ -148,7 +148,7 @@ export default {
             menus: [
                 {
                     id: "author",
-                    title: "В помощь автору",
+                    title: "Помощь",
                     dropdown: false,
                     data: [
                         {
@@ -167,10 +167,10 @@ export default {
                             url: route("glossary"),
                             title: "Краткий словарь издательских терминов",
                         },
-                        {
-                            url: route("biblio"),
-                            title: "Примеры оформления библиографических ссылок",
-                        },
+                        // {
+                        //     url: route("biblio"),
+                        //     title: "Примеры оформления библиографических ссылок",
+                        // },
                     ],
                 },
                 {

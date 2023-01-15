@@ -14,18 +14,20 @@ class PlanController extends Controller
      *
      * @var mixed
      */
-    protected $booksService;
+    protected mixed $booksService;
+
     /**
      * booksOfFacultyService
      *
      * @var mixed
      */
-    protected $booksOfFacultyService;
+    protected mixed $booksOfFacultyService;
 
     public function __construct(
         BooksService $booksService,
         BooksOfFacultyService $booksOfFacultyService
-    ) {
+    )
+    {
         $this->booksService = $booksService;
         $this->booksOfFacultyService = $booksOfFacultyService;
     }
@@ -38,10 +40,10 @@ class PlanController extends Controller
     /**
      * year
      *
-     * @param  mixed $year
-     * @return void
+     * @param int $year
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function year($year)
+    public function year(int $year): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $books = $this->booksService->getBooksOfYear($year);
 
@@ -59,28 +61,46 @@ class PlanController extends Controller
             $faculties = Faculty::where('slug', '!=', 'none')->get();
         }
 
-        return view('pages.plan', [
-            'books' => $books,
-            'year' => $year,
-            'count' => $books->count(),
-            'size' => $stats['size'],
-            'sdano' => $stats['sdano'],
-            'perc' => $stats['perc'],
-            'date' => $date,
-            'counts' => $counts,
-            'is_handed' => $is_handed,
-            'faculties' => $faculties,
-        ]);
+        $currentYear = date('Y');
+
+        if ($year == $currentYear) {
+            return view('pages.plan', [
+                'books' => $books,
+                'year' => $year,
+                'count' => $books->count(),
+                'size' => $stats['size'],
+                'sdano' => $stats['sdano'],
+                'perc' => $stats['perc'],
+                'date' => $date,
+                'counts' => $counts,
+                'is_handed' => $is_handed,
+                'faculties' => $faculties,
+            ]);
+        } else {
+            return view('pages.plan-archived', [
+                'books' => $books,
+                'year' => $year,
+                'count' => $books->count(),
+                'size' => $stats['size'],
+                'sdano' => $stats['sdano'],
+                'perc' => $stats['perc'],
+                'date' => $date,
+                'counts' => $counts,
+                'is_handed' => $is_handed,
+                'faculties' => $faculties,
+            ]);
+        }
+
     }
 
     /**
      * faculty
      *
-     * @param  mixed $year
-     * @param  mixed $slug
-     * @return void
+     * @param int $year
+     * @param mixed $slug
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function faculty($year, $slug)
+    public function faculty(int $year, mixed $slug): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $faculty = $this->booksOfFacultyService->getFaculty($slug);
 
