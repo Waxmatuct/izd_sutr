@@ -37,12 +37,15 @@
                         </a>;
                     </li>
                     <li>лицензионный договор (<a href="https://disk.yandex.ru/i/bmoRYpdLiKTXSw" target="_blank"
-                            rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/NL5JceTtToUn1w" target="_blank" rel="noreferrer noopener">
+                            rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/NL5JceTtToUn1w"
+                            target="_blank" rel="noreferrer noopener">
                             .doc</a>), акт приема-передачи экземпляра произведения (<a
                             href="https://disk.yandex.ru/i/JUMnuBPAWVcEtQ" target="_blank"
                             rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/IgDfuGVavA3knQ"
                             target="_blank" rel="noreferrer noopener">
-                            .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом согласования,
+                            .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом
+                            согласования (<a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
+                                rel="noreferrer noopener">.pdf</a>),
                             подписанным правовым управлением</strong>.
                     </li>
                 </ul>
