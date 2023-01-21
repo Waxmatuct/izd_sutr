@@ -20,3 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/plan-{year}', [PlanController::class, 'year']);
+
+Route::get('/all/plan-{year}', [PlanController::class, 'yearWithTrashed']);
+
+Route::delete('/book/delete/{id}', [PlanController::class, 'deleteBook']);

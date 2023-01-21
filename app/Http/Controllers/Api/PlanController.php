@@ -41,6 +41,16 @@ class PlanController extends Controller
     {
         return new BookCollection($this->booksService->getBooksOfYear($year));
         // return $this->booksService->getBooksOfYear($year);
+    }
 
+    public function yearWithTrashed($year)
+    {
+        return new
+            BookCollection($this->booksService->getBooksOfYearWithTrashed($year));
+    }
+
+    public function deleteBook($id)
+    {
+        return $this->booksService->findBook($id)->delete();
     }
 }
