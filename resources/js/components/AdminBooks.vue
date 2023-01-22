@@ -53,6 +53,12 @@
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
                         >
+                            Нов. статус
+                        </th>
+                        <th
+                            scope="col"
+                            class="text-center py-3 px-4 whitespace-nowrap"
+                        >
                             Удалить
                         </th>
                         <th
@@ -137,6 +143,23 @@
                             </span>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
+                            <form @change="patchStatus(book.id)">
+                                <select
+                                    v-if="book.is_handed == 1"
+                                    v-model="newStatus"
+                                    class="select-css"
+                                >
+                                    <option
+                                        v-for="status in statuses"
+                                        :key="status.key"
+                                        :value="status"
+                                    >
+                                        {{ status }}
+                                    </option>
+                                </select>
+                            </form>
+                        </td>
+                        <td class="text-center py-3 px-4 font-normal">
                             <button
                                 class="delete-btn text-red-300 hover:text-red-600"
                                 title="Удалить запись"
@@ -206,6 +229,7 @@ export default {
                 "На калькуляции",
                 "Издано",
             ],
+            newStatus: "",
         };
     },
     mounted() {
@@ -248,6 +272,18 @@ export default {
                 })
                 .catch((error) => alert("Ошибка"));
         },
+        patchStatus(id) {
+            axios
+                .patch("/api/book/" + `${id}` + "/patch", {
+                    newStatus: this.newStatus,
+                })
+                .then((response) => {
+                    this.newStatus = "";
+                    this.getBooks();
+                    // console.log(response);
+                })
+                .catch((error) => alert("Ошибка"));
+        },
         formatMonth(month) {
             moment.updateLocale("ru", {
                 months: [
@@ -285,5 +321,9 @@ export default {
 <style scoped>
 input {
     width: 320px;
+}
+.select-css {
+    font-size: 0.85rem;
+    padding: 0.25rem;
 }
 </style>

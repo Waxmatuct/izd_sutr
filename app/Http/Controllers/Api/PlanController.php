@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Book;
+use Illuminate\Http\Request;
 use App\Services\BooksService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookCollection;
@@ -58,5 +59,14 @@ class PlanController extends Controller
     public function restoreBook($id)
     {
         return $this->booksService->restoreBook($id);
+    }
+
+    public function patchStatus(Request $request, $id)
+    {
+        $book = $this->booksService->findBook($id);
+
+        $book->status = $request->get("newStatus");
+
+        $book->save();
     }
 }

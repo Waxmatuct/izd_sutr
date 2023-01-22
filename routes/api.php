@@ -26,3 +26,5 @@ Route::get('/all/plan-{year}', [PlanController::class, 'yearWithTrashed']);
 Route::delete('/book/delete/{id}', [PlanController::class, 'deleteBook']);
 
 Route::get('/book/restore/{id}', [PlanController::class, 'restoreBook']);
+
+Route::patch('/book/{id}/patch', [PlanController::class, 'patchStatus']);
