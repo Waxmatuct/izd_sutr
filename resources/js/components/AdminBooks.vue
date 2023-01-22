@@ -59,13 +59,7 @@
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
                         >
-                            Удалить
-                        </th>
-                        <th
-                            scope="col"
-                            class="text-center py-3 px-4 whitespace-nowrap"
-                        >
-                            Восстан.
+                            Удал.
                         </th>
                     </tr>
                 </thead>
@@ -160,51 +154,52 @@
                             </form>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            <button
-                                class="delete-btn text-red-300 hover:text-red-600"
-                                title="Удалить запись"
-                                @click="deleteBook(book.id)"
-                                type="button"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-5 w-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
+                            <div v-if="book.deleted_at == null">
+                                <button
+                                    class="delete-btn text-red-300 hover:text-red-600"
+                                    title="Удалить запись"
+                                    @click="deleteBook(book.id)"
+                                    type="button"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                    />
-                                </svg>
-                            </button>
-                        </td>
-                        <td class="text-center py-3 px-4 font-normal">
-                            <button
-                                class="delete-btn text-green-300 hover:text-green-600"
-                                title="Восстановить запись"
-                                @click="restoreBook(book.id)"
-                                type="button"
-                                v-if="book.deleted_at != null"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke-width="1.5"
-                                    stroke="currentColor"
-                                    class="w-5 h-5"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="h-5 w-5"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div v-else>
+                                <button
+                                    class="delete-btn text-green-300 hover:text-green-600"
+                                    title="Восстановить запись"
+                                    @click="restoreBook(book.id)"
+                                    type="button"
                                 >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3"
-                                    />
-                                </svg>
-                            </button>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke-width="1.5"
+                                        stroke="currentColor"
+                                        class="w-5 h-5"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
