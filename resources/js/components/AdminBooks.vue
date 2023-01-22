@@ -47,13 +47,19 @@
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
                         >
-                            Статус **
+                            Статус
                         </th>
                         <th
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
                         >
                             Удалить
+                        </th>
+                        <th
+                            scope="col"
+                            class="text-center py-3 px-4 whitespace-nowrap"
+                        >
+                            Восстан.
                         </th>
                     </tr>
                 </thead>
@@ -105,7 +111,7 @@
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             <span v-if="book.is_handed == 1">
-                                {{ book.handed_in }}
+                                {{ formatMonth(book.handed_in) }}
                             </span>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
@@ -153,6 +159,30 @@
                                 </svg>
                             </button>
                         </td>
+                        <td class="text-center py-3 px-4 font-normal">
+                            <button
+                                class="delete-btn text-green-300 hover:text-green-600"
+                                title="Восстановить запись"
+                                @click="restoreBook(book.id)"
+                                type="button"
+                                v-if="book.deleted_at != null"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-5 h-5"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M15 15l-6 6m0 0l-6-6m6 6V9a6 6 0 0112 0v3"
+                                    />
+                                </svg>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -161,12 +191,21 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
     props: ["year"],
     data: function () {
         return {
             books: [],
             filter: "",
+            moment: moment,
+            statuses: [
+                "В работе",
+                "В печати",
+                "Отпечатано",
+                "На калькуляции",
+                "Издано",
+            ],
         };
     },
     mounted() {
@@ -199,6 +238,34 @@ export default {
                     // console.log(response);
                 })
                 .catch((error) => alert("Ошибка"));
+        },
+        restoreBook(id) {
+            axios
+                .get("/api/book/restore/" + `${id}`)
+                .then((response) => {
+                    this.getBooks();
+                    // console.log(response);
+                })
+                .catch((error) => alert("Ошибка"));
+        },
+        formatMonth(month) {
+            moment.updateLocale("ru", {
+                months: [
+                    "Январь",
+                    "Февраль",
+                    "Март",
+                    "Апрель",
+                    "Май",
+                    "Июнь",
+                    "Июль",
+                    "Август",
+                    "Сентябрь",
+                    "Октябрь",
+                    "Ноябрь",
+                    "Декабрь",
+                ],
+            });
+            return moment(month, "MM").locale("ru").format("MMMM");
         },
     },
     computed: {

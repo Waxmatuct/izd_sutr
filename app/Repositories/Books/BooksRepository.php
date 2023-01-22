@@ -85,13 +85,15 @@ class BooksRepository implements BooksRepositoryInterface
     public function booksOfFacultyIsHanded($year, $id): Builder
     {
         return Book::where(['year' => $year, 'is_handed' => true, 'faculty_id' => $id]);
-
     }
 
     public function booksOfFacultyNotHanded($year, $id): Builder
     {
         return Book::where(['year' => $year, 'is_handed' => false, 'faculty_id' => $id]);
-
     }
 
+    public function restoreBook($id)
+    {
+        return Book::withTrashed()->find($id)->restore();
+    }
 }

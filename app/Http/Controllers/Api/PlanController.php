@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Book;
+use App\Services\BooksService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BookCollection;
 use App\Services\BooksOfFacultyService;
-use App\Services\BooksService;
 
 class PlanController extends Controller
 {
@@ -52,5 +53,10 @@ class PlanController extends Controller
     public function deleteBook($id)
     {
         return $this->booksService->findBook($id)->delete();
+    }
+
+    public function restoreBook($id)
+    {
+        return $this->booksService->restoreBook($id);
     }
 }

@@ -127,7 +127,8 @@ class BooksService
 
         $collection = collect($array);
 
-        $months = collect(["Январь",
+        $months = collect([
+            "Январь",
             "Февраль",
             "Март",
             "Апрель",
@@ -135,7 +136,8 @@ class BooksService
             "Июнь",
             "Июль",
             "Август",
-            "Cентябрь"]);
+            "Cентябрь"
+        ]);
 
         $combined = $months->combine($collection);
 
@@ -156,7 +158,8 @@ class BooksService
 
         $collection = collect($array);
 
-        $months = collect(["Январь",
+        $months = collect([
+            "Январь",
             "Февраль",
             "Март",
             "Апрель",
@@ -164,11 +167,16 @@ class BooksService
             "Июнь",
             "Июль",
             "Август",
-            "Cентябрь"]);
+            "Cентябрь"
+        ]);
 
         $combined = $months->combine($collection);
 
         return $combined;
+    }
 
+    public function restoreBook($id)
+    {
+        return $this->booksRepository->restoreBook($id);
     }
 }
