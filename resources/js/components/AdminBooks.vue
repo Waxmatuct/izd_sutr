@@ -49,12 +49,12 @@
                         >
                             Статус
                         </th>
-                        <th
-                            scope="col"
-                            class="text-center py-3 px-4 whitespace-nowrap"
-                        >
-                            Нов. статус
-                        </th>
+<!--                        <th-->
+<!--                            scope="col"-->
+<!--                            class="text-center py-3 px-4 whitespace-nowrap"-->
+<!--                        >-->
+<!--                            Нов. статус-->
+<!--                        </th>-->
                         <th
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
@@ -71,7 +71,7 @@
                         :class="{
                             'bg-white': index % 2 === 0,
                             'bg-gray-100': index % 2 !== 0,
-                            'text-red-400': book.deleted_at != null,
+                            'text-red-400': book['deleted_at'] != null,
                         }"
                     >
                         <td class="text-center py-3 px-4 font-bold">
@@ -83,7 +83,7 @@
                             </a>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            {{ book.faculty.short_title }}
+                            {{ book['faculty']['short_title'] }}
                         </td>
                         <td
                             class="text-center py-3 px-4 font-normal"
@@ -98,7 +98,7 @@
                             {{ book.type.title }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            {{ book.disciple }}
+                            {{ book['disciple'] }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             {{ book.size }}
@@ -110,18 +110,18 @@
                             {{ book.month.name }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            <span v-if="book.is_handed == 1">
-                                {{ formatMonth(book.handed_in) }}
+                            <span v-if="book['is_handed'] === 1">
+                                {{ formatMonth(book['handed_in']) }}
                             </span>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            <span v-if="book.is_handed == 1">
+                            <span v-if="book['is_handed'] === 1">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     class="text-secondary-500 h-5 w-5 mx-auto"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
-                                    v-if="book.is_handed == 1"
+                                    v-if="book['is_handed'] === 1"
                                 >
                                     <path
                                         fill-rule="evenodd"
@@ -131,18 +131,19 @@
                                 </svg>
                             </span>
                         </td>
+<!--                        <td class="text-center py-3 px-4 font-normal">-->
+<!--                            <span v-if="book['is_handed'] === 1">-->
+<!--                                {{ book.status }}-->
+<!--                            </span>-->
+<!--                        </td>-->
                         <td class="text-center py-3 px-4 font-normal">
-                            <span v-if="book.is_handed == 1">
-                                {{ book.status }}
-                            </span>
-                        </td>
-                        <td class="text-center py-3 px-4 font-normal">
-                            <form @change="patchStatus(book.id)">
                                 <select
-                                    v-if="book.is_handed == 1"
+                                    v-if="book['is_handed'] === 1"
                                     v-model="newStatus"
                                     class="select-css"
+                                    @change="patchStatus(book.id)"
                                 >
+                                    <option value="" disabled>{{ book.status }}</option>
                                     <option
                                         v-for="status in statuses"
                                         :key="status.key"
@@ -151,10 +152,9 @@
                                         {{ status }}
                                     </option>
                                 </select>
-                            </form>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            <div v-if="book.deleted_at == null">
+                            <div v-if="book['deleted_at'] == null">
                                 <button
                                     class="delete-btn text-red-300 hover:text-red-600"
                                     title="Удалить запись"
