@@ -26,8 +26,7 @@ class PlanController extends Controller
     public function __construct(
         BooksService $booksService,
         BooksOfFacultyService $booksOfFacultyService
-    )
-    {
+    ) {
         $this->booksService = $booksService;
         $this->booksOfFacultyService = $booksOfFacultyService;
     }
@@ -71,6 +70,11 @@ class PlanController extends Controller
                 'size' => $stats['size'],
                 'sdano' => $stats['sdano'],
                 'perc' => $stats['perc'],
+                'published' => $stats['published'],
+                'in_calculation' => $stats['in_calculation'],
+                'printed' => $stats['printed'],
+                'in_print' => $stats['in_print'],
+                'in_work' => $stats['in_work'],
                 'date' => $date,
                 'counts' => $counts,
                 'is_handed' => $is_handed,
@@ -84,13 +88,17 @@ class PlanController extends Controller
                 'size' => $stats['size'],
                 'sdano' => $stats['sdano'],
                 'perc' => $stats['perc'],
+                'published' => $stats['published'],
+                'in_calculation' => $stats['in_calculation'],
+                'printed' => $stats['printed'],
+                'in_print' => $stats['in_print'],
+                'in_work' => $stats['in_work'],
                 'date' => $date,
                 'counts' => $counts,
                 'is_handed' => $is_handed,
                 'faculties' => $faculties,
             ]);
         }
-
     }
 
     /**
@@ -129,5 +137,4 @@ class PlanController extends Controller
 
         ]);
     }
-
 }

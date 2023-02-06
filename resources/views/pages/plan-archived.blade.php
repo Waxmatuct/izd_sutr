@@ -19,7 +19,6 @@
                         :size="{{ $size }}"></stats-component>
                     <div class="square w-full p-7 rounded-lg shadow-xl my-7">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
-                        {{-- <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas> --}}
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
@@ -38,6 +37,14 @@
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
                         <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
                             материально-технического снабжения.</p>
+                        @auth
+                            <p class="text-sm mt-5">
+                                Издано: <strong>{{ $published }}</strong>, на калькуляции:
+                                <strong>{{ $in_calculation }}</strong>, отпечатано:
+                                <strong>{{ $printed }}</strong>, в печати: <strong>{{ $in_print }}</strong>, в
+                                работе: <strong>{{ $in_work }}</strong>
+                            </p>
+                        @endauth
                     </div>
                 </div>
 

@@ -92,11 +92,21 @@ class BooksService
         $sdano = $this->booksRepository->booksOfYearIsHanded($year)->count();
         $perc = $sdano_listov / $size * 100;
         $perc = round($perc);
+        $published = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Издано'])->count();
+        $in_calculation = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'На калькуляции'])->count();
+        $printed = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Отпечатано'])->count();
+        $in_print = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В печати'])->count();
+        $in_work = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В работе'])->count();
 
         $stats = collect([
             'sdano' => $sdano,
             'size' => $size,
             'perc' => $perc,
+            'published' => $published,
+            'in_calculation' => $in_calculation,
+            'printed' => $printed,
+            'in_print' => $in_print,
+            'in_work' => $in_work
         ]);
 
         return $stats;

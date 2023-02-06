@@ -76,6 +76,14 @@
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
                         <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
                             материально-технического снабжения.</p>
+                        @auth
+                            <p class="text-sm mt-5">
+                                Издано: <strong>{{ $published }}</strong>, на калькуляции:
+                                <strong>{{ $in_calculation }}</strong>, отпечатано:
+                                <strong>{{ $printed }}</strong>, в печати: <strong>{{ $in_print }}</strong>, в
+                                работе: <strong>{{ $in_work }}</strong>
+                            </p>
+                        @endauth
                     </div>
                 </div>
 
