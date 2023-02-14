@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard.book.create')" :active="request()->routeIs('dashboard.index')">
                         {{ __('+ Добавить в план') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard.sendPlan')">
+                        Оправить на почту
+                    </x-nav-link>
                     <x-nav-link :href="route('dashboard.year', '2021')">
                         План 2021
                     </x-nav-link>
@@ -81,7 +84,7 @@
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard.book.create')" :active="request()->routeIs('dashboard.index')">
-                {{ __('+ Добавить') }}
+                {{ __('+ Добавить в план') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('index')">
                 {{ __('Главная') }}

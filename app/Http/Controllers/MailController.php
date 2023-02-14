@@ -39,5 +39,6 @@ class MailController extends Controller
         // Отправляем план ...
 
         Mail::to('izd-sgu@yandex.ru')->send(new SendPlan($plan, $stats));
+        return redirect()->route('dashboard.index');
     }
 }

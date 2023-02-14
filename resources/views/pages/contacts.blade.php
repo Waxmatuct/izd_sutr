@@ -37,29 +37,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 w-full">
+                <div class="p-4 sm:w-1/3 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team"
-                            class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="{{ asset('images/no-foto.jpg') }}">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Карасевич<br> Татьяна Юрьевна </h2>
                             <h3 class="text-gray-500 my-3">Редактор I категории</h3>
                         </div>
                     </div>
                 </div>
-                <div class="p-4 sm:w-1/2 w-full">
+                <div class="p-4 sm:w-1/3 w-full">
                     <div class="h-full flex flex-col items-center justify-center text-center">
-                        <img alt="team"
-                            class="flex-shrink-0 rounded-full w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                            src="{{ asset('images/no-foto.jpg') }}">
                         <div class="flex-grow mt-5">
                             <h2 class="title-font font-bold text-lg leading-snug">Чуранова<br> Елена Валентиновна</h2>
                             <h3 class="text-gray-500 dark:text-gray-400 my-3">Документовед</h3>
                         </div>
                     </div>
                 </div>
+                <div class="p-4 sm:w-1/3 w-full">
+                    <div class="h-full flex flex-col items-center justify-center text-center">
+                        <div class="flex-grow mt-5">
+                            <h2 class="title-font font-bold text-lg leading-snug">Сиротюк<br> Андрей Константинович</h2>
+                            <h3 class="text-gray-500 dark:text-gray-400 my-3">Старший печатник</h3>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 @endsection
