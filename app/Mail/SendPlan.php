@@ -3,15 +3,19 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Collection;
 
 class SendPlan extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $plan;
-    public $stats;
+    protected EloquentCollection|null $plan = null;
+
+    protected Collection|null $stats = null;
+
     /**
      * Create a new message instance.
      *
@@ -30,33 +34,26 @@ class SendPlan extends Mailable
      */
     public function build()
     {
-        $year = date('Y');
-        $m = date('n');
-        if ($m == 1) {
-            $month = 'январь';
-        } elseif ($m == 2) {
-            $month = 'февраль';
-        } elseif ($m == 3) {
-            $month = 'март';
-        } elseif ($m == 4) {
-            $month = 'апрель';
-        } elseif ($m == 5) {
-            $month = 'май';
-        } elseif ($m == 6) {
-            $month = 'июнь';
-        } elseif ($m == 7) {
-            $month = 'июль';
-        } elseif ($m == 8) {
-            $month = 'август';
-        } elseif ($m == 9) {
-            $month = 'сентябрь';
-        }
+        $year = (int) date('Y');
+        $m = (int) date('n');
+        $month = match ($m) {
+            1 => 'январь',
+            2 => 'февраль',
+            3 => 'март',
+            4 => 'апрель',
+            5 => 'май',
+            6 => 'июнь',
+            7 => 'июль',
+            8 => 'август',
+            9 => 'сентябрь',
+        };
 
         return $this->subject('Рассылка РИЦ: список запланированных изданий на ' . $month)->view('emails.sendplan')
             ->with([
                 'year' => $year,
                 'month' => $month,
                 'stats' => $this->stats,
+                'plan' => $this->plan,
             ]);
     }
 }

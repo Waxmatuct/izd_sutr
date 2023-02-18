@@ -4,9 +4,9 @@
 На данный момент план издания выполнен на <strong>{{ $stats['perc'] }}%</strong>. Подробную информацию и отдельную
 статистику по факультетам вы можете посмотреть
 <a href="https://izd.sutr.ru/plan-{{ $year }}" target="_blank" rel="noopener noreferrer">на нашем
-    сайте</a>.<br><br>
+    сайте</a>.<br>
 
-<p><small style="text-align: left">Это информационное письмо. Отвечать на него не нужно.</small></p><br><br>
+<p><small style="text-align: left">Это информационное письмо. Отвечать на него не нужно.</small></p><br>
 <table style="border: 1px solid black; border-collapse: collapse; background: white; font-size: 13px;">
     <caption style="font-weight: bold; text-align: center; font-size: 16px;">Список запланированных изданий на
         {{ $month }}

@@ -28,7 +28,7 @@ class SendPlanByEmail extends Command
      *
      * @var mixed
      */
-    protected $booksService;
+    protected BooksService $booksService;
 
     /**
      * Create a new command instance.
