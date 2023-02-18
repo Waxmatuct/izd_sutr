@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Bar } from "vue-chartjs/legacy";
+import { Bar } from "vue-chartjs";
 
 import {
     Chart as ChartJS,
