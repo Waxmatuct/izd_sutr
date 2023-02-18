@@ -68,7 +68,6 @@
                             class="text-center py-3 px-4 font-normal"
                             v-html="highlightMatches(book.author)"
                         >
-                            {{ book.author }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             {{ book.title }}

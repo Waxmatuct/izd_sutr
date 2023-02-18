@@ -1,8 +1,8 @@
 <template>
     <Bar
-        :chart-options="chartOptions"
-        :chart-data="chartData"
-        :chart-id="chartId"
+        :options="chartOptions"
+        :data="chartData"
+        id="chartId"
         :dataset-id-key="datasetIdKey"
         :plugins="plugins"
         :css-classes="cssClasses"

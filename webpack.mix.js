@@ -50,6 +50,6 @@ if (mix.inProduction()) {
 
 mix.webpackConfig({
     output: {
-        chunkFilename: "js/vuejs_code_split/[name].js",
+        chunkFilename: "js/vuejs_chunks/[name].js",
     },
 });
