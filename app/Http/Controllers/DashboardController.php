@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Month;
 use App\Services\BooksService;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class DashboardController extends Controller
 {
-    private $booksService;
 
+    protected BooksService $booksService;
+
+    /**
+     * Конструктор сервис-контейнера
+     *
+     * @param BooksService $booksService
+     */
     public function __construct(
         BooksService $booksService
     ) {
@@ -16,23 +24,22 @@ class DashboardController extends Controller
     }
 
     /**
-     * index
+     * Стартовая дашборда
      *
-     * @return void
+     * @return RedirectResponse
      */
-    public function index()
+    public function index(): RedirectResponse
     {
         return redirect()->route('dashboard.year', '2023');
-        // return view('dashboard.index');
     }
 
     /**
-     * year
+     * Вывод плана по году
      *
-     * @param  mixed $year
-     * @return void
+     * @param int $year
+     * @return View
      */
-    public function year($year)
+    public function year(int $year): View
     {
         $books = $this->booksService->getBooksOfYearWithTrashed($year);
 

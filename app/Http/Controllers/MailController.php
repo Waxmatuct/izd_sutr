@@ -7,7 +7,13 @@ use Illuminate\Http\RedirectResponse;
 
 class MailController extends Controller
 {
-    public function sendPlan(): RedirectResponse
+
+    /**
+     * Отправляем почту в очередь
+     *
+     * @return RedirectResponse
+     */
+    public function __invoke(): RedirectResponse
     {
         SendEmail::dispatch()->onQueue('email');
 
