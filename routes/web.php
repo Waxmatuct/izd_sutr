@@ -41,7 +41,7 @@ Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(func
     Route::get('plan-{year}', [DashboardController::class, 'year'])->name('year');
 
     Route::resource('book', BookResource::class);
-    Route::get('/send-plan', [MailController::class]);
+    Route::get('/send-plan', MailController::class);
 });
 
 require __DIR__ . '/auth.php';
