@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new SendEmail())->timezone('Europe/Moscow')->mondays()->at('10:00');
-//        $schedule->command('plan:send')->timezone('Europe/Moscow')->mondays()->at('10:00');
+        $schedule->job(new SendEmail, 'email')->timezone('Europe/Moscow')->mondays()->at('11:00');
+        //        $schedule->command('plan:send')->timezone('Europe/Moscow')->mondays()->at('10:00');
     }
 
     /**
