@@ -18,12 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/main.js'])
 
-    <!-- Scripts -->
     @routes
-    <script src="{{ mix('js/main.js') }}" defer></script>
 </head>
 
 <body class="font-sans antialiased bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-400">
@@ -45,15 +42,16 @@
             Разработка приложения - <a href="mailto:pletnevsochi@yandex.ru">Дмитрий Плетнев</a>
         </small>
     </footer>
-    @if (Auth::check())
+    @auth
         <script>
             window.authUser = {!! json_encode(Auth::user()) !!};
         </script>
-    @else
+    @endauth
+    @guest
         <script>
             window.authUser = null;
         </script>
-    @endif
+    @endguest
 
     <script>
         var prevScrollpos = window.pageYOffset;
