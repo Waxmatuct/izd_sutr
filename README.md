@@ -12,11 +12,11 @@
 
 Для разработки можно использовать Laravel Homestead и Vagrant.
 
-##Установка
+## Установка
 
-`composer install`
-`yarn install`
-`php artisan generate:key`
-`php artisan migrate --seed`
-`yarn build`
-`php artisan queue:work --queue="email"`
+1. `composer install`
+2. `yarn install`
+3. `php artisan generate:key`
+4. `php artisan migrate --seed`
+5. `yarn build`
+6. `php artisan queue:work --queue="email"`
