@@ -67,8 +67,7 @@
                         <td
                             class="text-center py-3 px-4 font-normal"
                             v-html="highlightMatches(book.author)"
-                        >
-                        </td>
+                        ></td>
                         <td class="text-center py-3 px-4 font-normal">
                             {{ book.title }}
                         </td>
@@ -129,7 +128,7 @@ export default {
     methods: {
         getBooks() {
             axios.get("/api/plan-" + `${this.year}`).then((response) => {
-                this.books = response.data.book;
+                this.books = response.data;
             });
         },
         highlightMatches(text) {

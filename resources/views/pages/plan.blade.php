@@ -24,7 +24,7 @@
                     <li>рецензия;</li>
                     <li>выписка из протокола заседания кафедры;</li>
                     <li>
-                        <a href="https://disk.yandex.ru/i/I1o6BxWCAaUEIQ" target="_blank" rel="noreferrer noopener">
+                        <a href="https://disk.yandex.ru/i/13AM8HJtU8PfVA" target="_blank" rel="noreferrer noopener">
                             справка о результатах проверки на наличие заимствований
                         </a> (утверждена <a href="https://disk.yandex.ru/i/_-2X9yooKtO4kg" target="_blank"
                             rel="noreferrer noopener">
@@ -32,7 +32,7 @@
                         </a> от 16.12.2020);
                     </li>
                     <li>
-                        <a href="https://disk.yandex.ru/i/fPjK_6lWD6HN-Q" target="_blank" rel="noreferrer noopener">
+                        <a href="https://disk.yandex.ru/i/apClFj9uriCVmQ" target="_blank" rel="noreferrer noopener">
                             заявка на учебное плановое издание
                         </a>;
                     </li>

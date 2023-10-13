@@ -13,7 +13,7 @@
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
                 <div class="grid sm:grid-cols-3 gap-4 text-sm">
                     <div class="flex flex-col">
-                        <a class="text-center" href="https://disk.yandex.ru/i/fPjK_6lWD6HN-Q">
+                        <a class="text-center" href="https://disk.yandex.ru/i/apClFj9uriCVmQ">
                             <img src="{{ asset('images/zayavka-na-uchebnie-planovie-izdaniya.png') }}"
                                 alt="Форма заявки на учебные плановые издания">
                         </a>
@@ -27,7 +27,7 @@
                         <span class="text-center my-3">Форма заявки на издание за счет средств заказчика</span>
                     </div>
                     <div class="flex flex-col">
-                        <a class="text-center" href="https://disk.yandex.ru/i/2vATSEgSA5-3bQ">
+                        <a class="text-center" href="https://disk.yandex.ru/i/GflPtZcqrG1WKw">
                             <img src="{{ asset('images/zayavka-na-blanochnuyu-produkciu.png') }}"
                                 alt=" Форма заявки на бланочную продукцию">
                         </a>

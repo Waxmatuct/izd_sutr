@@ -49,12 +49,12 @@
                         >
                             Статус
                         </th>
-<!--                        <th-->
-<!--                            scope="col"-->
-<!--                            class="text-center py-3 px-4 whitespace-nowrap"-->
-<!--                        >-->
-<!--                            Нов. статус-->
-<!--                        </th>-->
+                        <!--                        <th-->
+                        <!--                            scope="col"-->
+                        <!--                            class="text-center py-3 px-4 whitespace-nowrap"-->
+                        <!--                        >-->
+                        <!--                            Нов. статус-->
+                        <!--                        </th>-->
                         <th
                             scope="col"
                             class="text-center py-3 px-4 whitespace-nowrap"
@@ -83,13 +83,12 @@
                             </a>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            {{ book['faculty']['short_title'] }}
+                            {{ book["faculty"]["short_title"] }}
                         </td>
                         <td
                             class="text-center py-3 px-4 font-normal"
                             v-html="highlightMatches(book.author)"
-                        >
-                        </td>
+                        ></td>
                         <td class="text-center py-3 px-4 font-normal">
                             {{ book.title }}
                         </td>
@@ -97,7 +96,7 @@
                             {{ book.type.title }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
-                            {{ book['disciple'] }}
+                            {{ book["disciple"] }}
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             {{ book.size }}
@@ -110,7 +109,7 @@
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             <span v-if="book['is_handed'] === 1">
-                                {{ formatMonth(book['handed_in']) }}
+                                {{ formatMonth(book["handed_in"]) }}
                             </span>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
@@ -130,27 +129,29 @@
                                 </svg>
                             </span>
                         </td>
-<!--                        <td class="text-center py-3 px-4 font-normal">-->
-<!--                            <span v-if="book['is_handed'] === 1">-->
-<!--                                {{ book.status }}-->
-<!--                            </span>-->
-<!--                        </td>-->
+                        <!--                        <td class="text-center py-3 px-4 font-normal">-->
+                        <!--                            <span v-if="book['is_handed'] === 1">-->
+                        <!--                                {{ book.status }}-->
+                        <!--                            </span>-->
+                        <!--                        </td>-->
                         <td class="text-center py-3 px-4 font-normal">
-                                <select
-                                    v-if="book['is_handed'] === 1"
-                                    v-model="newStatus"
-                                    class="select-css"
-                                    @change="patchStatus(book.id)"
+                            <select
+                                v-if="book['is_handed'] === 1"
+                                v-model="newStatus"
+                                class="select-css"
+                                @change="patchStatus(book.id)"
+                            >
+                                <option value="" disabled>
+                                    {{ book.status }}
+                                </option>
+                                <option
+                                    v-for="status in statuses"
+                                    :key="status.key"
+                                    :value="status"
                                 >
-                                    <option value="" disabled>{{ book.status }}</option>
-                                    <option
-                                        v-for="status in statuses"
-                                        :key="status.key"
-                                        :value="status"
-                                    >
-                                        {{ status }}
-                                    </option>
-                                </select>
+                                    {{ status }}
+                                </option>
+                            </select>
                         </td>
                         <td class="text-center py-3 px-4 font-normal">
                             <div v-if="book['deleted_at'] == null">
@@ -232,7 +233,7 @@ export default {
     methods: {
         getBooks() {
             axios.get("/api/all/plan-" + `${this.year}`).then((response) => {
-                this.books = response.data.book;
+                this.books = response.data;
             });
         },
         highlightMatches(text) {
