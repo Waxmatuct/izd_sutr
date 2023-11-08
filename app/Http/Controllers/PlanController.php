@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Faculty;
 use App\Services\BooksOfFacultyService;
 use App\Services\BooksService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 
 class PlanController extends Controller
 {
@@ -40,9 +43,9 @@ class PlanController extends Controller
      * year
      *
      * @param int $year
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function year(int $year): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function year(int $year): View|Factory|Application
     {
         $books = $this->booksService->getBooksOfYear($year);
 
@@ -54,10 +57,12 @@ class PlanController extends Controller
 
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
 
-        if ($year < 2022) {
-            $faculties = Faculty::whereNotIn('slug', ['feip', 'fitim', 'none'])->withTrashed()->get();
-        } else {
+        if ($year >= 2023) {
             $faculties = Faculty::where('slug', '!=', 'none')->get();
+        } else if ($year == 2022) {
+            $faculties = Faculty::withTrashed()->whereNotIn('slug', ['uf', 'feipu', 'fiict', 'none'])->get();
+        } else {
+            $faculties = Faculty::withTrashed()->whereNotIn('slug', ['feip', 'fitim', 'fiict', 'none'])->get();
         }
 
         $currentYear = date('Y');
@@ -106,9 +111,9 @@ class PlanController extends Controller
      *
      * @param int $year
      * @param mixed $slug
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
-    public function faculty(int $year, mixed $slug): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function faculty(int $year, mixed $slug): View|Factory|Application
     {
         $faculty = $this->booksOfFacultyService->getFaculty($slug);
 
