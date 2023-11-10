@@ -6,11 +6,11 @@
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-5">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-6 sm:mb-12">
+        <div class="mb-5 flex w-full flex-col px-5">
+            <h1 class="mb-6 text-center text-3xl font-bold title-font sm:mb-12 sm:text-4xl">
                 План издания учебной, учебно-методической и научной литературы<br>на {{ $year }} год
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="mx-auto text-left leading-normal entry-content space-y-4 sm:text-lg lg:w-3/4">
                 <p><a href="#plan">План издания учебной и учебно-методической литературы на
                         {{ $year }}
                         год</a> утвержден и подписан ректором.</p>
@@ -44,23 +44,23 @@
                             rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/IgDfuGVavA3knQ"
                             target="_blank" rel="noreferrer noopener">
                             .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом
-                            согласования (<a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
-                                rel="noreferrer noopener">.pdf</a>),
+                            согласования (</strong><a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
+                                rel="noreferrer noopener">.pdf</a><strong>),
                             подписанным правовым управлением</strong>.
                     </li>
                 </ul>
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold mt-10 mb-5">
+                    <h2 class="mt-10 mb-5 text-2xl font-bold sm:text-3xl">
                         Показатели и статистика выполнения
                     </h2>
                     <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
                         :size="{{ $size }}"></stats-component>
-                    <div class="square w-full p-7 rounded-lg shadow-xl my-7">
+                    <div class="my-7 w-full rounded-lg p-7 shadow-xl square">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                         {{-- <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas> --}}
                     </div>
                     <div class="mx-auto mt-12">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
+                        <h2 class="mb-5 text-2xl font-bold sm:text-3xl">Статистика по
                             факультетам</h2>
                         @foreach ($faculties as $faculty)
                             <a class="inline-block"
@@ -70,14 +70,14 @@
                         @endforeach
                     </div>
                     <div class="mx-auto mt-12">
-                        <h2 id="plan" class="text-2xl sm:text-3xl font-bold mb-5">План
+                        <h2 id="plan" class="mb-5 text-2xl font-bold sm:text-3xl">План
                             издания учебной
                             литературы на {{ $year }} год</h2>
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
                         <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
                             материально-технического снабжения.</p>
                         @auth
-                            <p class="text-sm mt-5">
+                            <p class="mt-5 text-sm">
                                 Издано: <strong>{{ $published }}</strong>, на калькуляции:
                                 <strong>{{ $in_calculation }}</strong>, отпечатано:
                                 <strong>{{ $printed }}</strong>, в печати: <strong>{{ $in_print }}</strong>, в

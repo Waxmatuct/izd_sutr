@@ -1,13 +1,13 @@
 <template>
     <div
-        id="top-menu"
-        class="bg-white dark:bg-gray-800 flex items-center justify-between flex-wrap p-3 sm:px-6 sm:py-3 fixed w-full z-10 top-0 shadow-lg"
+        id="navbar"
+        class="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between bg-white p-3 shadow-lg dark:bg-gray-800 sm:px-6 sm:py-3"
     >
         <!--Toggle button (hidden on large screens)-->
         <button
             @click="isOpen = !isOpen"
             type="button"
-            class="absolute left-4 top-8 block lg:hidden text-gray-500 dark:text-gray-300 focus:outline-none"
+            class="absolute top-8 left-4 block text-gray-500 focus:outline-none dark:text-gray-300 lg:hidden"
             :class="{ 'transition transform-180': isOpen }"
         >
             <svg
@@ -29,19 +29,19 @@
             </svg>
         </button>
         <!--Logo etc-->
-        <div class="flex items-center flex-shrink-1 ml-12">
-            <a class="flex title-font items-center" :href="homeUrl">
-                <img src="/images/logo.png" alt="" class="w-16 h-16" />
-                <div class="sm:flex flex-col ml-2">
+        <div class="ml-12 flex items-center flex-shrink-1">
+            <a class="flex items-center title-font" :href="homeUrl">
+                <img src="/images/logo.png" alt="" class="h-16 w-16"/>
+                <div class="ml-2 flex-col sm:flex">
                     <h1
-                        class="hidden sm:block text-sm font-extrabold md:text-lg leading-5 mb-2 md:mb-0"
+                        class="mb-2 hidden text-sm font-extrabold leading-5 sm:block md:mb-0 md:text-lg"
                     >
                         Редакционно-издательский центр СГУ
                     </h1>
-                    <h1 class="text-xl sm:hidden font-extrabold leading-5">
+                    <h1 class="text-xl font-extrabold leading-5 sm:hidden">
                         РИЦ СГУ
                     </h1>
-                    <span class="text-xs md:text-sm leading-4">
+                    <span class="text-xs leading-4 md:text-sm">
                         Информационно-справочный ресурс
                     </span>
                 </div>
@@ -49,18 +49,18 @@
         </div>
         <!--Menu-->
         <div
-            class="w-full flex-grow lg:flex lg:items-center lg:w-auto"
+            class="w-full flex-grow lg:flex lg:w-auto lg:items-center"
             :class="{ 'block shadow-3xl': isOpen, hidden: !isOpen }"
         >
             <ul
-                class="pt-6 lg:pt-0 list-reset lg:flex justify-center flex-1 items-center text-gray-600 dark:text-gray-300"
+                class="flex-1 items-center justify-center pt-6 text-gray-600 list-reset dark:text-gray-300 lg:flex lg:pt-0"
             >
-                <li class="ml-auto mr-3">
+                <li class="mr-3 ml-auto">
                     <a
-                        class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                        class="inline-block rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white"
                         :href="plan.y2023"
                         @click="isOpen = false"
-                        >План издания 2023
+                    >План издания 2023
                     </a>
                 </li>
                 <li
@@ -72,12 +72,11 @@
                     :key="menu.index"
                 >
                     <button
-                        class="flex flex-row justify-between items-center py-2 px-4 no-underline focus:bg-primary-500 focus:text-white hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                        class="flex flex-row items-center justify-between rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white focus:bg-primary-500 focus:text-white"
                     >
                         <span>{{ menu.title }}</span>
-                        <div class="ml-1">
                             <svg
-                                class="fill-current h-4 w-4"
+                                class="ml-1 h-4 w-4 fill-current"
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 20 20"
                             >
@@ -87,20 +86,19 @@
                                     clip-rule="evenodd"
                                 />
                             </svg>
-                        </div>
                     </button>
                     <transition name="slide-fade">
                         <div
                             v-show="menu.dropdown"
-                            class="absolute z-50 min-w-max rounded-md shadow-lg origin-top-left"
+                            class="absolute z-50 min-w-max origin-top-left rounded-md shadow-lg"
                         >
                             <ul
-                                class="bg-white dark:bg-gray-800 dark:text-gray-300 rounded-md ring-1 ring-black dark:ring-white ring-opacity-10 flex flex-col white-space-nowrap overflow-auto"
+                                class="flex flex-col overflow-auto rounded-md bg-white ring-1 ring-black ring-opacity-10 white-space-nowrap dark:bg-gray-800 dark:text-gray-300 dark:ring-white"
                             >
                                 <li v-for="item in menu.data" :key="item.index">
                                     <a
                                         :href="item.url"
-                                        class="block hover:text-white hover:bg-primary-500 dark:hover:text-primary-400 py-2 px-5"
+                                        class="block px-5 py-2 hover:bg-primary-500 hover:text-white dark:hover:text-primary-400"
                                     >
                                         {{ item.title }}
                                     </a>
@@ -112,11 +110,11 @@
                 <!-- <li class="mr-3">
                     <switcher></switcher>
                 </li> -->
-                <li class="ml-auto mr-3" v-if="loginRouteExists">
+                <li class="mr-3 ml-auto" v-if="loginRouteExists">
                     <div v-if="this.authUser">
                         <a
                             :href="dashboardUrl"
-                            class="inline-block py-2 px-4 no-underline hover:text-white hover:bg-primary-500 rounded-lg transition-all ease-in-out duration-300"
+                            class="inline-block rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white"
                         >
                             Админка
                         </a>
@@ -137,14 +135,11 @@ export default {
     data() {
         return {
             authUser: window.authUser,
-            isOpen: false,
             currentRoute: route().current(),
-            homeUrl: route("index"),
             dashboardUrl: route("dashboard.index"),
+            homeUrl: route("index"),
+            isOpen: false,
             loginRouteExists: route().has("login"),
-            plan: {
-                y2023: route("year", [2023]),
-            },
             menus: [
                 {
                     id: "author",
@@ -212,15 +207,26 @@ export default {
                     ],
                 },
             ],
+            plan: {
+                y2023: route("year", [2023]),
+            },
+            prevScrollpos: "",
         };
     },
     mounted() {
-        // console.log(this.plan.y2022);
+        window.addEventListener('scroll', this.handleScroll);
+        this.prevScrollpos = window.scrollY;
     },
     methods: {
-        // onLoaded() {
-        //     this.loaded = true;
-        // },
+        handleScroll() {
+            let currentScrollPos = window.scrollY;
+            if (this.prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-128px";
+            }
+            this.prevScrollpos = currentScrollPos;
+        }
     },
 };
 </script>
@@ -229,11 +235,14 @@ export default {
 .slide-fade-enter-active {
     transition: all 0.3s ease;
 }
+
 .slide-fade-leave-active {
     transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
 }
+
 .slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active до версии 2.1.8 */ {
+    /* .slide-fade-leave-active до версии 2.1.8 */
+{
     transform: translateY(10px);
     opacity: 0;
 }
