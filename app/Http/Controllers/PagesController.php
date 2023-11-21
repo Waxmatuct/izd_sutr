@@ -2,39 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+
 class PagesController extends Controller
 {
-    public function index()
+    /**
+     * @return Factory|View|Application
+     */
+    public function index(): Factory|View|Application
     {
         return view('index');
     }
 
-    public function about()
+    /**
+     * @return Factory|View|Application
+     */
+    public function about(): Factory|View|Application
     {
         return view('pages.about');
     }
 
-    public function help()
+    /**
+     * @return Factory|View|Application
+     */
+    public function help(): Factory|View|Application
     {
         return view('pages.help');
     }
 
-    public function paidServices()
+    /**
+     * @return Factory|View|Application
+     */
+    public function paidServices(): Factory|View|Application
     {
         return view('pages.paid-services');
     }
 
-    public function blanks()
+    /**
+     * @return Factory|View|Application
+     */
+    public function blanks(): Factory|View|Application
     {
         return view('pages.blanks');
     }
 
-    public function types()
+    public function types(): Factory|View|Application
     {
         return view('pages.types');
     }
 
-    public function contacts()
+    /**
+     * @return Application|Factory|View
+     */
+    public function contacts(): View|Factory|Application
     {
         return view('pages.contacts');
     }

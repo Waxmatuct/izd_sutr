@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Book;
 use App\Models\Faculty;
 use App\Repositories\Books\BooksRepositoryInterface;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -12,17 +13,29 @@ class BooksOfFacultyService
 {
     private $booksRepository;
 
+    /**
+     * @param BooksRepositoryInterface $booksRepository
+     */
     public function __construct(
         BooksRepositoryInterface $booksRepository
     ) {
         $this->booksRepository = $booksRepository;
     }
 
+    /**
+     * @param $slug
+     * @return Faculty
+     */
     public function getFaculty($slug): Faculty
     {
         return Faculty::where('slug', $slug)->withTrashed()->first();
     }
 
+    /**
+     * @param $year
+     * @param $id
+     * @return Collection
+     */
     public function getBooksOfFaculty($year, $id): Collection
     {
         return $this->booksRepository->booksOfFaculty($year, $id)
@@ -31,6 +44,11 @@ class BooksOfFacultyService
             ->get();
     }
 
+    /**
+     * @param $year
+     * @param $id
+     * @return Collection
+     */
     public function getStatsOfFaculty($year, $id): Collection
     {
         $books = $this->booksRepository->booksOfFaculty($year, $id)->get();
@@ -51,11 +69,21 @@ class BooksOfFacultyService
         return $stats;
     }
 
-    public function getDateOfLastUpdatedBookOfFaculty($year, $id): Book
+    /**
+     * @param $year
+     * @param $id
+     * @return Model
+     */
+    public function getDateOfLastUpdatedBookOfFaculty($year, $id): Model
     {
         return $this->booksRepository->booksOfFaculty($year, $id)->orderBy('updated_at', 'desc')->first();
     }
 
+    /**
+     * @param $year
+     * @param $id
+     * @return Collection
+     */
     public function getCountOfBooksOfFacultyForBarChart($year, $id): Collection
     {
         for ($i = 1; $i < 10; $i++) {
@@ -80,6 +108,11 @@ class BooksOfFacultyService
 
     }
 
+    /**
+     * @param $year
+     * @param $id
+     * @return Collection
+     */
     public function getCountOfHandedBooksOfFacultyForBarChart($year, $id): Collection
     {
         for ($i = 1; $i < 10; $i++) {

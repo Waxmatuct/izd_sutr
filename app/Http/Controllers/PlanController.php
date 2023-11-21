@@ -59,51 +59,35 @@ class PlanController extends Controller
 
         if ($year >= 2023) {
             $faculties = Faculty::where('slug', '!=', 'none')->get();
-        } else if ($year == 2022) {
-            $faculties = Faculty::withTrashed()->whereNotIn('slug', ['uf', 'feipu', 'fiict', 'none'])->get();
         } else {
-            $faculties = Faculty::withTrashed()->whereNotIn('slug', ['feip', 'fitim', 'fiict', 'none'])->get();
+            if ($year == 2022) {
+                $faculties = Faculty::withTrashed()->whereNotIn('slug', ['uf', 'feipu', 'fiict', 'none'])->get();
+            } else {
+                $faculties = Faculty::withTrashed()->whereNotIn('slug', ['feip', 'fitim', 'fiict', 'none'])->get();
+            }
         }
 
         $currentYear = date('Y');
 
-        if ($year == $currentYear) {
-            return view('pages.plan', [
-                'books' => $books,
-                'year' => $year,
-                'count' => $books->count(),
-                'size' => $stats['size'],
-                'sdano' => $stats['sdano'],
-                'perc' => $stats['perc'],
-                'published' => $stats['published'],
-                'in_calculation' => $stats['in_calculation'],
-                'printed' => $stats['printed'],
-                'in_print' => $stats['in_print'],
-                'in_work' => $stats['in_work'],
-                'date' => $date,
-                'counts' => $counts,
-                'is_handed' => $is_handed,
-                'faculties' => $faculties,
-            ]);
-        } else {
-            return view('pages.plan-archived', [
-                'books' => $books,
-                'year' => $year,
-                'count' => $books->count(),
-                'size' => $stats['size'],
-                'sdano' => $stats['sdano'],
-                'perc' => $stats['perc'],
-                'published' => $stats['published'],
-                'in_calculation' => $stats['in_calculation'],
-                'printed' => $stats['printed'],
-                'in_print' => $stats['in_print'],
-                'in_work' => $stats['in_work'],
-                'date' => $date,
-                'counts' => $counts,
-                'is_handed' => $is_handed,
-                'faculties' => $faculties,
-            ]);
-        }
+        $array = [
+            'books' => $books,
+            'year' => $year,
+            'count' => $books->count(),
+            'size' => $stats['size'],
+            'sdano' => $stats['sdano'],
+            'perc' => $stats['perc'],
+            'published' => $stats['published'],
+            'in_calculation' => $stats['in_calculation'],
+            'printed' => $stats['printed'],
+            'in_print' => $stats['in_print'],
+            'in_work' => $stats['in_work'],
+            'date' => $date,
+            'counts' => $counts,
+            'is_handed' => $is_handed,
+            'faculties' => $faculties,
+        ];
+
+        return $year == $currentYear ? view('pages.plan', $array) : view('pages.plan-archived', $array);
     }
 
     /**
@@ -113,7 +97,7 @@ class PlanController extends Controller
      * @param mixed $slug
      * @return Application|Factory|View
      */
-    public function faculty(int $year, mixed $slug): View|Factory|Application
+    public function faculty(int $year, string $slug): View|Factory|Application
     {
         $faculty = $this->booksOfFacultyService->getFaculty($slug);
 
@@ -139,7 +123,6 @@ class PlanController extends Controller
             'date' => $date,
             'counts' => $counts,
             'is_handed' => $is_handed,
-
         ]);
     }
 }

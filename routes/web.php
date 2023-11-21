@@ -35,11 +35,8 @@ Route::view('/paid-services', 'pages.paid-services')->name('paid-services');
 Route::view('/types', 'pages.types')->name('types');
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
-
     Route::get('/', [DashboardController::class, 'index'])->name('index');
-
     Route::get('plan-{year}', [DashboardController::class, 'year'])->name('year');
-
     Route::resource('book', BookResource::class);
     Route::get('/send-plan', MailController::class)->name('sendPlan');
 });

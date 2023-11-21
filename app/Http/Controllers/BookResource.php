@@ -7,6 +7,10 @@ use App\Models\Faculty;
 use App\Models\Month;
 use App\Models\Type;
 use App\Services\BooksService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class BookResource extends Controller
@@ -30,24 +34,14 @@ class BookResource extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): Application|Factory|View
     {
         return view('dashboard.book.create', [
-            'faculties' => Faculty::get(),
+            'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
         ]);
@@ -56,24 +50,11 @@ class BookResource extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        // $request->validate([
-        //     'item' => 'required',
-        //     'faculty_id' => 'required',
-        //     'author' => 'required',
-        //     'title' => 'required',
-        //     'type_id' => 'required',
-        //     'disciple' => 'required',
-        //     'size' => 'required',
-        //     'amount' => 'required',
-        //     'month_id' => 'required',
-        // ]);
-
-        // dd($request->all());
         Book::create($request->all());
 
         return redirect()->route('dashboard.book.create')
@@ -81,27 +62,16 @@ class BookResource extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book  $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
-    {
-        //
-    }
-
-    /**
      * edit
      *
-     * @param  mixed $id
-     * @return void
+     * @param Book $book
+     * @return Application|Factory|View
      */
-    public function edit(Book $book)
+    public function edit(Book $book): View|Factory|Application
     {
         $book = [
             'book' => $this->booksService->findBook($book),
-            'faculties' => Faculty::get(),
+            'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => Month::all(),
             'statuses' => ['В работе', 'В печати', 'Отпечатано', 'На калькуляции', 'Издано'],
@@ -113,11 +83,11 @@ class BookResource extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Book  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Book $book
+     * @return RedirectResponse
      */
-    public function update(Request $request, Book $book)
+    public function update(Request $request, Book $book): RedirectResponse
     {
         $this->booksService->findBook($book)->update($request->all());
 
@@ -130,9 +100,9 @@ class BookResource extends Controller
      * destroy
      *
      * @param  mixed $book
-     * @return void
+     * @return RedirectResponse
      */
-    public function destroy(Book $book)
+    public function destroy(Book $book): RedirectResponse
     {
         $this->booksService->findBook($book)->delete();
 

@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Book;
 use App\Repositories\Books\BooksRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -31,10 +32,10 @@ class BooksService
     /**
      * findBook
      *
-     * @param  mixed $id
-     * @return void
+     * @param mixed $id
+     * @return Book
      */
-    public function findBook($id): Book
+    public function findBook(int $id): Book
     {
         return $this->booksRepository->findBook($id);
     }
@@ -45,24 +46,19 @@ class BooksService
      * @param  mixed $year
      * @return EloquentCollection
      */
-    public function getBooksOfYear($year): EloquentCollection
+    public function getBooksOfYear(int $year): EloquentCollection
     {
-        $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
-
-        return $books;
+        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
     }
 
     /**
      * getBooksOfYear
      *
-     * @param  mixed $year
      * @return EloquentCollection
      */
     public function getBooksOfCurrentMonth(): EloquentCollection
     {
-        $books = $this->booksRepository->BooksOfCurrentMonth()->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
-
-        return $books;
+        return $this->booksRepository->BooksOfCurrentMonth()->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
     }
 
     /**
@@ -71,11 +67,9 @@ class BooksService
      * @param  mixed $year
      * @return EloquentCollection
      */
-    public function getBooksOfYearWithTrashed($year): EloquentCollection
+    public function getBooksOfYearWithTrashed(int $year): EloquentCollection
     {
-        $books = $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->withTrashed()->orderBy('item', 'asc')->get();
-
-        return $books;
+        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->withTrashed()->orderBy('item', 'asc')->get();
     }
 
     /**
@@ -84,7 +78,7 @@ class BooksService
      * @param  mixed $year
      * @return Collection
      */
-    public function getStatsOfYear($year): Collection
+    public function getStatsOfYear(int $year): Collection
     {
         $books = $this->booksRepository->booksOfYear($year)->get();
         $size = $books->sum('size');
@@ -98,7 +92,7 @@ class BooksService
         $in_print = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В печати'])->count();
         $in_work = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В работе'])->count();
 
-        $stats = collect([
+        return collect([
             'sdano' => $sdano,
             'size' => $size,
             'perc' => $perc,
@@ -108,17 +102,15 @@ class BooksService
             'in_print' => $in_print,
             'in_work' => $in_work
         ]);
-
-        return $stats;
     }
 
     /**
      * getDateOfLastUpdatedBook
      *
-     * @param  mixed $year
-     * @return Book
+     * @param mixed $year
+     * @return Model
      */
-    public function getDateOfLastUpdatedBook($year): Book
+    public function getDateOfLastUpdatedBook(int $year): Model
     {
         return $this->booksRepository->booksOfYear($year)->orderBy('updated_at', 'desc')->first();
     }
@@ -129,7 +121,7 @@ class BooksService
      * @param  mixed $year
      * @return Collection
      */
-    public function getCountOfBooksForBarChart($year): Collection
+    public function getCountOfBooksForBarChart(int $year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
@@ -149,9 +141,7 @@ class BooksService
             "Cентябрь"
         ]);
 
-        $combined = $months->combine($collection);
-
-        return $combined;
+        return $months->combine($collection);
     }
 
     /**
@@ -160,7 +150,7 @@ class BooksService
      * @param  mixed $year
      * @return Collection
      */
-    public function getCountOfHandedBooksForBarChart($year): Collection
+    public function getCountOfHandedBooksForBarChart(int $year): Collection
     {
         for ($i = 1; $i < 10; $i++) {
             $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
@@ -180,12 +170,14 @@ class BooksService
             "Cентябрь"
         ]);
 
-        $combined = $months->combine($collection);
-
-        return $combined;
+        return $months->combine($collection);
     }
 
-    public function restoreBook($id)
+    /**
+     * @param int $id
+     * @return mixed
+     */
+    public function restoreBook(int $id): mixed
     {
         return $this->booksRepository->restoreBook($id);
     }
