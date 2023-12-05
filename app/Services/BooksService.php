@@ -32,10 +32,10 @@ class BooksService
     /**
      * findBook
      *
-     * @param mixed $id
+     * @param $id
      * @return Book
      */
-    public function findBook(int $id): Book
+    public function findBook($id): Book
     {
         return $this->booksRepository->findBook($id);
     }
@@ -174,10 +174,10 @@ class BooksService
     }
 
     /**
-     * @param int $id
+     * @param $id
      * @return mixed
      */
-    public function restoreBook(int $id): mixed
+    public function restoreBook($id): mixed
     {
         return $this->booksRepository->restoreBook($id);
     }
