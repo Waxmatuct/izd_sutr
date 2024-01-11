@@ -67,7 +67,8 @@ class PlanController extends Controller
             }
         }
 
-        $currentYear = date('Y');
+//        $currentYear = date('Y');
+        $currentYear = 2023;
 
         $array = [
             'books' => $books,
