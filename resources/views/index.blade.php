@@ -15,7 +15,7 @@
                 <div>
                     <span class="font-bold">План издания учебной и учебно-методической литературы</span>
                     <ol>
-                        <li><a href="">2022</a> <a href="">2021</a> <a href="">2020</a></li>
+                        <li><a href="">2022</a> <a href="">2021</a><a href="">2020</a></li>
                     </ol>
                 </div>
                 <div>

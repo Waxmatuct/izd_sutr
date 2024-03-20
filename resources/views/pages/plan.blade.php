@@ -57,7 +57,6 @@
                         :size="{{ $size }}"></stats-component>
                     <div class="my-7 w-full rounded-lg p-7 shadow-xl square">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
-                        {{-- <canvas id="myChart" data-values="{{ $counts }}" data-handed="{{ $is_handed }}"></canvas> --}}
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 class="mb-5 text-2xl font-bold sm:text-3xl">Статистика по

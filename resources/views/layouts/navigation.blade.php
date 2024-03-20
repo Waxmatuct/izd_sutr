@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('dashboard.year', '2023')">
                         План 2023
                     </x-nav-link>
+                    <x-nav-link :href="route('dashboard.year', '2024')">
+                        План 2024
+                    </x-nav-link>
                 </div>
             </div>
 

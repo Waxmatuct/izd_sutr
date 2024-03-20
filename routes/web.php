@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return redirect()->route('year', ['year' => 2023]);
+    return redirect()->route('year', ['year' => 2024]);
 })->name('index');
 
 Route::get('/plan-{year}', [PlanController::class, 'year'])->name('year');

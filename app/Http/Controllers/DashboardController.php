@@ -30,7 +30,7 @@ class DashboardController extends Controller
      */
     public function index(): RedirectResponse
     {
-        return redirect()->route('dashboard.year', '2023');
+        return redirect()->route('dashboard.year', '2024');
     }
 
     /**
