@@ -41,8 +41,8 @@ class BookResource extends Controller
     public function create(): Application|Factory|View
     {
         return view('dashboard.book.create', [
-            'faculties' => Faculty::all(),
-            'types' => Type::all(),
+            'faculties' => Faculty::query()->orderBy('title')->get(),
+            'types' => Type::query()->orderBy('title')->get(),
             'months' => Month::all(),
         ]);
     }
