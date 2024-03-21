@@ -123,13 +123,11 @@ class BooksService
      */
     public function getCountOfBooksForBarChart(int $year): Collection
     {
-        for ($i = 1; $i < 10; $i++) {
-            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
-        }
-
-        $collection = collect($array);
-
         if ($year == 2024) {
+            for ($i = 2; $i < 11; $i++) {
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
+            }
+
             $months = collect([
                 "Февраль",
                 "Март",
@@ -142,6 +140,10 @@ class BooksService
                 "Октябрь"
             ]);
         } else {
+            for ($i = 1; $i < 10; $i++) {
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
+            }
+
             $months = collect([
                 "Январь",
                 "Февраль",
@@ -155,6 +157,7 @@ class BooksService
             ]);
         }
 
+        $collection = collect($array);
 
         return $months->combine($collection);
     }
@@ -167,13 +170,11 @@ class BooksService
      */
     public function getCountOfHandedBooksForBarChart(int $year): Collection
     {
-        for ($i = 1; $i < 10; $i++) {
-            $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
-        }
-
-        $collection = collect($array);
-
         if ($year == 2024) {
+            for ($i = 2; $i < 11; $i++) {
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
+            }
+
             $months = collect([
                 "Февраль",
                 "Март",
@@ -186,6 +187,10 @@ class BooksService
                 "Октябрь"
             ]);
         } else {
+            for ($i = 1; $i < 10; $i++) {
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
+            }
+
             $months = collect([
                 "Январь",
                 "Февраль",
@@ -198,6 +203,7 @@ class BooksService
                 "Cентябрь"
             ]);
         }
+        $collection = collect($array);
 
         return $months->combine($collection);
     }
