@@ -45,7 +45,7 @@
                             target="_blank" rel="noreferrer noopener">
                             .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом
                             согласования (</strong><a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
-                                rel="noreferrer noopener">.pdf</a><strong>),
+                            rel="noreferrer noopener">.pdf</a><strong>),
                             подписанным правовым управлением</strong>.
                     </li>
                 </ul>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 class="mb-5 text-2xl font-bold sm:text-3xl">Статистика по
-                            факультетам</h2>
+                            структурным подразделениям</h2>
                         @foreach ($faculties as $faculty)
                             <a class="inline-block"
                                 href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">

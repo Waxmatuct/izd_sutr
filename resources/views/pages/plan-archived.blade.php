@@ -22,7 +22,7 @@
                     </div>
                     <div class="mx-auto mt-12">
                         <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
-                            факультетам</h2>
+                            структурным подразделениям</h2>
                         @foreach ($faculties as $faculty)
                             <a class="inline-block"
                                 href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
