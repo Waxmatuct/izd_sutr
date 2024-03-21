@@ -23,16 +23,16 @@
 
             <form action="{{ route('dashboard.book.store') }}" method="POST" class="w-full">
                 @csrf
-                <div class="grid gap-0 md:grid-cols-3 md:gap-5">
-                    <div class="flex max-w-screen-lg flex-col md:col-span-2">
-                        <div class="___class_+?7___">
+                <div class="grid gap-5 md:grid-cols-3">
+                    <div class="flex max-w-screen-lg flex-col md:col-span-2 space-y-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="title">Номер</label>
                             <input id="item" name="item"
                                 class="rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 w-42 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
-                                type="text" required value="{{ old('item') }}">
+                                type="text" required value="{{ old('item') }}" autofocus>
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="category">Факультет</label>
                             <div class="relative w-max">
                                 <select id="faculty_id" name="faculty_id"
@@ -51,21 +51,21 @@
                             </div>
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="author">Авторы</label>
                             <input id="author" name="author"
                                 class="w-full rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
                                 type="text" required="" value="{{ old('author') }}">
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="slug">Наименование издания</label>
                             <textarea id="title" name="title"
                                 class="w-full rounded border-gray-400 bg-gray-200 px-5 py-2 leading-normal text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
                                 rows="3" required>{{ old('title') }}</textarea>
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="category">Вид издания</label>
                             <div class="relative w-max">
                                 <select id="type_id" name="type_id"
@@ -86,23 +86,23 @@
 
                     </div>
 
-                    <div class="mt-5 flex flex-col md:mt-0 md:w-full">
+                    <div class="space-y-5 flex flex-col md:mt-0 md:w-full">
 
-                        <div class="___class_+?29___">
+                        <div class="flex flex-col h-full">
                             <label class="block text-sm text-gray-600" for="author">Дисциплина</label>
                             <textarea id="disciple" name="disciple"
-                                class="w-full rounded border-gray-400 bg-gray-200 px-5 py-2 leading-normal text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
-                                rows="3" required>{{ old('disciple') }}</textarea>
+                                class="w-full h-full rounded border-gray-400 bg-gray-200 px-5 py-2 leading-normal text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
+                                required>{{ old('disciple') }}</textarea>
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="title">Объем</label>
                             <input id="size" name="size"
                                 class="w-full rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
                                 type="text" required value="{{ old('size') }}">
                         </div>
 
-                        <div class="mt-5">
+                        <div>
                             <label class="block text-sm text-gray-600" for="title">Тираж</label>
                             <input id="amount" name="amount"
                                 class="w-full rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
@@ -110,7 +110,7 @@
                         </div>
 
                         <div class="flex flex-row justify-between">
-                            <div class="mt-5">
+                            <div>
                                 <label class="block text-sm text-gray-600" for="category">Месяц сдачи</label>
                                 <div class="relative w-max">
                                     <select id="month_id" name="month_id"
@@ -129,7 +129,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="mt-5">
+                            <div>
                                 <label class="block text-sm text-gray-600" for="category">Год</label>
                                 <div class="relative w-max">
                                     <select id="year" name="year"
@@ -150,9 +150,9 @@
                         </div>
                     </div>
 
-                    <div class="mt-5 md:col-span-3 md:mt-0">
+                    <div class="md:col-span-3 md:mt-0 flex justify-center">
                         <button type="submit"
-                            class="rounded px-10 py-2 tracking-wider text-white bg-secondary-500 hover:bg-secondary-400">
+                            class="mx-auto rounded px-10 py-2 tracking-wider text-white bg-secondary-500 hover:bg-secondary-400">
                             Отправить
                         </button>
                     </div>

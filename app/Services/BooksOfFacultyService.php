@@ -92,20 +92,35 @@ class BooksOfFacultyService
 
         $collection = collect($array);
 
-        $months = collect(["Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Cентябрь"]);
+        if ($year == 2024) {
+            $months = collect([
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Cентябрь",
+                "Октябрь"
+            ]);
+        } else {
+            $months = collect([
+                "Январь",
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Cентябрь"
+            ]);
+        }
 
         $combined = $months->combine($collection);
 
         return $combined;
-
     }
 
     /**
@@ -121,20 +136,34 @@ class BooksOfFacultyService
 
         $collection = collect($array);
 
-        $months = collect(["Январь",
-            "Февраль",
-            "Март",
-            "Апрель",
-            "Май",
-            "Июнь",
-            "Июль",
-            "Август",
-            "Cентябрь"]);
+        if ($year == 2024) {
+            $months = collect([
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Cентябрь",
+                "Октябрь"
+            ]);
+        } else {
+            $months = collect([
+                "Январь",
+                "Февраль",
+                "Март",
+                "Апрель",
+                "Май",
+                "Июнь",
+                "Июль",
+                "Август",
+                "Cентябрь"
+            ]);
+        }
 
         $combined = $months->combine($collection);
 
         return $combined;
-
     }
-
 }
