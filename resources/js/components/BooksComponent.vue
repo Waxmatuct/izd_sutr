@@ -18,7 +18,7 @@
                             № в плане
                         </th>
                         <th scope="col" class="text-center py-3 px-4">
-                            Факультет
+                            Стр.<br />подразделение
                         </th>
                         <th scope="col" class="text-center py-3 px-4">
                             Авторы
