@@ -1,8 +1,8 @@
 <template>
-    <div class="flex items-center lg:justify-center px-3 py-1">
+    <div class="flex items-center px-3 py-1 lg:justify-center">
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 mr-1 text-gray-800 dark:text-gray-200"
+            class="mr-1 h-5 w-5 text-gray-800 dark:text-gray-200"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -22,7 +22,7 @@
 
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5 ml-1 text-gray-800 dark:text-gray-200"
+            class="ml-1 h-5 w-5 text-gray-800 dark:text-gray-200"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

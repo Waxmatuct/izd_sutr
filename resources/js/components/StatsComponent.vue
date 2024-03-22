@@ -1,25 +1,25 @@
 <template>
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center mb-10">
-        <div class="square p-4 w-full shadow-lg rounded-lg">
-            <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+    <div class="mb-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
+        <div class="w-full rounded-lg p-4 shadow-lg square">
+            <h2 class="text-3xl font-bold data title-font sm:text-5xl">
                 {{ this.count }}
             </h2>
             <p class="text-gray-600">изданий в плане</p>
         </div>
-        <div class="square p-4 w-full shadow-lg rounded-lg">
-            <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+        <div class="w-full rounded-lg p-4 shadow-lg square">
+            <h2 class="text-3xl font-bold data title-font sm:text-5xl">
                 {{ this.sdano }}
             </h2>
             <p class="text-gray-600">принято к изданию</p>
         </div>
-        <div class="square p-4 w-full shadow-lg rounded-lg">
-            <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+        <div class="w-full rounded-lg p-4 shadow-lg square">
+            <h2 class="text-3xl font-bold data title-font sm:text-5xl">
                 {{ this.perc }}%
             </h2>
             <p class="text-gray-600">выполнение плана</p>
         </div>
-        <div class="square p-4 w-full shadow-lg rounded-lg">
-            <h2 class="data title-font font-bold sm:text-5xl text-3xl">
+        <div class="w-full rounded-lg p-4 shadow-lg square">
+            <h2 class="text-3xl font-bold data title-font sm:text-5xl">
                 {{ this.size }}
             </h2>
             <p class="text-gray-600">общий объем уч.-изд. л.</p>

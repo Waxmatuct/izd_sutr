@@ -1,48 +1,48 @@
 <template>
     <div>
-        <div class="lg:w-3/4 lg:px-4 mx-auto">
+        <div class="mx-auto lg:w-3/4 lg:px-4">
             <input
-                class="mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
+                class="mb-5 rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
                 type="text"
                 placeholder="Быстрый поиск по автору"
                 v-model="filter"
             />
         </div>
-        <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
-            <table class="table-auto w-full bg-white text-xs">
+        <div class="mx-auto w-full overflow-auto rounded-lg shadow-xl">
+            <table class="w-full table-auto bg-white text-xs">
                 <thead
-                    class="bg-gray-300 text-gray-800 dark:text-gray-300 dark:bg-gray-700 text-xs"
+                    class="bg-gray-300 text-xs text-gray-800 dark:bg-gray-700 dark:text-gray-300"
                 >
                     <tr>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             № в плане
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Стр.<br />подразделение
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Авторы
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Наименование рукописи
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Вид издания
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Дисциплина
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Объем, уч.изд. л
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">Тираж</th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">Тираж</th>
+                        <th scope="col" class="px-4 py-3 text-center">
                             Срок сдачи
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Принято к изданию
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Статус **
                         </th>
                     </tr>
@@ -58,38 +58,38 @@
                         }"
                         id=""
                     >
-                        <td class="text-center py-3 px-4 font-bold">
+                        <td class="px-4 py-3 text-center font-bold">
                             {{ book.item }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.faculty.short_title }}
                         </td>
                         <td
-                            class="text-center py-3 px-4 font-normal"
+                            class="px-4 py-3 text-center font-normal"
                             v-html="highlightMatches(book.author)"
                         ></td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.title }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.type.title }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.disciple }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.size }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.amount }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.month.name }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                class="text-secondary-500 h-5 w-5 mx-auto"
+                                class="mx-auto h-5 w-5 text-secondary-500"
                                 viewBox="0 0 20 20"
                                 fill="currentColor"
                                 v-if="book.is_handed == 1"
@@ -101,7 +101,7 @@
                                 ></path>
                             </svg>
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <span v-if="book.is_handed == 1">
                                 {{ book.status }}
                             </span>

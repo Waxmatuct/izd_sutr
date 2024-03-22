@@ -1,63 +1,63 @@
 <template>
-    <div class="w-full mx-auto rounded-lg bg-gray-100 text-gray-700">
-        <div class="lg:w-3/4 lg:px-4 mx-auto text-center">
+    <div class="mx-auto w-full rounded-lg bg-gray-100 text-gray-700">
+        <div class="mx-auto text-center lg:w-3/4 lg:px-4">
             <input
-                class="mb-5 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
+                class="mb-5 rounded border-gray-400 bg-gray-200 px-5 py-2 text-gray-700 focus:ring-primary-200 focus:border-primary-500 focus:ring-2"
                 type="text"
                 placeholder="Быстрый поиск по автору"
                 v-model="filter"
             />
         </div>
-        <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
-            <table class="table-auto w-full bg-white text-xs">
+        <div class="mx-auto w-full overflow-auto rounded-lg shadow-xl">
+            <table class="w-full table-auto bg-white text-xs">
                 <thead
-                    class="bg-gray-300 text-gray-800 dark:text-gray-300 dark:bg-gray-700 text-xs"
+                    class="bg-gray-300 text-xs text-gray-800 dark:bg-gray-700 dark:text-gray-300"
                 >
                     <tr>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             № в плане
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Факультет
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Авторы
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Наименование рукописи
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Вид издания
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Дисциплина
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Объем, уч.изд. л
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">Тираж</th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">Тираж</th>
+                        <th scope="col" class="px-4 py-3 text-center">
                             Месяц сдачи
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">
+                        <th scope="col" class="px-4 py-3 text-center">
                             Когда сдано
                         </th>
-                        <th scope="col" class="text-center py-3 px-4">Сдано</th>
+                        <th scope="col" class="px-4 py-3 text-center">Сдано</th>
                         <th
                             scope="col"
-                            class="text-center py-3 px-4 whitespace-nowrap"
+                            class="whitespace-nowrap px-4 py-3 text-center"
                         >
                             Статус
                         </th>
                         <!--                        <th-->
                         <!--                            scope="col"-->
-                        <!--                            class="text-center py-3 px-4 whitespace-nowrap"-->
+                        <!--                            class="whitespace-nowrap px-4 py-3 text-center"-->
                         <!--                        >-->
                         <!--                            Нов. статус-->
                         <!--                        </th>-->
                         <th
                             scope="col"
-                            class="text-center py-3 px-4 whitespace-nowrap"
+                            class="whitespace-nowrap px-4 py-3 text-center"
                         >
                             Удал.
                         </th>
@@ -74,7 +74,7 @@
                             'text-red-400': book['deleted_at'] != null,
                         }"
                     >
-                        <td class="text-center py-3 px-4 font-bold">
+                        <td class="px-4 py-3 text-center font-bold">
                             <a
                                 :href="'/dashboard/book/' + book.id + '/edit'"
                                 title="Правка"
@@ -82,41 +82,41 @@
                                 {{ book.item }}
                             </a>
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book["faculty"]["short_title"] }}
                         </td>
                         <td
-                            class="text-center py-3 px-4 font-normal"
+                            class="px-4 py-3 text-center font-normal"
                             v-html="highlightMatches(book.author)"
                         ></td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.title }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.type.title }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book["disciple"] }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.size }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.amount }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             {{ book.month.name }}
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <span v-if="book['is_handed'] === 1">
                                 {{ formatMonth(book["handed_in"]) }}
                             </span>
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <span v-if="book['is_handed'] === 1">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="text-secondary-500 h-5 w-5 mx-auto"
+                                    class="mx-auto h-5 w-5 text-secondary-500"
                                     viewBox="0 0 20 20"
                                     fill="currentColor"
                                     v-if="book['is_handed'] === 1"
@@ -129,12 +129,12 @@
                                 </svg>
                             </span>
                         </td>
-                        <!--                        <td class="text-center py-3 px-4 font-normal">-->
+                        <!--                        <td class="px-4 py-3 text-center font-normal">-->
                         <!--                            <span v-if="book['is_handed'] === 1">-->
                         <!--                                {{ book.status }}-->
                         <!--                            </span>-->
                         <!--                        </td>-->
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <select
                                 v-if="book['is_handed'] === 1"
                                 v-model="newStatus"
@@ -153,10 +153,10 @@
                                 </option>
                             </select>
                         </td>
-                        <td class="text-center py-3 px-4 font-normal">
+                        <td class="px-4 py-3 text-center font-normal">
                             <div v-if="book['deleted_at'] == null">
                                 <button
-                                    class="delete-btn text-red-300 hover:text-red-600"
+                                    class="text-red-300 delete-btn hover:text-red-600"
                                     title="Удалить запись"
                                     @click="deleteBook(book.id)"
                                     type="button"
@@ -179,7 +179,7 @@
                             </div>
                             <div v-else>
                                 <button
-                                    class="delete-btn text-green-300 hover:text-green-600"
+                                    class="text-green-300 delete-btn hover:text-green-600"
                                     title="Восстановить запись"
                                     @click="restoreBook(book.id)"
                                     type="button"
@@ -190,7 +190,7 @@
                                         viewBox="0 0 24 24"
                                         stroke-width="1.5"
                                         stroke="currentColor"
-                                        class="w-5 h-5"
+                                        class="h-5 w-5"
                                     >
                                         <path
                                             stroke-linecap="round"
