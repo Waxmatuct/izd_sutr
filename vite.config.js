@@ -2,18 +2,17 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 
+const host = "izd.test";
+
 export default defineConfig({
     server: {
-        hmr: {
-            protocol: "ws",
-            https: false,
-            host: "192.168.56.56",
-        },
-        host: "192.168.56.56",
-        https: false,
-        watch: {
-            usePolling: true,
-        },
+        host,
+        hmr: {host},
+        // host: "192.168.56.56",
+        // https: false,
+        // watch: {
+        //     usePolling: true,
+        // },
     },
     plugins: [
         laravel({
