@@ -11,7 +11,6 @@
                 <div id="app">
 
                     <admin-books :year="{{ $year }}"></admin-books>
-                    {{-- @include('dashboard.includes.table') --}}
 
                 </div>
             @else
