@@ -16,8 +16,10 @@
                         год</a> утвержден и подписан ректором.</p>
                 <p>Срок предоставления рукописи указан в плане издания. Последний рабочий день месяца является конечной
                     датой сдачи рукописи с полным комплектом сопроводительных документов. </p>
-                <p>Решение о приеме учебных и учебно-методических работ в производство принимается в течение семи рабочих
-                    дней со дня предоставления автором в РИЦ распечатки текста, его электронного варианта и сопроводительных
+                <p>Решение о приеме учебных и учебно-методических работ в производство принимается в течение семи
+                    рабочих
+                    дней со дня предоставления автором в РИЦ распечатки текста, его электронного варианта и
+                    сопроводительных
                     документов в полном объеме.</p>
                 <p class="text-2xl sm:text-3xl"><strong>Список сопроводительных документов:</strong></p>
                 <ul class="list-disc md:ml-10">
@@ -27,7 +29,7 @@
                         <a href="https://disk.yandex.ru/i/13AM8HJtU8PfVA" target="_blank" rel="noreferrer noopener">
                             справка о результатах проверки на наличие заимствований
                         </a> (утверждена <a href="https://disk.yandex.ru/i/_-2X9yooKtO4kg" target="_blank"
-                            rel="noreferrer noopener">
+                                            rel="noreferrer noopener">
                             приказом № 1100
                         </a> от 16.12.2020);
                     </li>
@@ -37,15 +39,16 @@
                         </a>;
                     </li>
                     <li>лицензионный договор (<a href="https://disk.yandex.ru/i/bmoRYpdLiKTXSw" target="_blank"
-                            rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/NL5JceTtToUn1w"
+                                                 rel="noreferrer noopener">.pdf</a>, <a
+                            href="https://disk.yandex.ru/i/NL5JceTtToUn1w"
                             target="_blank" rel="noreferrer noopener">
                             .doc</a>), акт приема-передачи экземпляра произведения (<a
                             href="https://disk.yandex.ru/i/JUMnuBPAWVcEtQ" target="_blank"
                             rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/IgDfuGVavA3knQ"
-                            target="_blank" rel="noreferrer noopener">
+                                                                   target="_blank" rel="noreferrer noopener">
                             .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом
                             согласования (</strong><a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
-                            rel="noreferrer noopener">.pdf</a><strong>),
+                                                      rel="noreferrer noopener">.pdf</a><strong>),
                             подписанным правовым управлением</strong>.
                     </li>
                 </ul>
@@ -54,7 +57,7 @@
                         Показатели и статистика выполнения
                     </h2>
                     <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                        :size="{{ $size }}"></stats-component>
+                                     :size="{{ $size }}"></stats-component>
                     <div class="my-7 w-full rounded-lg p-7 shadow-xl square">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
@@ -63,7 +66,7 @@
                             структурным подразделениям</h2>
                         @foreach ($faculties as $faculty)
                             <a class="inline-block"
-                                href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
+                               href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
                                 {{ $faculty->title }}
                             </a><br>
                         @endforeach
@@ -88,14 +91,8 @@
 
             </div>
         </div>
-
-        @if ($books->isNotEmpty())
-            <div id="books">
-                <books-component :year="{{ $year }}"></books-component>
-            </div>
-        @else
-            <span>Нет данных</span>
-        @endif
-
+        <div id="books">
+            <books-component :year="{{ $year }}"></books-component>
+        </div>
     </section>
 @endsection

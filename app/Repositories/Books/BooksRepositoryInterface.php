@@ -5,6 +5,7 @@ namespace App\Repositories\Books;
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Builder;
 
+
 interface BooksRepositoryInterface
 {
     public function all();

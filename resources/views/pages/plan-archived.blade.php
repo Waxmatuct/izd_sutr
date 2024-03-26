@@ -16,20 +16,22 @@
                         Показатели и статистика выполнения
                     </h2>
                     <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                        :size="{{ $size }}"></stats-component>
+                                     :size="{{ $size }}"></stats-component>
                     <div class="square w-full p-7 rounded-lg shadow-xl my-7">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
-                    <div class="mx-auto mt-12">
-                        <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
-                            структурным подразделениям</h2>
-                        @foreach ($faculties as $faculty)
-                            <a class="inline-block"
-                                href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
-                                {{ $faculty->title }}
-                            </a><br>
-                        @endforeach
-                    </div>
+                    @if(date('Y')-1 <= $year)
+                        <div class="mx-auto mt-12">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-5">Статистика по
+                                структурным подразделениям</h2>
+                            @foreach ($faculties as $faculty)
+                                <a class="inline-block"
+                                   href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
+                                    {{ $faculty->title }}
+                                </a><br>
+                            @endforeach
+                        </div>
+                    @endif
                     <div class="mx-auto mt-12">
                         <h2 id="plan" class="text-2xl sm:text-3xl font-bold mb-5">План
                             издания учебной
@@ -51,13 +53,9 @@
             </div>
         </div>
 
-        @if ($books->isNotEmpty())
-            <div id="books">
-                <books-component :year="{{ $year }}"></books-component>
-            </div>
-        @else
-            <span>Нет данных</span>
-        @endif
+        <div id="books">
+            <books-component :year="{{ $year }}"></books-component>
+        </div>
 
     </section>
 @endsection

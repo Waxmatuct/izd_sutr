@@ -84,7 +84,7 @@
                         {{ book.amount }}
                     </td>
                     <td class="px-4 py-3 text-center font-normal">
-                        {{ book.month.name }}
+                        {{ book.month }}
                     </td>
                     <td class="px-4 py-3 text-center font-normal">
                         <svg

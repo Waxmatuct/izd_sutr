@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Book;
 use App\Models\Faculty;
 use App\Repositories\Books\BooksRepositoryInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -39,7 +38,7 @@ class BooksOfFacultyService
     public function getBooksOfFaculty($year, $id): Collection
     {
         return $this->booksRepository->booksOfFaculty($year, $id)
-            ->with('faculty', 'type', 'month')
+            ->with('faculty', 'type')
             ->orderBy('month_id')
             ->get();
     }
@@ -87,9 +86,10 @@ class BooksOfFacultyService
     public function getCountOfBooksOfFacultyForBarChart($year, $id): Collection
     {
         if ($year == 2024) {
-
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null])->pluck('month_id')->count();
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null]
+                )->pluck('month_id')->count();
             }
 
             $months = collect([
@@ -105,7 +105,9 @@ class BooksOfFacultyService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null])->pluck('month_id')->count();
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null]
+                )->pluck('month_id')->count();
             }
 
             $months = collect([
@@ -135,9 +137,10 @@ class BooksOfFacultyService
     public function getCountOfHandedBooksOfFacultyForBarChart($year, $id): Collection
     {
         if ($year == 2024) {
-
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null])->pluck('is_handed')->sum();
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null]
+                )->pluck('is_handed')->sum();
             }
 
             $months = collect([
@@ -153,7 +156,9 @@ class BooksOfFacultyService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null])->pluck('is_handed')->sum();
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'faculty_id' => $id, 'deleted_at' => null]
+                )->pluck('is_handed')->sum();
             }
 
             $months = collect([

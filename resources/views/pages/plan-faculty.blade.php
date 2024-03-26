@@ -15,7 +15,7 @@
             </span>
             <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
                 <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                    :size="{{ $size }}"></stats-component>
+                                 :size="{{ $size }}"></stats-component>
                 <div>
                     <div class="square overflow-auto p-7 rounded-lg shadow-xl mb-7">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
@@ -31,7 +31,6 @@
                     </div>
 
                 </div>
-
             </div>
         </div>
 
@@ -78,15 +77,15 @@
                                 {{ $book->amount }}
                             </x-table.td>
                             <x-table.td>
-                                {{ $book->month->name }}
+                                {{ $book->month }}
                             </x-table.td>
                             <x-table.td>
                                 @if ($book->is_handed == 1)
                                     <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary-500 h-5 w-5 mx-auto"
-                                        viewBox="0 0 20 20" fill="currentColor">
+                                         viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd" />
+                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                              clip-rule="evenodd"/>
                                     </svg>
                                 @endif
                             </x-table.td>

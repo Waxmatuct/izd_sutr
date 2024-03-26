@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Enums\BookMonthEnum;
 use App\Enums\MonthEnum;
+use App\Helpers\Helpers;
 use Database\Factories\BookFactory;
 use Eloquent;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -55,6 +59,9 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Book whereTypeId($value)
  * @method static Builder|Book whereUpdatedAt($value)
  * @method static Builder|Book whereYear($value)
+ * @method static Builder|Book onlyTrashed()
+ * @method static Builder|Book withTrashed()
+ * @method static Builder|Book withoutTrashed()
  * @mixin Eloquent
  */
 class Book extends Model
@@ -71,6 +78,7 @@ class Book extends Model
         'size',
         'amount',
         'year',
+        'month',
         'month_id',
         'handed_in',
         'is_handed',
@@ -79,21 +87,48 @@ class Book extends Model
 
     protected $casts = [
         'is_handed' => 'boolean',
+        'month_id' => BookMonthEnum::class,
+        'year' => 'integer',
     ];
 
-    public function faculty()
+    protected $appends = ['month'];
+
+    /**
+     * @return mixed
+     */
+    public function faculty(): mixed
     {
         return $this->belongsTo(Faculty::class)->withTrashed();
     }
 
-    public function type()
+    /**
+     * @return BelongsTo
+     */
+    public function type(): BelongsTo
     {
         return $this->belongsTo(Type::class);
     }
 
-    public function month()
+//    public function month()
+//    {
+//        return $this->belongsTo(Month::class);
+//    }
+
+    /**
+     * @return Attribute
+     */
+    protected function month(): Attribute
     {
-        return $this->belongsTo(Month::class);
+        return Attribute::make(
+            get: fn() => $this->month_id->label(),
+        );
     }
+
+//    protected function monthHanded(): Attribute
+//    {
+//        return Attribute::make(
+//            get: fn() => $this->handed_in->label(),
+//        );
+//    }
 
 }

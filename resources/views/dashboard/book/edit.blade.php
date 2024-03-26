@@ -18,7 +18,7 @@
                     @method('PATCH')
                     <div class="grid md:grid-cols-3 gap-0 md:gap-5">
                         <div class="md:col-span-2 flex flex-col max-w-screen-lg">
-                            <div class="___class_+?6___">
+                            <div>
                                 <label class="block text-sm text-gray-600" for="title">Номер</label>
                                 <input id="item" name="item"
                                        class="w-42 px-5 py-2 text-gray-700 bg-gray-200 rounded border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500"
@@ -111,37 +111,9 @@
                                     <div class="relative w-max">
                                         <select id="month_id" name="month_id"
                                                 class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
-                                            @foreach ($months as $month)
-                                                @if ($book->month_id === $month->id)
-                                                    <option selected="selected" value="{{ $month->id }}">
-                                                        {{ $month->name }}</option>
-                                                @else
-                                                    <option value="{{ $month->id }}">{{ $month->name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                        <span
-                                            class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
-                                            <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                                 stroke-linejoin="round" stroke-width="2" class="w-4 h-4"
-                                                 viewBox="0 0 24 24">
-                                                <path d="M6 9l6 6 6-6"></path>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="mt-5">
-                                    <label class="block text-sm text-gray-600" for="category">Сдано</label>
-                                    <div class="relative w-max">
-                                        <select id="handed_in" name="handed_in"
-                                                class="text-gray-600 bg-gray-200 rounded appearance-none py-2 border-gray-400 focus:ring-2 focus:ring-primary-200 focus:border-primary-500 text-base pl-3 pr-10">
-                                            @foreach ($months as $month)
-                                                @if ($book->handed_in === $month->id)
-                                                    <option selected="selected" value="{{ $book->handed_in }}">
-                                                        {{ $month->name }}</option>
-                                                @else
-                                                    <option value="{{ $month->id }}">{{ $month->name }}</option>
-                                                @endif
+                                            @foreach ($months as $key=>$month)
+                                                <option
+                                                    value="{{ $key }}" {{ $book->month_id->value === $key ? 'selected="selected"' : '' }}>{{ $month }}</option>
                                             @endforeach
                                         </select>
                                         <span

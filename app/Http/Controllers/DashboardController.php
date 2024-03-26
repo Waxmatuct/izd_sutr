@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Month;
 use App\Services\BooksService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -41,12 +40,12 @@ class DashboardController extends Controller
      */
     public function year(int $year): View
     {
-        $books = $this->booksService->getBooksOfYearWithTrashed($year);
+//        $books = $this->booksService->getBooksOfYearWithTrashed($year);
 
         return view('dashboard.plan', [
-            'books' => $books,
+//            'books' => $books,
             'year' => $year,
-            'months' => Month::all(),
+//            'months' => BookMonthEnum::keyLabels(),
         ]);
     }
 }

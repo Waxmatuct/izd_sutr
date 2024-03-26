@@ -47,7 +47,7 @@ class PlanController extends Controller
      */
     public function year(int $year): View|Factory|Application
     {
-        $books = $this->booksService->getBooksOfYear($year);
+        $books_count = $this->booksService->getCountOfBooksOfYear($year);
 
         $stats = $this->booksService->getStatsOfYear($year);
 
@@ -61,9 +61,10 @@ class PlanController extends Controller
             $faculties = Faculty::where('slug', '!=', 'none')->get();
         } else {
             if ($year == 2023) {
-                $faculties = Faculty::withTrashed()->whereNotIn('slug', ['uf', 'feipu', 'fiict', 'nic', 'unpi', 'none'])->get();
+                $faculties = Faculty::whereNotIn('slug', ['nic', 'unpi', 'none']
+                )->get();
             } else {
-                $faculties = Faculty::withTrashed()->whereNotIn('slug', ['feip', 'fitim', 'fiict', 'nic', 'unpi', 'none'])->get();
+                $faculties = Faculty::withTrashed()->get();
             }
         }
 
@@ -71,9 +72,9 @@ class PlanController extends Controller
 //        $currentYear = 2023;
 
         $array = [
-            'books' => $books,
+//            'books' => $books,
             'year' => $year,
-            'count' => $books->count(),
+            'count' => $books_count,
             'size' => $stats['size'],
             'sdano' => $stats['sdano'],
             'perc' => $stats['perc'],

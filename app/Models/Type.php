@@ -2,22 +2,26 @@
 
 namespace App\Models;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Type
  *
  * @property int $id
  * @property string $title
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Book[] $books
+ * @property-read Collection|Book[] $books
  * @property-read int|null $books_count
- * @method static \Illuminate\Database\Eloquent\Builder|Type newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Type newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Type query()
- * @method static \Illuminate\Database\Eloquent\Builder|Type whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Type whereTitle($value)
- * @mixin \Eloquent
+ * @method static Builder|Type newModelQuery()
+ * @method static Builder|Type newQuery()
+ * @method static Builder|Type query()
+ * @method static Builder|Type whereId($value)
+ * @method static Builder|Type whereTitle($value)
+ * @mixin Eloquent
  */
 class Type extends Model
 {
@@ -27,7 +31,8 @@ class Type extends Model
         'title',
     ];
 
-    public function books() {
+    public function books(): HasMany
+    {
         return $this->hasMany(Book::class);
     }
 }

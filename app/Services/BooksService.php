@@ -33,7 +33,7 @@ class BooksService
      * findBook
      *
      * @param $id
-     * @return Book
+     *
      */
     public function findBook($id): Book
     {
@@ -43,12 +43,23 @@ class BooksService
     /**
      * getBooksOfYear
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return EloquentCollection
      */
     public function getBooksOfYear(int $year): EloquentCollection
     {
-        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
+        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type')->orderBy('item', 'asc')->get();
+    }
+
+    /**
+     * Кол-во
+     *
+     * @param mixed $year
+     * @return int
+     */
+    public function getCountOfBooksOfYear(int $year): int
+    {
+        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type')->count();
     }
 
     /**
@@ -58,36 +69,43 @@ class BooksService
      */
     public function getBooksOfCurrentMonth(): EloquentCollection
     {
-        return $this->booksRepository->BooksOfCurrentMonth()->with('faculty', 'type', 'month')->orderBy('item', 'asc')->get();
+        return $this->booksRepository->BooksOfCurrentMonth()->with('faculty', 'type')->orderBy(
+            'item',
+            'asc'
+        )->get();
     }
 
     /**
      * getBooksOfYear
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return EloquentCollection
      */
     public function getBooksOfYearWithTrashed(int $year): EloquentCollection
     {
-        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type', 'month')->withTrashed()->orderBy('item', 'asc')->get();
+        return $this->booksRepository->booksOfYear($year)->with('faculty', 'type')->withTrashed()->orderBy(
+            'item',
+            'asc'
+        )->get();
     }
 
     /**
      * getStatsOfYear
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Collection
      */
     public function getStatsOfYear(int $year): Collection
     {
-        $books = $this->booksRepository->booksOfYear($year)->get();
-        $size = $books->sum('size');
+//        $books = $this->booksRepository->booksOfYear($year)->get();
+        $size = $this->booksRepository->booksOfYear($year)->sum('size');
         $sdano_listov = $this->booksRepository->booksOfYearIsHanded($year)->sum('size');
         $sdano = $this->booksRepository->booksOfYearIsHanded($year)->count();
         $perc = $sdano_listov / $size * 100;
         $perc = round($perc);
         $published = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Издано'])->count();
-        $in_calculation = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'На калькуляции'])->count();
+        $in_calculation = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'На калькуляции']
+        )->count();
         $printed = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Отпечатано'])->count();
         $in_print = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В печати'])->count();
         $in_work = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В работе'])->count();
@@ -118,14 +136,15 @@ class BooksService
     /**
      * getCountOfBooksForBarChart
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Collection
      */
     public function getCountOfBooksForBarChart(int $year): Collection
     {
         if ($year == 2024) {
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                )->pluck('month_id')->count();
             }
 
             $months = collect([
@@ -141,7 +160,8 @@ class BooksService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('month_id')->count();
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                )->pluck('month_id')->count();
             }
 
             $months = collect([
@@ -165,14 +185,15 @@ class BooksService
     /**
      * getCountOfHandedBooksForBarChart
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Collection
      */
     public function getCountOfHandedBooksForBarChart(int $year): Collection
     {
         if ($year == 2024) {
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                )->pluck('is_handed')->sum();
             }
 
             $months = collect([
@@ -188,7 +209,8 @@ class BooksService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null])->pluck('is_handed')->sum();
+                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                )->pluck('is_handed')->sum();
             }
 
             $months = collect([

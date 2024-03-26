@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Book;
-use Illuminate\Http\Request;
-use App\Services\BooksService;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\BookCollection;
 use App\Services\BooksOfFacultyService;
+use App\Services\BooksService;
+use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
@@ -36,20 +34,17 @@ class PlanController extends Controller
     /**
      * year
      *
-     * @param  mixed $year
-     * @return void
+     * @param mixed $year
+     * @return string
      */
-    public function year($year)
+    public function year($year): string
     {
-        // $plan = new BookCollection($this->booksService->getBooksOfYear($year));
-        $plan = $this->booksService->getBooksOfYear($year)->toJson();
-        // dd($plan);
-        return $plan;
+        return $this->booksService->getBooksOfYear($year)->toJson();
     }
 
     public function yearWithTrashed($year)
     {
-        return $this->booksService->getBooksOfYearWithTrashed($year)->toJson();
+        return $this->booksService->getBooksOfYearWithTrashed($year);
     }
 
     public function deleteBook($id)

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\BookMonthEnum;
 use App\Models\Book;
 use App\Models\Faculty;
-use App\Models\Month;
 use App\Models\Type;
 use App\Services\BooksService;
 use Illuminate\Contracts\Foundation\Application;
@@ -43,7 +43,7 @@ class BookResource extends Controller
         return view('dashboard.book.create', [
             'faculties' => Faculty::query()->orderBy('title')->get(),
             'types' => Type::query()->orderBy('title')->get(),
-            'months' => Month::all(),
+            'months' => BookMonthEnum::keyLabels(),
         ]);
     }
 
@@ -70,12 +70,14 @@ class BookResource extends Controller
     public function edit(Book $book): View|Factory|Application
     {
         $book = [
-            'book' => $this->booksService->findBook($book),
+            'book' => $this->booksService->findBook($book->id),
             'faculties' => Faculty::all(),
             'types' => Type::all(),
-            'months' => Month::all(),
+            'months' => BookMonthEnum::keyLabels(),
             'statuses' => ['В работе', 'В печати', 'Отпечатано', 'На калькуляции', 'Издано'],
         ];
+
+//        dd($book);
 
         return view('dashboard.book.edit', $book);
     }
@@ -89,7 +91,8 @@ class BookResource extends Controller
      */
     public function update(Request $request, Book $book): RedirectResponse
     {
-        $this->booksService->findBook($book)->update($request->all());
+//        dd($request->all());
+        $this->booksService->findBook($book->id)->update($request->all());
 
         return redirect()
             ->back()
@@ -99,12 +102,12 @@ class BookResource extends Controller
     /**
      * destroy
      *
-     * @param  mixed $book
+     * @param mixed $book
      * @return RedirectResponse
      */
     public function destroy(Book $book): RedirectResponse
     {
-        $this->booksService->findBook($book)->delete();
+        $this->booksService->findBook($book->id)->delete();
 
         return redirect()->route('dashboard.year', $book->year)
             ->with('success', 'Запись успешно удалена');

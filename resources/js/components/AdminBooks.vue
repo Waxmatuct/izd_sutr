@@ -39,9 +39,6 @@
                     <th scope="col" class="px-4 py-3 text-center">
                         Месяц сдачи
                     </th>
-                    <th scope="col" class="px-4 py-3 text-center">
-                        Когда сдано
-                    </th>
                     <th scope="col" class="px-4 py-3 text-center">Сдано</th>
                     <th
                         scope="col"
@@ -49,12 +46,6 @@
                     >
                         Статус
                     </th>
-                    <!--                        <th-->
-                    <!--                            scope="col"-->
-                    <!--                            class="whitespace-nowrap px-4 py-3 text-center"-->
-                    <!--                        >-->
-                    <!--                            Нов. статус-->
-                    <!--                        </th>-->
                     <th
                         scope="col"
                         class="whitespace-nowrap px-4 py-3 text-center"
@@ -105,12 +96,7 @@
                         {{ book.amount }}
                     </td>
                     <td class="px-4 py-3 text-center font-normal">
-                        {{ book.month.name }}
-                    </td>
-                    <td class="px-4 py-3 text-center font-normal">
-                            <span v-if="book['is_handed']">
-                                {{ formatMonth(book["handed_in"]) }}
-                            </span>
+                        {{ book.month }}
                     </td>
                     <td class="px-4 py-3 text-center font-normal">
                             <span v-if="book['is_handed']">
@@ -129,11 +115,6 @@
                                 </svg>
                             </span>
                     </td>
-                    <!--                        <td class="px-4 py-3 text-center font-normal">-->
-                    <!--                            <span v-if="book['is_handed'] === 1">-->
-                    <!--                                {{ book.status }}-->
-                    <!--                            </span>-->
-                    <!--                        </td>-->
                     <td class="px-4 py-3 text-center font-normal">
                         <select
                             v-if="book['is_handed']"
@@ -209,15 +190,12 @@
 </template>
 
 <script>
-import moment from "moment";
-
 export default {
     props: ["year"],
     data: function () {
         return {
             books: [],
             filter: "",
-            moment: moment,
             statuses: [
                 "В работе",
                 "В печати",
@@ -279,25 +257,6 @@ export default {
                     // console.log(response);
                 })
                 .catch((error) => alert("Ошибка"));
-        },
-        formatMonth(month) {
-            moment.updateLocale("ru", {
-                months: [
-                    "Январь",
-                    "Февраль",
-                    "Март",
-                    "Апрель",
-                    "Май",
-                    "Июнь",
-                    "Июль",
-                    "Август",
-                    "Сентябрь",
-                    "Октябрь",
-                    "Ноябрь",
-                    "Декабрь",
-                ],
-            });
-            return moment(month, "MM").locale("ru").format("MMMM");
         },
     },
     computed: {

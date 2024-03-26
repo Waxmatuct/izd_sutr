@@ -4,15 +4,16 @@ namespace App\Repositories\Books;
 
 use App\Models\Book;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class BooksRepository implements BooksRepositoryInterface
 {
     /**
      * all
      *
-     * @return void
+     * @return Collection
      */
-    public function all()
+    public function all(): Collection
     {
         return Book::all();
     }
@@ -20,18 +21,18 @@ class BooksRepository implements BooksRepositoryInterface
     /**
      * findBook
      *
-     * @param  mixed $id
-     * @return Book
+     * @param mixed $id
+     *
      */
     public function findBook($id): Book
     {
-        return Book::all()->find($id);
+        return Book::find($id);
     }
 
     /**
      * booksOfYear
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Builder
      */
     public function booksOfYear($year): Builder
@@ -42,7 +43,7 @@ class BooksRepository implements BooksRepositoryInterface
     /**
      * booksOfCurrentMonth
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Builder
      */
     public function booksOfCurrentMonth(): Builder
@@ -55,7 +56,7 @@ class BooksRepository implements BooksRepositoryInterface
     /**
      * booksOfYearIsHanded
      *
-     * @param  mixed $year
+     * @param mixed $year
      * @return Builder
      */
     public function booksOfYearIsHanded($year): Builder
@@ -66,8 +67,8 @@ class BooksRepository implements BooksRepositoryInterface
     /**
      * booksOfFaculty
      *
-     * @param  mixed $year
-     * @param  mixed $id
+     * @param mixed $year
+     * @param mixed $id
      * @return Builder
      */
     public function booksOfFaculty($year, $id): Builder
@@ -78,8 +79,8 @@ class BooksRepository implements BooksRepositoryInterface
     /**
      * booksOfFacultyIsHanded
      *
-     * @param  mixed $year
-     * @param  mixed $id
+     * @param mixed $year
+     * @param mixed $id
      * @return Builder
      */
     public function booksOfFacultyIsHanded($year, $id): Builder
