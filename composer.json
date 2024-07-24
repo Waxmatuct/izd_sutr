@@ -15,14 +15,14 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
         "barryvdh/laravel-ide-helper": "^2.13",
-        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^v1.21.0",
         "laravel/breeze": "^v1.19",
-        "laravel/homestead": "^13.3",
+        "laravel/homestead": "^15.0",
         "laravel/sail": "^1.20",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.0"
+        "phpunit/phpunit": "^10.0",
+        "spatie/laravel-ignition": "^2.0"
     },
     "autoload": {
         "psr-4": {
