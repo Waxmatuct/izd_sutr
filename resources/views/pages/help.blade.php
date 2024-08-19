@@ -28,8 +28,40 @@
 
                 <p>Все настройки документа ниже приведены на примере программы MS Word 2016.</p>
 
+                <div class="border-gray-400 border-2 p-5 max-w-max">
+                    <h2 id="contents" class="text-xl sm:text-2xl font-bold">Содержание</h2>
+                    <ol class="list-decimal mt-5 space-y-3">
+                        <li>
+                            <a href="#page_margins">Поля страниц</a>
+                        </li>
+                        <li>
+                            <a href="#text_formatting">Оформление текста</a>
+                            <ul class="list-disc">
+                                <li><a href="#headings">Заголовки и подзаголовки</a></li>
+                                <li><a href="#additional_texts">Пояснительные и дополнительные тексты</a></li>
+                                <li><a href="#lists_formatting">Пунктуационное оформление перечней</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#illustrations">Иллюстрации</a>
+                        </li>
+                        <li>
+                            <a href="#tables">Таблицы</a>
+                        </li>
+                        <li>
+                            <a href="#appendix">Приложения</a>
+                        </li>
+                        <li>
+                            <a href="#annotations">Аннотация</a>
+                        </li>
+                        <li>
+                            <a href="#bibliography">Оформление списка литературы</a>
+                        </li>
+                    </ol>
+                </div>
+
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Поля страниц</h2>
+                    <h2 id="page_margins" class="text-2xl sm:text-3xl font-bold mt-10">Поля страниц</h2>
                 </div>
 
                 <p>Для того чтобы получился качественный оригинал-макет формата А5, распечатанный на листе А4 (две страницы
@@ -38,8 +70,7 @@
                 <p>Поля страниц (меню «Файл/Параметры страниц/Поля»): верхнее — 2 см; нижнее, левое и правое — 2,5 см. Здесь
                     же в пункте «Источник бумаги» выставить в «От края: до верхнего колонтитула» — 0 см, «до нижнего
                     колонтитула» — 1,6 см.</p>
-                <figure><img src="{{ asset('images/parametri-stranici.png') }}"
-                        alt="Диалоговое окно «Параметры страницы»">
+                <figure><img src="{{ asset('images/parametri-stranici.png') }}" alt="Диалоговое окно «Параметры страницы»">
                     <figcaption class="text-sm text-center mb-10">Диалоговое окно "Параметры страницы"</figcaption>
                 </figure>
                 <p>Далее вставить номера страниц, войдя в меню «Вставка/Номера страниц/Внизу/От центра» (в графе «Номер на
@@ -49,7 +80,7 @@
                     «Файл/Печать/Число страниц на листе 2». Получится на одном листе А4 две страницы издания.</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Оформление текста</h2>
+                    <h2 id="text_formatting" class="text-2xl sm:text-3xl font-bold mt-10">Оформление текста</h2>
                 </div>
 
                 <p>Основной текст должен быть набран <strong>14 размером</strong> шрифта Times New Roman через один
@@ -62,12 +93,12 @@
                     <figcaption class="text-sm text-center mb-10">Настройки шрифта основного текста и абзацев</figcaption>
                 </figure>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Заголовки и подзаголовки</h3>
+                <h3 id="headings" class="text-xl sm:text-2xl font-bold mt-7">Заголовки и подзаголовки</h3>
 
                 <p>Заголовки и подзаголовки отделяют от основного текста сверху одной пробельной строкой и набирают
                     прописными (большими) буквами (без подчеркивания и разрядки) <strong>16 размера</strong> шрифта.</p>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Пояснительные и дополнительные
+                <h3 id="additional_texts" class="text-xl sm:text-2xl font-bold mt-7">Пояснительные и дополнительные
                     тексты</h3>
 
                 <p>Пояснительные и дополнительные тексты (списки условных сокращений и обозначений, примечания, перечни
@@ -81,7 +112,7 @@
                         текстов</figcaption>
                 </figure>
 
-                <h3 id="item-2-1" class="text-xl sm:text-2xl font-bold mt-7">Пунктуационное оформление
+                <h3 id="lists_formatting" class="text-xl sm:text-2xl font-bold mt-7">Пунктуационное оформление
                     перечней</h3>
 
                 <p>а) если после двоеточия стоит номер-цифра со скобкой, то перечисление нужно начинать со строчной буквы; в
@@ -89,13 +120,12 @@
                 <p>б) если после двоеточия стоит номер-цифра с точкой, то перечисление нужно начинать с прописной буквы; в
                     конце фразы ставить точку.</p>
 
-                <figure><img class="mx-auto" src="{{ asset('images/punct.png') }}"
-                        alt="Пунктуационное оформление перечней">
+                <figure><img class="mx-auto" src="{{ asset('images/punct.png') }}" alt="Пунктуационное оформление перечней">
                     <figcaption class="text-sm text-center mb-10">Пунктуационное оформление перечней</figcaption>
                 </figure>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Иллюстрации</h2>
+                    <h2 id="illustrations" class="text-2xl sm:text-3xl font-bold mt-10">Иллюстрации</h2>
                 </div>
 
                 <p>Иллюстрацию располагают после ссылки или возможно ближе к ней, а именно помещают на той же полосе или
@@ -120,7 +150,7 @@
                 </figure>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Таблицы</h2>
+                    <h2 id="tables" class="text-2xl sm:text-3xl font-bold mt-10">Таблицы</h2>
                 </div>
 
                 <p>Таблицы набирают средствами программы MS Word с помощью меню «Вставка - Таблица». Ссылаться на таблицу
@@ -153,7 +183,7 @@
                 <p>Оставлять ячейки таблицы пустыми не допускается, при отсутствии сведений в ячейке ставят тире.</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Приложения</h2>
+                    <h2 id="appendix" class="text-2xl sm:text-3xl font-bold mt-10">Приложения</h2>
                 </div>
 
                 <p>Особенности набора приложений состоят в следующем. В приложения выносят вспомогательные материалы:
@@ -164,7 +194,7 @@
                     «Приложение 2». Если приложение одно, его не нумеруют, ограничиваясь надписью «Приложение».</p>
 
                 <div>
-                    <h2 id="" class="text-2xl sm:text-3xl font-bold mt-10">Аннотация</h2>
+                    <h2 id="annotations" class="text-2xl sm:text-3xl font-bold mt-10">Аннотация</h2>
                 </div>
 
                 <p>Аннотация — это краткая, точная, логические связанная и грамотно изложенная информация о содержании книги
@@ -186,6 +216,12 @@
                 <p>Еще раз напомним, что аннотация включает характеристику темы, про-блемы, цели работы и ее основные
                     выводы.</p>
 
+                <div>
+                    <h2 id="bibliography" class="text-2xl sm:text-3xl font-bold mt-10">Оформление списка литературы</h2>
+                </div>
+
+                <p><a href="https://disk.yandex.ru/i/v_Cp9kLFisxewQ">Инструкция по оформлению списка литературы в
+                        публикации РИЦ.docx</a></p>
             </div>
         </div>
 
