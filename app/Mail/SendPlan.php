@@ -46,6 +46,7 @@ class SendPlan extends Mailable
             7 => 'июль',
             8 => 'август',
             9 => 'сентябрь',
+            10 => 'октябрь'
         };
 
         return $this->subject('Рассылка РИЦ: список запланированных изданий на ' . $month)->view('emails.sendplan')
