@@ -36,7 +36,8 @@
                 class="flex-1 items-center justify-center pt-6 text-gray-600 list-reset dark:text-gray-300 lg:flex lg:pt-0">
                 <li class="mr-3 ml-auto">
                     <a class="inline-block rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white"
-                        :href="plan.y2024" @click="selectMenu">План издания 2024
+                        :href="plan.y2024" @click="isOpen = false">
+                        План издания 2024
                     </a>
                 </li>
                 <li class="relative mr-3" v-for="(menu, index) in menus" :key="index"
@@ -178,13 +179,13 @@ export default {
             prevScrollpos = currentScrollPos;
         }
 
-        const selectMenu = (index) => {
+        const selectMenu = index => {
             menus[index].dropdown.value = !menus[index].dropdown.value
         }
 
-        return { plan, authUser, menus, selectMenu, isOpen, dashboardUrl, loginRouteExists }
+        return { plan, authUser, menus, selectMenu, isOpen, dashboardUrl, homeUrl, loginRouteExists }
     }
-};
+}
 </script>
 
 <style scoped>

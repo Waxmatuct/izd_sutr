@@ -1,15 +1,6 @@
 <template>
-    <Bar
-        :options="chartOptions"
-        :data="chartData"
-        id="chartId"
-        :dataset-id-key="datasetIdKey"
-        :plugins="plugins"
-        :css-classes="cssClasses"
-        :styles="styles"
-        :width="width"
-        :height="height"
-    />
+    <Bar :options="chartOptions" :data="chartData" id="chartId" :dataset-id-key="datasetIdKey" :plugins="plugins"
+        :css-classes="cssClasses" :styles="styles" :width="width" :height="height" />
 </template>
 
 <script>
@@ -33,6 +24,7 @@ ChartJS.register(
     CategoryScale,
     LinearScale
 );
+
 export default {
     name: "BarChart",
     components: {
@@ -61,7 +53,7 @@ export default {
         },
         styles: {
             type: Object,
-            default: () => {},
+            default: () => { },
         },
         plugins: {
             type: Array,
@@ -76,64 +68,52 @@ export default {
             default: () => [],
         },
     },
-    data() {
-        return {
-            chartData: {
-                datasets: [
-                    {
-                        label: "Запланировано",
-                        data: this.value,
-                        backgroundColor: ["rgba(99, 102, 241, 0.5)"],
-                        borderColor: ["rgba(99, 102, 241, 0.7)"],
-                        borderWidth: 3,
-                        borderRadius: 10,
-                    },
-                    {
-                        label: "Сдано",
-                        data: this.handed,
-                        backgroundColor: ["rgba(75, 192, 192, 0.5)"],
-                        borderColor: ["rgba(75, 192, 192, 0.7)"],
-                        borderWidth: 3,
-                        borderRadius: 10,
-                    },
-                ],
-            },
-            chartOptions: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                    },
+
+    setup(props) {
+        const chartData = {
+            datasets: [
+                {
+                    label: "Запланировано",
+                    data: props.value,
+                    backgroundColor: ["rgba(99, 102, 241, 0.5)"],
+                    borderColor: ["rgba(99, 102, 241, 0.7)"],
+                    borderWidth: 3,
+                    borderRadius: 10,
                 },
-                plugins: {
-                    legend: {
-                        position: "bottom",
-                    },
-                    title: {
-                        display: true,
-                        text: "Выполнение плана издания",
-                        font: {
-                            size: 16,
-                        },
-                    },
+                {
+                    label: "Сдано",
+                    data: props.handed,
+                    backgroundColor: ["rgba(75, 192, 192, 0.5)"],
+                    borderColor: ["rgba(75, 192, 192, 0.7)"],
+                    borderWidth: 3,
+                    borderRadius: 10,
+                },
+            ],
+        }
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
                 },
             },
-        };
-    },
-    mounted() {
-        // console.log(this.value);
-        // this.getHanded();
-    },
-    methods: {
-        // getValues() {
-        //     this.chartData.datasets[0].data = this.value;
-        //     console.log(this.chartData.datasets[0].data);
-        // },
-        // getHanded() {
-        //     this.chartData.datasets[1].data = this.handed;
-        //     console.log(this.chartData.datasets[1].data);
-        // },
-    },
-};
+            plugins: {
+                legend: {
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Выполнение плана издания",
+                    font: {
+                        size: 16,
+                    },
+                },
+            },
+        }
+
+        return { chartData, chartOptions }
+    }
+}
 </script>
