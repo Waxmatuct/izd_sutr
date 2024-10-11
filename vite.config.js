@@ -7,7 +7,7 @@ const host = "izd.test";
 export default defineConfig({
     server: {
         host,
-        hmr: {host},
+        hmr: { host },
         // host: "192.168.56.56",
         // https: false,
         // watch: {
@@ -19,7 +19,6 @@ export default defineConfig({
             input: [
                 "resources/css/app.css",
                 "resources/js/app.js",
-                "resources/js/main.js",
             ],
             refresh: true,
         }),
@@ -31,5 +30,11 @@ export default defineConfig({
                 },
             },
         }),
+
     ],
+    resolve: {
+        alias: {
+            'vue': 'vue/dist/vue.esm-bundler.js'
+        }
+    }
 });
