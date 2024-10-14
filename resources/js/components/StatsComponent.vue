@@ -1,21 +1,24 @@
-<script>
+<script setup>
 import gsap from "gsap";
 import { onMounted } from "vue";
 
-export default {
-    props: ["count", "sdano", "perc", "size"],
-    setup() {
-        onMounted(() => {
-            const items = document.querySelectorAll(".data");
-            gsap.from(items, {
-                textContent: 0,
-                duration: 1,
-                delay: 0.5,
-                snap: { textContent: 1 },
-            });
-        })
-    }
-}
+const props = defineProps({
+    count: Number,
+    sdano: Number,
+    perc: Number,
+    size: Number,
+})
+
+onMounted(() => {
+    const items = document.querySelectorAll(".data");
+    gsap.from(items, {
+        textContent: 0,
+        duration: 1,
+        delay: 0.5,
+        snap: { textContent: 1 },
+    });
+})
+
 </script>
 
 <template>

@@ -80,112 +80,113 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from "vue";
 
-export default {
-    setup() {
-        const authUser = window.authUser
-        const currentRoute = route().current()
-        const dashboardUrl = route("dashboard.index")
-        const homeUrl = route("index")
-        const isOpen = ref(false)
-        const loginRouteExists = route().has("login")
-        const menus = [{
-            id: "author",
-            title: "Помощь",
-            dropdown: ref(false),
-            data: [
-                {
-                    url: route("help"),
-                    title: "Авторская редакция. Требования к оформлению",
-                },
-                {
-                    url: route("blanks"),
-                    title: "Формы заявок на тиражирование",
-                },
-                {
-                    url: route("types"),
-                    title: "Виды вузовского учебно-методического обеспечения",
-                },
-                {
-                    url: route("glossary"),
-                    title: "Краткий словарь издательских терминов",
-                },
-                // {
-                //     url: route("biblio"),
-                //     title: "Примеры оформления библиографических ссылок",
-                // },
-            ],
+const authUser = window.authUser
+const dashboardUrl = route("dashboard.index")
+const homeUrl = route("index")
+const isOpen = ref(false)
+const loginRouteExists = route().has("login")
+const menus = [{
+    id: "author",
+    title: "Помощь",
+    dropdown: ref(false),
+    data: [
+        {
+            url: route("help"),
+            title: "Авторская редакция. Требования к оформлению",
         },
         {
-            id: "ric",
-            title: "РИЦ",
-            dropdown: ref(false),
-            data: [
-                {
-                    url: route("about"),
-                    title: "О нашем центре",
-                },
-                {
-                    url: route("paid-services"),
-                    title: "Платные услуги",
-                },
-                {
-                    url: route("contacts"),
-                    title: "Контакты",
-                },
-            ],
+            url: route("blanks"),
+            title: "Формы заявок на тиражирование",
         },
         {
-            id: "archive",
-            title: "Архив",
-            dropdown: ref(false),
-            data: [
-                {
-                    url: route("year", [2023]),
-                    title: "План издания 2023",
-                },
-                {
-                    url: route("year", [2022]),
-                    title: "План издания 2022",
-                },
-                {
-                    url: route("year", [2021]),
-                    title: "План издания 2021",
-                },
-                {
-                    url: route("year", [2021]),
-                    title: "План издания 2020",
-                },
-            ],
+            url: route("types"),
+            title: "Виды вузовского учебно-методического обеспечения",
         },
-        ]
-        const plan = { y2024: route("year", [2024]) }
-        let prevScrollpos = ref("")
+        {
+            url: route("glossary"),
+            title: "Краткий словарь издательских терминов",
+        },
+        // {
+        //     url: route("biblio"),
+        //     title: "Примеры оформления библиографических ссылок",
+        // },
+    ],
+},
+{
+    id: "ric",
+    title: "РИЦ",
+    dropdown: ref(false),
+    data: [
+        {
+            url: route("about"),
+            title: "О нашем центре",
+        },
+        {
+            url: route("paid-services"),
+            title: "Платные услуги",
+        },
+        {
+            url: route("contacts"),
+            title: "Контакты",
+        },
+    ],
+},
+{
+    id: "archive",
+    title: "Архив",
+    dropdown: ref(false),
+    data: [
+        {
+            url: route("year", [2023]),
+            title: "План издания 2023",
+        },
+        {
+            url: route("year", [2022]),
+            title: "План издания 2022",
+        },
+        {
+            url: route("year", [2021]),
+            title: "План издания 2021",
+        },
+        {
+            url: route("year", [2021]),
+            title: "План издания 2020",
+        },
+    ],
+},
+]
+const plan = { y2024: route("year", [2024]) }
+let prevScrollpos = ref("")
 
-        onMounted(() => {
-            window.addEventListener('scroll', handleScroll);
-            prevScrollpos = window.scrollY;
-        })
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+    prevScrollpos = window.scrollY;
+})
 
-        const handleScroll = () => {
-            let currentScrollPos = window.scrollY;
-            if (prevScrollpos > currentScrollPos) {
-                document.getElementById("navbar").style.top = "0";
-            } else {
-                document.getElementById("navbar").style.top = "-128px";
-            }
-            prevScrollpos = currentScrollPos;
-        }
-
-        const selectMenu = index => {
-            menus[index].dropdown.value = !menus[index].dropdown.value
-        }
-
-        return { plan, authUser, menus, selectMenu, isOpen, dashboardUrl, homeUrl, loginRouteExists }
+const handleScroll = () => {
+    let currentScrollPos = window.scrollY;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-128px";
     }
+    prevScrollpos = currentScrollPos;
 }
+
+// const selectMenu = index => {
+//     menus[index].dropdown.value = !menus[index].dropdown.value
+// }
+
+// export default {
+//     setup() {
+
+
+//         return { plan, authUser, menus, selectMenu, isOpen, dashboardUrl, homeUrl, loginRouteExists }
+//     }
+// }
 </script>
 
 <style scoped>
