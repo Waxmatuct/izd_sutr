@@ -1,3 +1,60 @@
+<script setup>
+import { ref, onMounted, computed } from "vue";
+import { filteredBooks, getBooks, matches } from "../functions";
+
+const props = defineProps({
+    year: Number,
+})
+
+const statuses = [
+    "В работе",
+    "В печати",
+    "Отпечатано",
+    "На калькуляции",
+    "Издано",
+]
+const newStatus = ref("")
+
+const books = ref([]);
+onMounted(() => getBooks(books, props.year, true))
+
+const filter = ref("");
+const highlightMatches = text => matches(text, filter);
+const filteredRows = computed(() => filteredBooks(books, filter))
+
+const deleteBook = id => {
+    axios
+        .delete("/api/book/delete/" + `${id}`)
+        .then((response) => {
+            getBooks();
+        })
+        .catch((error) => alert("Ошибка"));
+}
+
+const restoreBook = id => {
+    axios
+        .get("/api/book/restore/" + `${id}`)
+        .then((response) => {
+            getBooks();
+        })
+        .catch((error) => alert("Ошибка"));
+}
+
+const patchStatus = id => {
+    axios
+        .patch("/api/book/" + `${id}` + "/patch", {
+            newStatus: newStatus.value,
+        })
+        .then((response) => {
+            newStatus.value = "";
+            getBooks();
+            // console.log(response);
+        })
+        .catch((error) => alert("Ошибка"));
+}
+
+</script>
+
 <template>
     <div class="mx-auto w-full rounded-lg bg-gray-100 text-gray-700">
         <div class="mx-auto text-center lg:w-3/4 lg:px-4">
@@ -125,90 +182,6 @@
         </div>
     </div>
 </template>
-
-<script>
-import { ref, onMounted, computed } from "vue";
-
-export default {
-    props: ["year"],
-
-    setup(props) {
-        const books = ref([])
-        const filter = ref("")
-        const statuses = [
-            "В работе",
-            "В печати",
-            "Отпечатано",
-            "На калькуляции",
-            "Издано",
-        ]
-        const newStatus = ref("")
-
-        onMounted(() => {
-            getBooks();
-        })
-
-        const highlightMatches = (text) => {
-            const matchExists = text.toLowerCase().includes(filter.value.toLowerCase());
-            if (!matchExists) return text;
-
-            const re = new RegExp(filter.value, "ig");
-            return text.replace(re, (matchedText) =>
-                `<span style=\"color: red\">${matchedText}</span>`
-            );
-        }
-
-        const getBooks = () => {
-            axios.get("/api/all/plan-" + props.year).then((response) => {
-                books.value = response.data;
-            });
-        }
-
-        const deleteBook = id => {
-            axios
-                .delete("/api/book/delete/" + `${id}`)
-                .then((response) => {
-                    getBooks();
-                })
-                .catch((error) => alert("Ошибка"));
-        }
-
-        const restoreBook = id => {
-            axios
-                .get("/api/book/restore/" + `${id}`)
-                .then((response) => {
-                    getBooks();
-                })
-                .catch((error) => alert("Ошибка"));
-        }
-
-        const patchStatus = id => {
-            axios
-                .patch("/api/book/" + `${id}` + "/patch", {
-                    newStatus: newStatus.value,
-                })
-                .then((response) => {
-                    newStatus.value = "";
-                    getBooks();
-                    // console.log(response);
-                })
-                .catch((error) => alert("Ошибка"));
-        }
-
-        const filteredRows = computed(() => {
-            return books.value.filter((book) => {
-                const author = book.author.toString().toLowerCase();
-                const searchTerm = filter.value.toLowerCase();
-                const item = book.item.toString();
-                return author.includes(searchTerm) || item.includes(searchTerm);
-            })
-        });
-
-        return { books, statuses, highlightMatches, filteredRows, filter, newStatus, deleteBook, restoreBook, patchStatus }
-
-    }
-}
-</script>
 
 <style scoped>
 input {

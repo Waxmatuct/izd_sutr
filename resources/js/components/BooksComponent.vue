@@ -1,45 +1,17 @@
-<script>
+<script setup>
 import { ref, onMounted, computed } from "vue";
+import { filteredBooks, getBooks, matches } from "../functions";
 
-export default {
-    props: ['year'],
+const props = defineProps({
+    year: Number,
+})
+const books = ref([]);
+onMounted(() => getBooks(books, props.year))
 
-    setup(props) {
-        const books = ref([]);
-        const filter = ref("");
+const filter = ref("");
+const highlightMatches = text => matches(text, filter);
+const filteredRows = computed(() => filteredBooks(books, filter))
 
-        const highlightMatches = text => {
-            const matchExists = text.toLowerCase().includes(filter.value.toLowerCase());
-            if (!matchExists) return text;
-
-            const re = new RegExp(filter.value, "ig");
-            return text.replace(re, (matchedText) =>
-                `<span style=\"color: red\">${matchedText}</span>`
-            );
-        };
-
-        onMounted(() => {
-            getBooks();
-        })
-
-        const getBooks = () => {
-            axios.get("/api/plan-" + props.year).then((response) => {
-                books.value = response.data;
-            });
-        }
-
-        const filteredRows = computed(() => {
-            return books.value.filter((book) => {
-                const author = book.author.toString().toLowerCase();
-                const searchTerm = filter.value.toLowerCase();
-
-                return author.includes(searchTerm);
-            })
-        });
-
-        return { books, highlightMatches, filteredRows, filter }
-    }
-}
 </script>
 
 <template>
