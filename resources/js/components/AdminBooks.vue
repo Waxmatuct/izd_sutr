@@ -26,7 +26,7 @@ const deleteBook = id => {
     axios
         .delete("/api/book/delete/" + `${id}`)
         .then((response) => {
-            getBooks();
+            getBooks(books, props.year, true);
         })
         .catch((error) => alert("Ошибка"));
 }
@@ -35,7 +35,7 @@ const restoreBook = id => {
     axios
         .get("/api/book/restore/" + `${id}`)
         .then((response) => {
-            getBooks();
+            getBooks(books, props.year, true);
         })
         .catch((error) => alert("Ошибка"));
 }
@@ -47,7 +47,7 @@ const patchStatus = id => {
         })
         .then((response) => {
             newStatus.value = "";
-            getBooks();
+            getBooks(books, props.year, true);
             // console.log(response);
         })
         .catch((error) => alert("Ошибка"));
