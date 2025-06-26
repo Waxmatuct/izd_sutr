@@ -91,9 +91,14 @@
                         Сотрудники РИЦ
                     </h2>
                 </div>
-                <p>Плетнев Дмитрий Витальевич - начальник</br>
-                    Карасевич Татьяна Юрьевна - редактор I категории</br>
-                    Шебин Евгений Павлович - печатник</br>
+                <h3 class="text-lg font-bold sm:text-xl">Начальник</h3>
+                <span>Плетнев Дмитрий Витальевич</span>
+                </p>
+                <h3 class="text-lg font-bold sm:text-xl">Редактор I категории</h3>
+                <span>Карасевич Татьяна Юрьевна</span>
+                </p>
+                <h3 class="text-lg font-bold sm:text-xl">Печатник</h3>
+                <span>Шебин Евгений Павлович</span>
                 </p>
                 <div>
                     <h2 class="mt-10 text-2xl font-bold sm:text-3xl">

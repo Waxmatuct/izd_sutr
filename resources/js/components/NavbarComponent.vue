@@ -1,13 +1,13 @@
 <template>
     <div
         id="navbar"
-        class="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between bg-white p-3 shadow-lg dark:bg-gray-800 sm:px-6 sm:py-3"
+        class="fixed top-0 z-10 flex w-full flex-wrap items-center justify-between bg-white p-3 shadow-md dark:bg-gray-800 sm:px-6 sm:py-3"
     >
         <!--Toggle button (hidden on large screens)-->
         <button
             @click="isOpen = !isOpen"
             type="button"
-            class="absolute top-8 left-4 block text-gray-500 focus:outline-none dark:text-gray-300 lg:hidden"
+            class="absolute top-6 right-6 block text-gray-500 focus:outline-none dark:text-gray-300 lg:hidden"
             :class="{ 'transition transform-180': isOpen }"
         >
             <svg
@@ -29,19 +29,14 @@
             </svg>
         </button>
         <!--Logo etc-->
-        <div class="ml-12 flex items-center flex-shrink-1">
+        <div class="flex items-center flex-shrink-1">
             <a class="flex items-center title-font" :href="homeUrl">
-                <img src="/images/logo.png" alt="" class="h-16 w-16" />
-                <div class="ml-2 flex-col sm:flex">
-                    <h1
-                        class="mb-2 hidden text-sm font-extrabold leading-5 sm:block md:mb-0 md:text-lg"
-                    >
+                <img src="/images/logo.png" alt="" class="h-12 w-12" />
+                <div class="ml-2 flex-col flex">
+                    <h1 class="text-sm font-extrabold md:text-lg">
                         Редакционно-издательский центр
                     </h1>
-                    <h1 class="text-xl font-extrabold leading-5 sm:hidden">
-                        РИЦ СГУ
-                    </h1>
-                    <span class="text-xs leading-4 md:text-sm">
+                    <span class="text-xs md:text-sm">
                         ФГБОУ ВО "Сочинский государственный университет"
                     </span>
                 </div>
@@ -55,9 +50,9 @@
             <ul
                 class="flex-1 items-center justify-center pt-6 text-gray-600 list-reset dark:text-gray-300 lg:flex lg:pt-0"
             >
-                <li class="mr-3 ml-auto">
+                <li class="mr-3 ml-auto w-max">
                     <a
-                        class="inline-block rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white"
+                        class="inline-block rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white"
                         :href="homeUrl"
                         @click="isOpen = false"
                     >
@@ -65,7 +60,7 @@
                     </a>
                 </li>
                 <li
-                    class="relative mr-3"
+                    class="relative mr-3 ml-auto lg:ml-0 w-max"
                     v-for="(menu, index) in menus"
                     :key="index"
                     @click="menu.dropdown.value = !menu.dropdown.value"
@@ -73,11 +68,11 @@
                     @mouseleave="menu.dropdown.value = false"
                 >
                     <button
-                        class="flex flex-row items-center justify-between rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white focus:bg-primary-500 focus:text-white"
+                        class="flex flex-row-reverse lg:flex-row items-center justify-between rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white focus:bg-primary-500 focus:text-white"
                     >
                         <span>{{ menu.title }}</span>
                         <svg
-                            class="ml-1 h-4 w-4 fill-current"
+                            class="mr-1 lg:ml-1 lg:mr-0 h-4 w-4 fill-current"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                         >
@@ -88,31 +83,29 @@
                             />
                         </svg>
                     </button>
-                    <transition name="slide-fade">
-                        <div
-                            v-show="menu.dropdown.value"
-                            class="absolute z-50 min-w-max origin-top-left rounded-md shadow-lg"
+                    <div
+                        v-show="menu.dropdown.value"
+                        class="absolute z-50 min-w-max right-0 lg:left-0 rounded-md shadow-lg"
+                    >
+                        <ul
+                            class="flex flex-col overflow-auto rounded-md bg-white ring-1 ring-black ring-opacity-10 white-space-nowrap dark:bg-gray-800 dark:text-gray-300 dark:ring-white"
                         >
-                            <ul
-                                class="flex flex-col overflow-auto rounded-md bg-white ring-1 ring-black ring-opacity-10 white-space-nowrap dark:bg-gray-800 dark:text-gray-300 dark:ring-white"
-                            >
-                                <li v-for="item in menu.data" :key="item.index">
-                                    <a
-                                        :href="item.url"
-                                        class="block px-5 py-2 hover:bg-primary-500 hover:text-white dark:hover:text-primary-400"
-                                    >
-                                        {{ item.title }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </transition>
+                            <li v-for="item in menu.data" :key="item.index">
+                                <a
+                                    :href="item.url"
+                                    class="block px-5 py-2 hover:bg-primary-500 hover:text-white dark:hover:text-primary-400"
+                                >
+                                    {{ item.title }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                <li class="mr-3 ml-auto" v-if="loginRouteExists">
+                <li class="mr-3 ml-auto w-max" v-if="loginRouteExists">
                     <div v-if="authUser">
                         <a
                             :href="dashboardUrl"
-                            class="inline-block rounded-lg px-4 py-2 no-underline transition-all duration-300 ease-in-out hover:bg-primary-500 hover:text-white"
+                            class="inline-block rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white"
                         >
                             Админка
                         </a>
@@ -134,12 +127,12 @@ const loginRouteExists = route().has("login");
 const menus = [
     {
         id: "author",
-        title: "Помощь автору",
+        title: "Авторам",
         dropdown: ref(false),
         data: [
             {
                 url: route("help"),
-                title: "Авторская редакция. Требования к оформлению",
+                title: "Требования к оформлению",
             },
             {
                 url: route("blanks"),
@@ -176,7 +169,7 @@ const menus = [
     // },
     {
         id: "archive",
-        title: "Планы изданий",
+        title: "Годовые планы издания",
         dropdown: ref(false),
         data: [
             {
@@ -215,21 +208,10 @@ const handleScroll = () => {
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
     } else {
-        document.getElementById("navbar").style.top = "-128px";
+        document.getElementById("navbar").style.top = "-72px";
     }
     prevScrollpos = currentScrollPos;
 };
-
-// const selectMenu = index => {
-//     menus[index].dropdown.value = !menus[index].dropdown.value
-// }
-
-// export default {
-//     setup() {
-
-//         return { plan, authUser, menus, selectMenu, isOpen, dashboardUrl, homeUrl, loginRouteExists }
-//     }
-// }
 </script>
 
 <style scoped>
