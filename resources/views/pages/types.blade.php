@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: Виды вузовского учебно-методического обеспечения')
+@section('title', 'РИЦ СГУ :: Виды вузовского учебно-методического обеспечения')
 @section('description', 'Виды вузовского учебно-методического обеспечения')
 
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
+        <div class="mb-10 flex w-full flex-col">
+            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 Виды вузовского учебно-методического обеспечения
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
 
                 <p>Количественные параметры издания регламентирует ГОСТ Р 7.0.3-2006.</p>
                 <p>Объем издания – количественная характеристика издания, выраженная в листах, страницах, столбцах.</p>
@@ -24,9 +24,8 @@
                     объемов изданий разных форматов (равняется примерно 16 страницам.</p>
             </div>
 
-            <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl mt-10">
-                <x-table.table :headers="['№', 'Вид издания', 'Термин и определение', 'Рекомендуемый объем, уч.изд. л']"
-                    class="text-xs md:text-sm">
+            <div class="mx-auto mt-10 w-full overflow-auto rounded-lg shadow-xl">
+                <x-table.table :headers="['№', 'Вид издания', 'Термин и определение', 'Рекомендуемый объем, уч.изд. л']" class="text-xs md:text-sm">
                     <tr class="border-b text-sm md:text-base">
                         <x-table.td font="bold">
                             1
@@ -106,7 +105,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b text-sm md:text-base">
+                    <tr class="border-b bg-gray-100 text-sm md:text-base">
                         <x-table.td font="bold">
                             2
                         </x-table.td>
@@ -126,7 +125,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             2.1
                         </x-table.td>
@@ -140,7 +139,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             2.2
                         </x-table.td>
@@ -155,7 +154,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             2.3
                         </x-table.td>
@@ -168,7 +167,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             2.4
                         </x-table.td>
@@ -344,7 +343,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b text-sm md:text-base">
+                    <tr class="border-b bg-gray-100 text-sm md:text-base">
                         <x-table.td font="bold">
                             4
                         </x-table.td>
@@ -364,7 +363,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.1
                         </x-table.td>
@@ -379,7 +378,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.2
                         </x-table.td>
@@ -392,7 +391,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.2.1
                         </x-table.td>
@@ -402,7 +401,7 @@
                         </x-table.td>
                         <x-table.td align="left">
                             Cодержат:
-                            <ul class="list-disc list-inside">
+                            <ul class="list-inside list-disc">
                                 <li>аппарат ориентировки (общие положения, содержание, литература, приложения,
                                     списки сокращений и условных обозначений);</li>
                                 <li>аппарат организации овладения практическими умениями и навыками (содержание
@@ -413,7 +412,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.2.2
                         </x-table.td>
@@ -426,7 +425,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.3
                         </x-table.td>
@@ -442,7 +441,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             4.4
                         </x-table.td>
@@ -532,7 +531,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b text-sm md:text-base">
+                    <tr class="border-b bg-gray-100 text-sm md:text-base">
                         <x-table.td font="bold">
                             6
                         </x-table.td>
@@ -550,7 +549,7 @@
                         </x-table.td>
                     </tr>
 
-                    <tr class="bg-gray-100 border-b">
+                    <tr class="border-b bg-gray-100">
                         <x-table.td>
                             6.1
                         </x-table.td>

@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: План издания ' . $year)
+@section('title', 'РИЦ СГУ :: План издания ' . $year)
 @section('description', 'План издания учебной и учебно-методической литературы на ' . $year . ' год')
 
 @section('main')
 
     <section class="body-font">
         <div class="mb-5 flex w-full flex-col px-5">
-            <h1 class="mb-6 text-center text-3xl font-bold title-font sm:mb-12 sm:text-4xl">
+            <h1 class="title-font mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 План издания учебной, учебно-методической и научной литературы<br>на {{ $year }} год
             </h1>
-            <div class="mx-auto text-left leading-normal entry-content space-y-4 sm:text-lg lg:w-3/4">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <p><a href="#plan">План издания учебной и учебно-методической литературы на
                         {{ $year }}
                         год</a> утвержден и подписан ректором.</p>
@@ -29,7 +29,7 @@
                         <a href="https://disk.yandex.ru/i/13AM8HJtU8PfVA" target="_blank" rel="noreferrer noopener">
                             справка о результатах проверки на наличие заимствований
                         </a> (утверждена <a href="https://disk.yandex.ru/i/_-2X9yooKtO4kg" target="_blank"
-                                            rel="noreferrer noopener">
+                            rel="noreferrer noopener">
                             приказом № 1100
                         </a> от 16.12.2020);
                     </li>
@@ -39,26 +39,25 @@
                         </a>;
                     </li>
                     <li>лицензионный договор (<a href="https://disk.yandex.ru/i/bmoRYpdLiKTXSw" target="_blank"
-                                                 rel="noreferrer noopener">.pdf</a>, <a
-                            href="https://disk.yandex.ru/i/NL5JceTtToUn1w"
+                            rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/NL5JceTtToUn1w"
                             target="_blank" rel="noreferrer noopener">
                             .doc</a>), акт приема-передачи экземпляра произведения (<a
                             href="https://disk.yandex.ru/i/JUMnuBPAWVcEtQ" target="_blank"
                             rel="noreferrer noopener">.pdf</a>, <a href="https://disk.yandex.ru/i/IgDfuGVavA3knQ"
-                                                                   target="_blank" rel="noreferrer noopener">
+                            target="_blank" rel="noreferrer noopener">
                             .doc</a>). Договор и акт передаются в РИЦ в двух экземплярах <strong>вместе с листом
                             согласования (</strong><a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
-                                                      rel="noreferrer noopener">.pdf</a><strong>),
+                            rel="noreferrer noopener">.pdf</a><strong>),
                             подписанным правовым управлением</strong>.
                     </li>
                 </ul>
                 <div>
-                    <h2 class="mt-10 mb-5 text-2xl font-bold sm:text-3xl">
+                    <h2 class="mb-5 mt-10 text-2xl font-bold sm:text-3xl">
                         Показатели и статистика выполнения
                     </h2>
                     <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                                     :size="{{ $size }}"></stats-component>
-                    <div class="my-7 w-full rounded-lg p-7 shadow-xl square">
+                        :size="{{ $size }}"></stats-component>
+                    <div class="square my-7 w-full rounded-lg p-7 shadow-xl">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
                     <div class="mx-auto mt-12">
@@ -66,7 +65,7 @@
                             структурным подразделениям</h2>
                         @foreach ($faculties as $faculty)
                             <a class="inline-block"
-                               href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
+                                href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
                                 {{ $faculty->title }}
                             </a><br>
                         @endforeach

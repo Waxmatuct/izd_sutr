@@ -7,7 +7,7 @@
         <button
             @click="isOpen = !isOpen"
             type="button"
-            class="absolute top-6 right-6 block text-gray-500 focus:outline-none dark:text-gray-300 lg:hidden"
+            class="absolute top-5 right-6 block text-gray-500 focus:outline-none dark:text-gray-300 lg:hidden"
             :class="{ 'transition transform-180': isOpen }"
         >
             <svg
@@ -93,7 +93,7 @@
                             <li v-for="item in menu.data" :key="item.index">
                                 <a
                                     :href="item.url"
-                                    class="block px-5 py-2 hover:bg-primary-500 hover:text-white dark:hover:text-primary-400"
+                                    class="text-sm sm:text-base block px-5 py-2 hover:bg-primary-500 hover:text-white dark:hover:text-primary-400"
                                 >
                                     {{ item.title }}
                                 </a>
@@ -169,7 +169,7 @@ const menus = [
     // },
     {
         id: "archive",
-        title: "Годовые планы издания",
+        title: "Годовой план издания",
         dropdown: ref(false),
         data: [
             {
@@ -208,7 +208,7 @@ const handleScroll = () => {
     if (prevScrollpos > currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
     } else {
-        document.getElementById("navbar").style.top = "-72px";
+        document.getElementById("navbar").style.top = "-80px";
     }
     prevScrollpos = currentScrollPos;
 };

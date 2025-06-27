@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: О нас')
+@section('title', 'РИЦ СГУ :: О нас')
 @section('description', 'Задачи редакционно-издательского центра СГУ')
 
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
+        <div class="mb-10 flex w-full flex-col px-5">
+            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 О редакционно-издательском центре
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <p>Редакционно-издательский центр (РИЦ) создан в университете в 2009 году.</p>
 
                 <p>РИЦ занимается изданием учебной, учебно-методической литературы по основным профессиональным
@@ -20,7 +20,7 @@
                 <p>Цикл издательского процесса полный — от авторской рукописи до оригинал-макета.</p>
 
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-bold mt-10">Наши задачи</h2>
+                    <h2 class="mt-10 text-2xl font-bold sm:text-3xl">Наши задачи</h2>
                 </div>
 
                 <p>1. Исполняем годовые тематические планы издания литературы на основе анализа обеспеченности

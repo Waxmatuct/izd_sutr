@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: Авторская редакция. Требования к оформлению')
+@section('title', 'РИЦ СГУ :: Авторская редакция. Требования к оформлению')
 @section('description', 'Авторская редакция. Требования к оформлению')
 
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
+        <div class="mb-10 flex w-full flex-col px-5">
+            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 Авторская редакция. Требования к оформлению
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
 
                 <p>От автора в РИЦ принимается авторское издание, если оно подготовлено в соответствии со следующими
                     техническими требованиями.</p>
@@ -28,9 +28,9 @@
 
                 <p>Все настройки документа ниже приведены на примере программы MS Word 2016.</p>
 
-                <div class="border-gray-400 border-2 p-5 max-w-max">
-                    <h2 id="contents" class="text-xl sm:text-2xl font-bold">Содержание</h2>
-                    <ol class="list-decimal mt-5 space-y-3">
+                <div class="max-w-max border-2 border-gray-400 p-5">
+                    <h2 id="contents" class="text-xl font-bold sm:text-2xl">Содержание</h2>
+                    <ol class="mt-5 list-decimal space-y-3">
                         <li>
                             <a href="#page_margins">Поля страниц</a>
                         </li>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div>
-                    <h2 id="page_margins" class="text-2xl sm:text-3xl font-bold mt-10">Поля страниц</h2>
+                    <h2 id="page_margins" class="mt-10 text-2xl font-bold sm:text-3xl">Поля страниц</h2>
                 </div>
 
                 <p>Для того чтобы получился качественный оригинал-макет формата А5, распечатанный на листе А4 (две страницы
@@ -71,7 +71,7 @@
                     же в пункте «Источник бумаги» выставить в «От края: до верхнего колонтитула» — 0 см, «до нижнего
                     колонтитула» — 1,6 см.</p>
                 <figure><img src="{{ asset('images/parametri-stranici.png') }}" alt="Диалоговое окно «Параметры страницы»">
-                    <figcaption class="text-sm text-center mb-10">Диалоговое окно "Параметры страницы"</figcaption>
+                    <figcaption class="mb-10 text-center text-sm">Диалоговое окно "Параметры страницы"</figcaption>
                 </figure>
                 <p>Далее вставить номера страниц, войдя в меню «Вставка/Номера страниц/Внизу/От центра» (в графе «Номер на
                     первой странице» галочку не ставить, иначе на титульном листе будет стоять номер страницы 1).</p>
@@ -80,7 +80,7 @@
                     «Файл/Печать/Число страниц на листе 2». Получится на одном листе А4 две страницы издания.</p>
 
                 <div>
-                    <h2 id="text_formatting" class="text-2xl sm:text-3xl font-bold mt-10">Оформление текста</h2>
+                    <h2 id="text_formatting" class="mt-10 text-2xl font-bold sm:text-3xl">Оформление текста</h2>
                 </div>
 
                 <p>Основной текст должен быть набран <strong>14 размером</strong> шрифта Times New Roman через один
@@ -90,15 +90,15 @@
 
                 <figure><img src="{{ asset('images/font-and-paragraph.png') }}"
                         alt="Настройки шрифта основного текста и абзацев">
-                    <figcaption class="text-sm text-center mb-10">Настройки шрифта основного текста и абзацев</figcaption>
+                    <figcaption class="mb-10 text-center text-sm">Настройки шрифта основного текста и абзацев</figcaption>
                 </figure>
 
-                <h3 id="headings" class="text-xl sm:text-2xl font-bold mt-7">Заголовки и подзаголовки</h3>
+                <h3 id="headings" class="mt-7 text-xl font-bold sm:text-2xl">Заголовки и подзаголовки</h3>
 
                 <p>Заголовки и подзаголовки отделяют от основного текста сверху одной пробельной строкой и набирают
                     прописными (большими) буквами (без подчеркивания и разрядки) <strong>16 размера</strong> шрифта.</p>
 
-                <h3 id="additional_texts" class="text-xl sm:text-2xl font-bold mt-7">Пояснительные и дополнительные
+                <h3 id="additional_texts" class="mt-7 text-xl font-bold sm:text-2xl">Пояснительные и дополнительные
                     тексты</h3>
 
                 <p>Пояснительные и дополнительные тексты (списки условных сокращений и обозначений, примечания, перечни
@@ -108,11 +108,11 @@
 
                 <figure><img class="mx-auto" src="{{ asset('images/headers.png') }}"
                         alt="Оформление заголовков, подзаголовков и дополнительных текстов">
-                    <figcaption class="text-sm text-center mb-10">Оформление заголовков, подзаголовков и дополнительных
+                    <figcaption class="mb-10 text-center text-sm">Оформление заголовков, подзаголовков и дополнительных
                         текстов</figcaption>
                 </figure>
 
-                <h3 id="lists_formatting" class="text-xl sm:text-2xl font-bold mt-7">Пунктуационное оформление
+                <h3 id="lists_formatting" class="mt-7 text-xl font-bold sm:text-2xl">Пунктуационное оформление
                     перечней</h3>
 
                 <p>а) если после двоеточия стоит номер-цифра со скобкой, то перечисление нужно начинать со строчной буквы; в
@@ -121,11 +121,11 @@
                     конце фразы ставить точку.</p>
 
                 <figure><img class="mx-auto" src="{{ asset('images/punct.png') }}" alt="Пунктуационное оформление перечней">
-                    <figcaption class="text-sm text-center mb-10">Пунктуационное оформление перечней</figcaption>
+                    <figcaption class="mb-10 text-center text-sm">Пунктуационное оформление перечней</figcaption>
                 </figure>
 
                 <div>
-                    <h2 id="illustrations" class="text-2xl sm:text-3xl font-bold mt-10">Иллюстрации</h2>
+                    <h2 id="illustrations" class="mt-10 text-2xl font-bold sm:text-3xl">Иллюстрации</h2>
                 </div>
 
                 <p>Иллюстрацию располагают после ссылки или возможно ближе к ней, а именно помещают на той же полосе или
@@ -146,11 +146,11 @@
                 <p>Образец оформления иллюстрации с подрисуночной надписью представлен ниже (рис. 1).</p>
 
                 <figure><img class="mx-auto" src="{{ asset('images/ris1.png') }}" alt="Оформление иллюстраций">
-                    <figcaption class="text-sm text-center mb-10">Оформление иллюстраций</figcaption>
+                    <figcaption class="mb-10 text-center text-sm">Оформление иллюстраций</figcaption>
                 </figure>
 
                 <div>
-                    <h2 id="tables" class="text-2xl sm:text-3xl font-bold mt-10">Таблицы</h2>
+                    <h2 id="tables" class="mt-10 text-2xl font-bold sm:text-3xl">Таблицы</h2>
                 </div>
 
                 <p>Таблицы набирают средствами программы MS Word с помощью меню «Вставка - Таблица». Ссылаться на таблицу
@@ -158,7 +158,7 @@
                     табличными данными. Ссылка на таблицу в тексте обязательна (табл. 1).</p>
 
                 <figure><img class="mx-auto" src="{{ asset('images/tabl.png') }}" alt="Образец оформления таблицы">
-                    <figcaption class="text-sm text-center mb-10">Образец оформления таблицы</figcaption>
+                    <figcaption class="mb-10 text-center text-sm">Образец оформления таблицы</figcaption>
                 </figure>
 
                 <p>Таблицу рекомендуется размещать после ссылки на неё в тексте, обязательно в пределах данного раздела, т.
@@ -183,7 +183,7 @@
                 <p>Оставлять ячейки таблицы пустыми не допускается, при отсутствии сведений в ячейке ставят тире.</p>
 
                 <div>
-                    <h2 id="appendix" class="text-2xl sm:text-3xl font-bold mt-10">Приложения</h2>
+                    <h2 id="appendix" class="mt-10 text-2xl font-bold sm:text-3xl">Приложения</h2>
                 </div>
 
                 <p>Особенности набора приложений состоят в следующем. В приложения выносят вспомогательные материалы:
@@ -194,7 +194,7 @@
                     «Приложение 2». Если приложение одно, его не нумеруют, ограничиваясь надписью «Приложение».</p>
 
                 <div>
-                    <h2 id="annotations" class="text-2xl sm:text-3xl font-bold mt-10">Аннотация</h2>
+                    <h2 id="annotations" class="mt-10 text-2xl font-bold sm:text-3xl">Аннотация</h2>
                 </div>
 
                 <p>Аннотация — это краткая, точная, логические связанная и грамотно изложенная информация о содержании книги
@@ -217,7 +217,7 @@
                     выводы.</p>
 
                 <div>
-                    <h2 id="bibliography" class="text-2xl sm:text-3xl font-bold mt-10">Оформление списка литературы</h2>
+                    <h2 id="bibliography" class="mt-10 text-2xl font-bold sm:text-3xl">Оформление списка литературы</h2>
                 </div>
 
                 <p><a href="https://disk.yandex.ru/i/v_Cp9kLFisxewQ">Инструкция по оформлению списка литературы в

@@ -1,17 +1,17 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: Примеры оформления библиографических ссылок')
+@section('title', 'РИЦ СГУ :: Примеры оформления библиографических ссылок')
 @section('description', 'Примеры оформления библиографических ссылок')
 
 
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
+        <div class="mb-10 flex w-full flex-col px-5">
+            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 Примеры оформления библиографических ссылок
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
 
                 <p><strong>Один автор</strong><br>
                     Семёнов В. В. Защита окружающей среды. Оценка распространения за-грязняющих примесей в водной среде :
@@ -64,7 +64,7 @@
                     серебряного века).</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Составная часть издания</h2>
+                    <h2 class="mt-10 text-xl font-bold sm:text-2xl">Составная часть издания</h2>
                 </div>
 
                 <p><strong>Статья из авторского сборника</strong><br>
@@ -87,7 +87,7 @@
                     Сикорский М. Н. Книговедение // БСЭ. — 3-е изд. — 1976. — Т. 10. —Стб. 79—81.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Депонированные научные работы</h2>
+                    <h2 class="mt-10 text-xl font-bold sm:text-2xl">Депонированные научные работы</h2>
                 </div>
 
                 <p>Семёнов В. В. Защита окружающей среды. Оценка распространения за-грязняющих примесей в водной среде /
@@ -103,13 +103,13 @@
                 </p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Стандарты</h2>
+                    <h2 class="mt-10 text-xl font-bold sm:text-2xl">Стандарты</h2>
                 </div>
 
                 <p>Система стандартов безопасности труда : сб. — М. : Изд-во стандартов, 2006. — 124 с.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Неопубликованные документы</h2>
+                    <h2 class="mt-10 text-xl font-bold text-gray-700 sm:text-2xl">Неопубликованные документы</h2>
                 </div>
 
                 <p><strong>Отчёты о НИР</strong><br>
@@ -121,7 +121,7 @@
                     04200204433.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Законодательные материалы</h2>
+                    <h2 class="mt-10 text-xl font-bold text-gray-700 sm:text-2xl">Законодательные материалы</h2>
                 </div>
 
                 <p>• Российская Федерация. Законы. Гражданский кодекс Российской Феде-рации. Ч. III : Федеральный закон от
@@ -131,13 +131,13 @@
                     31 июля 2003 г. № 451 // Собр. законодательства Российской Федерации. — 2003. — № 31. — Ст. 3150.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold text-gray-700 mt-10">Правила</h2>
+                    <h2 class="mt-10 text-xl font-bold text-gray-700 sm:text-2xl">Правила</h2>
                 </div>
 
                 <p>Правила безопасной эксплуатации подъёмников : ПБ 10-256-98. — СПб. : ДЕАН, 2001.</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Электронные ресурсы</h2>
+                    <h2 class="mt-10 text-xl font-bold sm:text-2xl">Электронные ресурсы</h2>
                 </div>
 
                 <p>• Жизнь прекрасна, жизнь трагична… : 1917 год в письмах А. В. Луначар-ского А. А. Луначарской / отв.
@@ -149,7 +149,7 @@
                     http://www.gilpravo.ru (дата обращения: 20.08.2007).</p>
 
                 <div>
-                    <h2 class="text-xl sm:text-2xl font-bold mt-10">Архивные документы</h2>
+                    <h2 class="mt-10 text-xl font-bold sm:text-2xl">Архивные документы</h2>
                 </div>
 
                 <p>• Полторацкий С. Д. Материалы к «Словарю русских псевдонимов» // ОР РГБ. — Ф. 223 (С. Д. Полторацкий). —

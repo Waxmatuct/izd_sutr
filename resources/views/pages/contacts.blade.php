@@ -1,6 +1,6 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: Контакты')
+@section('title', 'РИЦ СГУ :: Контакты')
 @section('description', 'Контакты и сотрудники РИЦ СГУ')
 
 @section('main')

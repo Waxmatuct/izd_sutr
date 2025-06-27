@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ :: Краткий словарь издательских терминов')
+@section('title', 'РИЦ СГУ :: Краткий словарь издательских терминов')
 @section('description', 'Краткий словарь издательских терминов')
 
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-10">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold mb-6 sm:mb-12">
+        <div class="mb-10 flex w-full flex-col px-5">
+            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
                 Краткий словарь издательских терминов
             </h1>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <p><strong>Авторский знак</strong> — один из основных элементов выходных сведений печатного издания. Введен
                     известным специалистом библиотечного дела Л. Б. Хавкиной в 1916 г.</p>
                 <p>Авторский знак состоит из первой буквы фамилии автора (первого автора, если в издании не более трех
