@@ -27,7 +27,7 @@ Route::get('/plan-{year}', [PlanController::class, 'year'])->name('year');
 
 Route::get('/plan-{year}/{faculty}', [PlanController::class, 'faculty'])->name('faculty');
 
-Route::view('/about', 'pages.about')->name('about');
+// Route::view('/about', 'pages.about')->name('about');
 // Route::view('/biblio-links', 'pages.biblio')->name('biblio');
 Route::view('/blanks', 'pages.blanks')->name('blanks');
 // Route::view('/contacts', 'pages.contacts')->name('contacts');

@@ -26,6 +26,13 @@ module.exports = {
             red: colors.red,
             green: colors.green,
         },
+        listStyleType: {
+            none: "none",
+            disc: "disc",
+            decimal: "decimal",
+            square: "square",
+            circle: "circle",
+        },
     },
 
     plugins: [require("@tailwindcss/forms")],
