@@ -3,6 +3,7 @@ import "./bootstrap";
 import "alpinejs";
 
 import { createApp, defineAsyncComponent } from "vue";
+import VueCarousel from "@chenfengyuan/vue-carousel";
 
 const app = createApp({
     components: {
@@ -21,7 +22,10 @@ const app = createApp({
         AdminBooks: defineAsyncComponent(() =>
             import("./components/AdminBooks.vue")
         ),
+        CarouselComponent: defineAsyncComponent(() =>
+            import("./components/CarouselComponent.vue")
+        ),
     },
 });
-
+app.component(VueCarousel.name, VueCarousel);
 app.mount("#app");
