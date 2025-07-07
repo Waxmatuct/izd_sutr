@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookResource;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ElectronicEditionController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PlanController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,9 @@ Route::view('/help', 'pages.help')->name('help');
 // Route::view('/paid-services', 'pages.paid-services')->name('paid-services');
 Route::view('/types', 'pages.types')->name('types');
 Route::view('/price', 'pages.price')->name('price');
+Route::resource('electronic-editions', ElectronicEditionController::class)->only([
+    'index', 'show',
+]);
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
