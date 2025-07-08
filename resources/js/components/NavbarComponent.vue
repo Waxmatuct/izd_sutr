@@ -104,19 +104,19 @@
                 <li class="mr-3 ml-auto lg:ml-0 w-max">
                     <a
                         class="inline-block rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white"
-                        :href="price"
+                        :href="electronicEditions"
                         @click="isOpen = false"
                     >
-                        Прайс-лист
+                        Каталог ЭИ
                     </a>
                 </li>
                 <li class="mr-3 ml-auto lg:ml-0 w-max">
                     <a
                         class="inline-block rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white"
-                        :href="electronicEditions"
+                        :href="price"
                         @click="isOpen = false"
                     >
-                        Каталог ЭИ
+                        Прайс-лист
                     </a>
                 </li>
                 <li class="mr-3 ml-auto w-max" v-if="loginRouteExists">

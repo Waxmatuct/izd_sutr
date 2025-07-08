@@ -6,66 +6,115 @@
 @section('main')
 
     <section class="body-font">
-        <div class="mb-10 flex w-full flex-col px-5">
-            {{-- <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
-                Краткий словарь издательских терминов
-            </h1> --}}
-            <div class="entry-content mx-auto space-y-4 text-left lg:w-3/4">
-                <div class="flex flex-col space-x-0 space-y-5 md:flex-row md:space-x-5 md:space-y-0">
-                    <div class="basis-1/4">
-                        <img src="{{ asset('/images/no-foto.jpg') }}" alt="">
+        <div class="mb-10 flex w-full flex-col">
+            <div class="entry-content mx-auto space-y-4 text-left">
+                <div
+                    class="flex flex-col items-center space-x-0 space-y-7 md:flex-row md:items-start md:space-x-7 md:space-y-0">
+                    <div class="flex flex-none flex-col items-center justify-center space-y-5 md:justify-end">
+                        <div class="square rounded-lg p-4 shadow-lg">
+                            @isset($item->cover_url)
+                                <img src="{{ $item->cover_url }}" alt="">
+                            @else
+                                <div class="relative flex w-80 flex-col">
+                                    <div class="absolute left-9 w-44">
+                                        <p class="mb-7 mt-10 px-4 text-center text-xs">{{ $item->author }}</p>
+                                        <p class="px-2 text-center text-xs font-bold">{{ $item->title }}</p>
+                                    </div>
+                                    <img src="{{ asset('images/CD.png') }}" alt="">
+                                </div>
+                            @endisset
+                        </div>
+                        {{-- @isset($item->download_link) --}}
+                        <button
+                            class="flex w-52 flex-row items-center justify-center rounded-xl bg-primary-200 py-1 shadow-lg duration-300 ease-in-out hover:shadow-green-300">
+                            <img src="{{ asset('/images/pdf.svg') }}" alt="" class="w-8"><span>Загрузить</span>
+                        </button>
+                        {{-- @endisset --}}
                     </div>
-                    <div class="basis-3/4">
-                        <h1 class="text-2xl font-bold">{{ $item->title }}</h1>
-                        <div class="mt-5 space-y-3 text-lg leading-snug">
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Авторы:</div>
-                                <div class="basis-3/4">{{ $item->author }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Год издания:</div>
-                                <div class="basis-3/4">{{ $item->year }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">ISBN:</div>
-                                <div class="basis-3/4">{{ $item->isbn }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Вид издания:</div>
-                                <div class="basis-3/4">{{ Str::of($item->type->title)->lower() }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">№ госрегистрации:</div>
-                                <div class="basis-3/4">
-                                    {{ $item->registration_number }}
+                    <div class="shrink space-y-7 lg:max-w-3xl">
+                        <div class="square rounded-lg px-7 py-5 shadow-lg">
+                            <h1 class="text-lg font-bold sm:text-xl lg:text-2xl">{{ $item->title }}</h1>
+                            <div class="mt-5 space-y-3 text-xs leading-snug sm:text-sm lg:text-base">
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Авторы:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->author }}</div>
                                 </div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Дата регистрации:</div>
-                                <div class="basis-3/4">{{ Carbon\Carbon::create($item->registered_at)->format('d.m.Y') }}
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Год издания:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->year }}</div>
                                 </div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Тип издания:</div>
-                                <div class="basis-3/4">{{ $item->edition_type }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Тираж:</div>
-                                <div class="basis-3/4">{{ $item->amount }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Размер:</div>
-                                <div class="basis-3/4">{{ $item->size }} Мб</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Библиографическое описание:</div>
-                                <div class="basis-3/4">{{ $item->bibliographic_description }}</div>
-                            </div>
-                            <div class="flex flex-row">
-                                <div class="basis-1/4">Системные требования:</div>
-                                <div class="basis-3/4">{{ $item->system_requirements }}</div>
+                                @isset($item->isbn)
+                                    <div class="flex flex-row">
+                                        <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">ISBN:</div>
+                                        <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->isbn }}</div>
+                                    </div>
+                                @endisset
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Вид издания:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
+                                        {{ $item->type->title }}</div>
+                                </div>
+                                @isset($item->registration_number)
+                                    <div class="flex flex-row">
+                                        <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">№ госрегистрации:</div>
+                                        <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
+                                            {{ $item->registration_number }}
+                                        </div>
+                                    </div>
+                                @endisset
+                                @isset($item->registered_at)
+                                    <div class="flex flex-row">
+                                        <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Дата регистрации:</div>
+                                        <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
+                                            {{ Carbon\Carbon::create($item->registered_at)->format('d.m.Y') }}
+                                        </div>
+                                    </div>
+                                @endisset
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Тип издания:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
+                                        {{ $item->edition_type }}
+                                    </div>
+                                </div>
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Тип ресурса:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
+                                        {{ $item->resource_type }}
+                                    </div>
+                                </div>
+                                @isset($item->amount)
+                                    <div class="flex flex-row">
+                                        <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Тираж:</div>
+                                        <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->amount }}
+                                        </div>
+                                    </div>
+                                @endisset
+                                <div class="flex flex-row">
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Размер:</div>
+                                    <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->size }} Мб
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
+                        @isset($item->system_requirements)
+                            <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
+                                <h2 class="mb-3 text-base font-bold lg:text-lg">Системные требования</h2>
+                                <p>{{ $item->system_requirements }}</p>
+                            </div>
+                        @endisset
+                        @isset($item->bibliographic_description)
+                            <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
+                                <h2 class="mb-3 text-base font-bold lg:text-lg">Библиографическое описание</h2>
+                                <p>{{ $item->bibliographic_description }}</p>
+                            </div>
+                        @endisset
+                        @isset($item->annotation)
+                            <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
+                                <h2 class="mb-3 text-base font-bold lg:text-lg">Об издании</h2>
+                                <p>{{ $item->annotation }}</p>
+                            </div>
+                        @endisset
                     </div>
                 </div>
             </div>

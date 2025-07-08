@@ -12,7 +12,8 @@
             </h1>
             <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
 
-                <p><a href="https://disk.yandex.ru/i/Yj-MDLSlSC5eeg">Прайс-лист редакционно-издательских услуг (PDF, 266
+                <p><img src="{{ asset('/images/pdf.svg') }}" alt="" class="inline-block w-16"><a
+                        href="https://disk.yandex.ru/i/Yj-MDLSlSC5eeg">Прайс-лист редакционно-издательских услуг (266
                         Кб)</a></p>
                 <p>Прейскурант цен (прайс-лист) утвержден приказами университета №196 от 14.06.2024 и №232 от 02.08.2024 и
                     служит основой для определения

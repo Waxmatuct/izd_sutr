@@ -12,7 +12,7 @@ class ElectronicEditionController extends Controller
     public function index()
     {
         return view('pages.catalog', [
-            'items' => ElectronicEdition::all(),
+            'items' => ElectronicEdition::all()->sortByDesc('id'),
         ]);
     }
 

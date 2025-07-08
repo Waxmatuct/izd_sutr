@@ -14,29 +14,33 @@
             <div class="mx-auto mt-10 w-full overflow-auto rounded-lg shadow-xl">
                 <x-table.table :headers="[
                     '№',
-                    'Автор, название',
+                    'Автор',
+                    'Название',
                     'Вид издания',
-                    '№ госрегистрации',
+                    // '№ госрегистрации',
                     'Тип ресурса',
                     'Тип издания',
                     'Тираж',
                     'Год издания',
-                ]" class="text-xs md:text-sm">
+                ]" headSize="text-xs md:text-sm" class="text-xs md:text-sm">
                     @foreach ($items as $item)
                         <tr class="border-b">
+                            <x-table.td scope="row">
+                                {{ $loop->iteration }}
+                            </x-table.td>
                             <x-table.td>
-                                {{ $item->id }}
+                                {{ $item->author }}
                             </x-table.td>
                             <x-table.td align="left">
-                                <span class="font-bold">{{ $item->author }}</span><br>
-                                {{ $item->title }}
+                                <a href="{{ route('electronic-editions.show', $item) }}">{{ $item->title }}
+                                </a>
                             </x-table.td>
                             <x-table.td>
                                 {{ $item->type->title }}
                             </x-table.td>
-                            <x-table.td>
+                            {{-- <x-table.td>
                                 {{ $item->registration_number }}
-                            </x-table.td>
+                            </x-table.td> --}}
                             <x-table.td>
                                 {{ $item->resource_type }}
                             </x-table.td>
