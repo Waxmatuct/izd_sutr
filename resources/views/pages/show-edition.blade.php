@@ -24,12 +24,13 @@
                                 </div>
                             @endisset
                         </div>
-                        {{-- @isset($item->download_link) --}}
-                        <button
-                            class="flex w-52 flex-row items-center justify-center rounded-xl bg-primary-200 py-1 shadow-lg duration-300 ease-in-out hover:shadow-green-300">
-                            <img src="{{ asset('/images/pdf.svg') }}" alt="" class="w-8"><span>Загрузить</span>
-                        </button>
-                        {{-- @endisset --}}
+                        @isset($item->download_link)
+                            <button
+                                class="flex w-64 flex-row items-center justify-center rounded-xl bg-primary-500 py-1 text-white shadow-lg duration-300 ease-in-out hover:shadow-primary-400">
+                                <img src="{{ asset('/images/pdf.svg') }}" alt="" class="w-8"><span>Загрузить
+                                    ({{ $item->size }} Мб)</span>
+                            </button>
+                        @endisset
                     </div>
                     <div class="shrink space-y-7 lg:max-w-3xl">
                         <div class="square rounded-lg px-7 py-5 shadow-lg">
@@ -71,9 +72,9 @@
                                     </div>
                                 @endisset
                                 <div class="flex flex-row">
-                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Тип издания:</div>
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Тип носителя:</div>
                                     <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">
-                                        {{ $item->edition_type }}
+                                        {{ $item->distribution_type }}
                                     </div>
                                 </div>
                                 <div class="flex flex-row">

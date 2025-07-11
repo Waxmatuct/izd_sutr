@@ -7,7 +7,7 @@
 
     <section class="body-font">
         <div class="mb-10 flex w-full flex-col">
-            <h1 class="mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
+            <h1 class="text-center text-3xl font-bold sm:text-4xl">
                 Каталог электронных изданий
             </h1>
 
@@ -19,7 +19,7 @@
                     'Вид издания',
                     // '№ госрегистрации',
                     'Тип ресурса',
-                    'Тип издания',
+                    'Тип носителя',
                     'Тираж',
                     'Год издания',
                 ]" headSize="text-xs md:text-sm" class="text-xs md:text-sm">
@@ -45,7 +45,7 @@
                                 {{ $item->resource_type }}
                             </x-table.td>
                             <x-table.td>
-                                {{ $item->edition_type }}
+                                {{ $item->distribution_type }}
                             </x-table.td>
                             <x-table.td>
                                 {{ $item->amount }}

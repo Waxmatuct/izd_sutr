@@ -21,7 +21,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->string('registration_number')->nullable();
             $table->string('resource_type')->nullable()->default('Текстовое ЭИ');
-            $table->string('edition_type')->nullable()->default('CD-R');
+            $table->string('distribution_type')->nullable()->default('CD-R');
             $table->string('isbn')->nullable();
             $table->unsignedSmallInteger('amount')->nullable();
             $table->unsignedDecimal('size', 5, 2);
