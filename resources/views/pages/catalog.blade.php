@@ -17,14 +17,13 @@
                     'Автор',
                     'Название',
                     'Вид издания',
-                    // '№ госрегистрации',
                     'Тип ресурса',
                     'Тип носителя',
                     'Тираж',
                     'Год издания',
                 ]" headSize="text-xs md:text-sm" class="text-xs md:text-sm">
                     @foreach ($items as $item)
-                        <tr class="border-b">
+                        <tr @class(['hover:bg-primary-100','bg-gray-100' => $loop->even])>
                             <x-table.td scope="row">
                                 {{ $loop->iteration }}
                             </x-table.td>
@@ -38,9 +37,6 @@
                             <x-table.td>
                                 {{ $item->type->title }}
                             </x-table.td>
-                            {{-- <x-table.td>
-                                {{ $item->registration_number }}
-                            </x-table.td> --}}
                             <x-table.td>
                                 {{ $item->resource_type }}
                             </x-table.td>

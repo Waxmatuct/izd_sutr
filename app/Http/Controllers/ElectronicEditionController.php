@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ElectronicEdition;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ElectronicEditionController extends Controller
@@ -21,7 +22,9 @@ class ElectronicEditionController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.electronic-edition.create', [
+            'types' => Type::query()->orderBy('title')->get(),
+        ]);
     }
 
     /**
@@ -29,7 +32,12 @@ class ElectronicEditionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        ElectronicEdition::create($request->all());
+
+        return redirect()->route('electronic-editions.create')
+            ->with('success', 'Издание успешно добавлено');
+
     }
 
     /**

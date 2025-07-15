@@ -113,7 +113,7 @@
                         @isset($item->annotation)
                             <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
                                 <h2 class="mb-3 text-base font-bold lg:text-lg">Об издании</h2>
-                                <p>{{ $item->annotation }}</p>
+                                <p>{!! nl2br(e($item->annotation)) !!}</p> 
                             </div>
                         @endisset
                     </div>

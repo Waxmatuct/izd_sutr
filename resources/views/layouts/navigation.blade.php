@@ -12,7 +12,10 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.book.create')" :active="request()->routeIs('dashboard.index')">
+                    <x-nav-link :href="route('electronic-editions.create')" :active="request()->routeIs('electronic-editions.create')">
+                        {{ __('+ Добавить ЭИ') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard.book.create')" :active="request()->routeIs('dashboard.book.create')">
                         {{ __('+ Добавить в план') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard.sendPlan')">
