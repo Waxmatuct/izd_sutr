@@ -41,13 +41,7 @@
                                         <option value="{{ $faculty->id }}">{{ $faculty->title }}</option>
                                     @endforeach
                                 </select>
-                                <span
-                                    class="pointer-events-none absolute top-0 right-0 flex h-full w-10 items-center justify-center text-center text-gray-600">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                         stroke-linejoin="round" stroke-width="2" class="h-4 w-4" viewBox="0 0 24 24">
-                                        <path d="M6 9l6 6 6-6"></path>
-                                    </svg>
-                                </span>
+                                <x-down-arrow></x-down-arrow>
                             </div>
                         </div>
 
@@ -74,13 +68,7 @@
                                         <option value="{{ $type->id }}">{{ $type->title }}</option>
                                     @endforeach
                                 </select>
-                                <span
-                                    class="pointer-events-none absolute top-0 right-0 flex h-full w-10 items-center justify-center text-center text-gray-600">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                         stroke-linejoin="round" stroke-width="2" class="h-4 w-4" viewBox="0 0 24 24">
-                                        <path d="M6 9l6 6 6-6"></path>
-                                    </svg>
-                                </span>
+                                <x-down-arrow></x-down-arrow>
                             </div>
                         </div>
 
@@ -119,14 +107,7 @@
                                             <option value="{{ $key }}">{{ $month }}</option>
                                         @endforeach
                                     </select>
-                                    <span
-                                        class="pointer-events-none absolute top-0 right-0 flex h-full w-10 items-center justify-center text-center text-gray-600">
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                             stroke-linejoin="round" stroke-width="2" class="h-4 w-4"
-                                             viewBox="0 0 24 24">
-                                            <path d="M6 9l6 6 6-6"></path>
-                                        </svg>
-                                    </span>
+                                    <x-down-arrow></x-down-arrow>
                                 </div>
                             </div>
                             <div>
@@ -137,14 +118,7 @@
                                         <option value="2024" selected>2024</option>
                                         <option value="2023">2023</option>
                                     </select>
-                                    <span
-                                        class="pointer-events-none absolute top-0 right-0 flex h-full w-10 items-center justify-center text-center text-gray-600">
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round"
-                                             stroke-linejoin="round" stroke-width="2" class="h-4 w-4"
-                                             viewBox="0 0 24 24">
-                                            <path d="M6 9l6 6 6-6"></path>
-                                        </svg>
-                                    </span>
+                                    <x-down-arrow></x-down-arrow>
                                 </div>
                             </div>
                         </div>

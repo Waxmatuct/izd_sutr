@@ -91,7 +91,6 @@ class BookResource extends Controller
      */
     public function update(Request $request, Book $book): RedirectResponse
     {
-//        dd($request->all());
         $this->booksService->findBook($book->id)->update($request->all());
 
         return redirect()
