@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
-@section('title', 'РИЦ СГУ :: Краткий словарь издательских терминов')
-@section('description', '')
+@section('title', 'РИЦ СГУ :: ЭИ ' . $item->title)
+@section('description', $item->bibliographic_description)
 
 @section('main')
 
