@@ -29,14 +29,13 @@
         <div id="app" class="flex-[1_0_auto]">
             <header>
                 <navbar-component></navbar-component>
-                {{-- @include('partials.navigation.nav') --}}
             </header>
             <div class="container mx-auto mt-32 flex flex-col md:mt-32 md:px-10">
                 @yield('main')
             </div>
         </div>
         <footer
-            class="mx-auto mt-10 w-full flex-[0_0_auto] bg-white p-5 text-center text-sm text-gray-600 shadow-[0_-4px_6px_rgba(0,0,0,0.1)] dark:text-gray-400 md:text-base">
+            class="mx-auto mt-10 w-full flex-[0_0_auto] p-5 text-center text-sm text-gray-600 dark:text-gray-400 md:text-base">
             <p>© 2020–{{ date('Y') }} Редакционно-издательский центр<br> ФГБОУ ВО «Сочинский государственный
                 университет»</p>
             <small class="mt-2">

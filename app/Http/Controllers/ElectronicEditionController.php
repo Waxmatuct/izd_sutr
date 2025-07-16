@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\ElectronicEdition;
@@ -16,10 +15,10 @@ class ElectronicEditionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Factory|\Illuminate\Foundation\Application|View|Application
+    public function index(): Factory | \Illuminate\Foundation\Application  | View | Application
     {
         return view('pages.catalog', [
-            'items' => ElectronicEdition::all()->sortByDesc('id'),
+            'items' => ElectronicEdition::with('type')->get()->sortByDesc('id'),
         ]);
     }
 
@@ -28,7 +27,7 @@ class ElectronicEditionController extends Controller
      * @return Factory|\Illuminate\Foundation\Application|View|Application
      * @throws AuthorizationException
      */
-    public function create(): Factory|\Illuminate\Foundation\Application|View|Application
+    public function create(): Factory | \Illuminate\Foundation\Application  | View | Application
     {
         $this->authorize('create', ElectronicEdition::class);
 
@@ -58,7 +57,7 @@ class ElectronicEditionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ElectronicEdition $electronicEdition): Factory|\Illuminate\Foundation\Application|View|Application
+    public function show(ElectronicEdition $electronicEdition): Factory | \Illuminate\Foundation\Application  | View | Application
     {
         $item = ElectronicEdition::findOrFail($electronicEdition->id);
         // dd($item);
@@ -73,14 +72,14 @@ class ElectronicEditionController extends Controller
      * @return Factory|\Illuminate\Foundation\Application|View|Application
      * @throws AuthorizationException
      */
-    public function edit(ElectronicEdition $electronicEdition): Factory|\Illuminate\Foundation\Application|View|Application
+    public function edit(ElectronicEdition $electronicEdition): Factory | \Illuminate\Foundation\Application  | View | Application
     {
         $this->authorize('update', $electronicEdition);
 
         $edition = [
             'edition' => ElectronicEdition::findOrFail($electronicEdition->id),
-            'types' => Type::all(),
-            'years' => ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
+            'types'   => Type::all(),
+            'years'   => ['2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'],
         ];
 
         return view('dashboard.electronic-edition.edit', $edition);

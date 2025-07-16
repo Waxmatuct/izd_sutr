@@ -9,14 +9,14 @@
         <div class="mb-10 flex w-full flex-col">
             <div class="entry-content mx-auto space-y-4 text-left">
                 <div
-                    class="flex flex-col items-center space-x-0 space-y-7 md:flex-row md:items-start md:space-x-7 md:space-y-0">
+                    class="flex flex-col items-center space-x-0 space-y-7 lg:flex-row lg:items-start lg:space-x-7 lg:space-y-0">
                     <div class="flex flex-none flex-col items-center justify-center space-y-5 md:justify-end">
                         <div class="square rounded-lg p-4 shadow-lg">
                             @isset($item->cover_url)
                                 <img src="{{ $item->cover_url }}" alt="">
                             @else
-                                <div class="relative flex w-80 flex-col">
-                                    <div class="absolute left-9 w-44">
+                                <div class="relative flex w-96 flex-col">
+                                    <div class="absolute left-9 w-56">
                                         <p class="mb-7 mt-10 px-4 text-center text-xs">{{ $item->author }}</p>
                                         <p class="px-2 text-center text-xs font-bold">{{ $item->title }}</p>
                                     </div>
@@ -27,7 +27,7 @@
                         @isset($item->download_link)
                             <button
                                 class="flex w-64 flex-row items-center justify-center rounded-xl bg-primary-500 py-1 text-white shadow-lg duration-300 ease-in-out hover:shadow-primary-400">
-                                <img src="{{ asset('/images/pdf.svg') }}" alt="" class="w-8"><span>Загрузить
+                                <img src="{{ asset('images/pdf.svg') }}" alt="" class="w-8"><span>Загрузить
                                     ({{ $item->size }} Мб)</span>
                             </button>
                         @endisset
@@ -91,19 +91,13 @@
                                     </div>
                                 @endisset
                                 <div class="flex flex-row">
-                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Размер:</div>
+                                    <div class="basis-1/3 lg:basis-1/2 xl:basis-1/3 2xl:basis-1/4">Объем:</div>
                                     <div class="basis-2/3 lg:basis-1/2 xl:basis-2/3 2xl:basis-3/4">{{ $item->size }} Мб
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        @isset($item->system_requirements)
-                            <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
-                                <h2 class="mb-3 text-base font-bold lg:text-lg">Системные требования</h2>
-                                <p>{{ $item->system_requirements }}</p>
-                            </div>
-                        @endisset
                         @isset($item->bibliographic_description)
                             <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
                                 <h2 class="mb-3 text-base font-bold lg:text-lg">Библиографическое описание</h2>
@@ -112,8 +106,14 @@
                         @endisset
                         @isset($item->annotation)
                             <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
-                                <h2 class="mb-3 text-base font-bold lg:text-lg">Об издании</h2>
-                                <p>{!! nl2br(e($item->annotation)) !!}</p> 
+                                <h2 class="mb-3 text-base font-bold lg:text-lg">Аннотация</h2>
+                                <p>{!! nl2br(e($item->annotation)) !!}</p>
+                            </div>
+                        @endisset
+                        @isset($item->system_requirements)
+                            <div class="square rounded-lg px-7 py-5 text-xs leading-snug shadow-lg sm:text-sm lg:text-base">
+                                <h2 class="mb-3 text-base font-bold lg:text-lg">Системные требования</h2>
+                                <p>{{ $item->system_requirements }}</p>
                             </div>
                         @endisset
                     </div>
