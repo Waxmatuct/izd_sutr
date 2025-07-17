@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Console;
 
-use App\Jobs\SendEmail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,7 +23,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new SendEmail, 'email')->timezone('Europe/Moscow')->mondays()->at('10:00');
+        // $schedule->job(new SendEmail, 'email')->timezone('Europe/Moscow')->mondays()->at('10:00');
         $schedule->command('backup:clean')->daily()->at('01:00');
         $schedule->command('backup:run')->daily()->at('01:30');
     }
