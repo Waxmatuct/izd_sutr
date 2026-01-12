@@ -105,21 +105,20 @@
                     </h2>
                 </div>
                 <h3 class="text-lg font-bold sm:text-xl">Начальник</h3>
-                <span>Плетнев Дмитрий Витальевич</span>
-                </p>
+                <span>Плетнев Дмитрий Витальевич</br><a class="underline"
+                        href="mailto:pletnevdv@sutr.ru">pletnevdv@sutr.ru</a>
+                </span>
                 <h3 class="text-lg font-bold sm:text-xl">Редактор I категории</h3>
-                <span>Карасевич Татьяна Юрьевна</span>
-                </p>
-                <h3 class="text-lg font-bold sm:text-xl">Печатник</h3>
-                <span>Шебин Евгений Павлович</span>
-                </p>
+                <span>Карасевич Татьяна Юрьевна</br><a class="underline"
+                        href="mailto:karasevichtyu@sutr.ru">karasevichtyu@sutr.ru</a>
+                </span>
                 <div>
                     <h2 class="mt-10 text-2xl font-bold sm:text-3xl">
                         Контакты
                     </h2>
                 </div>
                 <p><strong>Адрес</strong>: г. Сочи, ул. Пластунская, 94, корпус №1, каб. 113/1</br>
-                    <strong>Телефон/факс</strong>: <a href="tel: +78622682573">+7(862) 268 25 73</a></br>
+                    <strong>Телефон</strong>: <a href="tel: +78622682573">+7(862) 268 25 73</a></br>
                     <strong>E-mail</strong>: <a href="mailto:izd-sgu@yandex.ru">izd-sgu@yandex.ru</a></br>
                     <strong>Время работы</strong>: ПН-ЧТ с 9:00 до 18:00, ПТ с 9:00 до 17:00.
                 </p>
