@@ -1,18 +1,22 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { filteredBooks, getBooks, matches } from "../functions";
+import { filteredBooks, getBooks, matches, useTextTranslator } from "@js/functions";
+
+const { translate } = useTextTranslator();
 
 const props = defineProps({
     year: Number,
 })
 
-const statuses = [
-    "В работе",
-    "В печати",
-    "Отпечатано",
-    "На калькуляции",
-    "Издано",
-]
+const statuses = {
+    "inWork": "В работе",
+    "inPrint": "В печати",
+    "printed": "Отпечатано",
+    "calculating": "На калькуляции",
+    "published": "Издано",
+    "toLibrary": "Передано в ЭБС"
+}
+
 const newStatus = ref("")
 
 const books = ref([]);
@@ -24,7 +28,7 @@ const filteredRows = computed(() => filteredBooks(books, filter))
 
 const deleteBook = id => {
     axios
-        .delete("/api/book/delete/" + `${id}`)
+        .delete(`/api/book/delete/${id}`)
         .then((response) => {
             getBooks(books, props.year, true);
         })
@@ -33,7 +37,7 @@ const deleteBook = id => {
 
 const restoreBook = id => {
     axios
-        .get("/api/book/restore/" + `${id}`)
+        .get(`/api/book/restore/${id}`)
         .then((response) => {
             getBooks(books, props.year, true);
         })
@@ -42,17 +46,15 @@ const restoreBook = id => {
 
 const patchStatus = id => {
     axios
-        .patch("/api/book/" + `${id}` + "/patch", {
+        .patch(`/api/book/${id}/patch`, {
             newStatus: newStatus.value,
         })
         .then((response) => {
             newStatus.value = "";
             getBooks(books, props.year, true);
-            // console.log(response);
         })
         .catch((error) => alert("Ошибка"));
 }
-
 </script>
 
 <template>
@@ -147,10 +149,10 @@ const patchStatus = id => {
                             <select v-if="book['is_handed']" v-model="newStatus" class="select-css"
                                 @change="patchStatus(book.id)">
                                 <option value="" disabled>
-                                    {{ book.status }}
+                                    {{ translate(book.status) }}
                                 </option>
-                                <option v-for="status in statuses" :key="status.key" :value="status">
-                                    {{ status }}
+                                <option v-for="(key, status) in statuses" :key="status.key" :value="status">
+                                    {{ key }}
                                 </option>
                             </select>
                         </td>

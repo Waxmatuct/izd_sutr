@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
-import { filteredBooks, getBooks, matches } from "../functions";
+import { filteredBooks, getBooks, matches, useTextTranslator } from "@js/functions";
+
+const { translate } = useTextTranslator();
 
 const props = defineProps({
     year: Number,
@@ -98,7 +100,7 @@ const filteredRows = computed(() => filteredBooks(books, filter))
                         </td>
                         <td class="px-4 py-3 text-center font-normal">
                             <span v-if="book.is_handed">
-                                {{ book.status }}
+                                {{ translate(book.status) }}
                             </span>
                         </td>
                     </tr>

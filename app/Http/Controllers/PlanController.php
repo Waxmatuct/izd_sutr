@@ -57,27 +57,21 @@ class PlanController extends Controller
 
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
 
-        if ($year >= 2024) {
-            $faculties = Faculty::where('slug', '!=', 'none')->get();
+        if ($year === 2026) {
+            $faculties = Faculty::whereNotIn('slug', ['nic', 'unpi', 'none'])->get();
         } else {
-            if ($year == 2023) {
-                $faculties = Faculty::whereNotIn('slug', ['nic', 'unpi', 'none']
-                )->get();
-            } else {
-                $faculties = Faculty::withTrashed()->get();
-            }
+            $faculties = Faculty::withTrashed()->get();
         }
 
         $currentYear = date('Y');
-//        $currentYear = 2023;
 
         $array = [
-//            'books' => $books,
             'year' => $year,
             'count' => $books_count,
             'size' => $stats['size'],
             'sdano' => $stats['sdano'],
             'perc' => $stats['perc'],
+            'in_library' => $stats['in_library'],
             'published' => $stats['published'],
             'in_calculation' => $stats['in_calculation'],
             'printed' => $stats['printed'],

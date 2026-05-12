@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Enums\BookMonthEnum;
+use App\Enums\BookStatusesEnum;
 use App\Models\Book;
 use App\Models\Faculty;
 use App\Models\Type;
@@ -74,10 +75,10 @@ class BookResource extends Controller
             'faculties' => Faculty::all(),
             'types' => Type::all(),
             'months' => BookMonthEnum::keyLabels(),
-            'statuses' => ['В работе', 'В печати', 'Отпечатано', 'На калькуляции', 'Издано'],
+            'statuses' => BookStatusesEnum::keyLabels(),
         ];
 
-//        dd($book);
+        // dd($book);
 
         return view('dashboard.book.edit', $book);
     }

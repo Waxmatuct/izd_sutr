@@ -6,28 +6,28 @@
 @section('main')
 
     <section class="body-font">
-        <div class="flex flex-col w-full px-5 mb-5">
-            <h1 class="sm:text-4xl text-center text-3xl font-bold title-font mb-2">
+        <div class="mb-5 flex w-full flex-col px-5">
+            <h1 class="title-font mb-2 text-center text-3xl font-bold sm:text-4xl">
                 {{ $faculty->title }}
             </h1>
-            <span class="sm:text-2xl text-center text-xl font-bold title-font mb-6 sm:mb-12">
+            <span class="title-font mb-6 text-center text-xl font-bold sm:mb-12 sm:text-2xl">
                 Анализ выполнения плана издания в {{ $year }} году
             </span>
-            <div class="entry-content space-y-4 lg:w-3/4 mx-auto text-left leading-normal sm:text-lg">
+            <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <stats-component :count="{{ $count }}" :sdano="{{ $sdano }}" :perc="{{ $perc }}"
-                                 :size="{{ $size }}"></stats-component>
+                    :size="{{ $size }}"></stats-component>
                 <div>
-                    <div class="square overflow-auto p-7 rounded-lg shadow-xl mb-7">
+                    <div class="square mb-7 overflow-auto rounded-lg p-7 shadow-xl">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
 
-                    <h2 class="text-2xl sm:text-3xl font-bold mt-12 mb-5">План издания учебной литературы
+                    <h2 class="mb-5 mt-12 text-2xl font-bold sm:text-3xl">План издания учебной литературы
                         {{ $faculty->short_title }} на {{ $year }} год</h2>
 
                     <div class="mx-auto">
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
-                        <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
-                            материально-технического снабжения.</p>
+                        {{-- <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
+                            материально-технического снабжения.</p> --}}
                     </div>
 
                 </div>
@@ -35,7 +35,7 @@
         </div>
 
         @if ($books->isNotEmpty())
-            <div class="w-full mx-auto overflow-auto rounded-lg shadow-xl">
+            <div class="mx-auto w-full overflow-auto rounded-lg shadow-xl">
                 <x-table.table head-size="text-xs" class="text-xs" :headers="[
                     '№ в плане',
                     'Факультет',
@@ -81,11 +81,11 @@
                             </x-table.td>
                             <x-table.td>
                                 @if ($book->is_handed == 1)
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary-500 h-5 w-5 mx-auto"
-                                         viewBox="0 0 20 20" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-5 w-5 text-secondary-500"
+                                        viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd"
-                                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                              clip-rule="evenodd"/>
+                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                 @endif
                             </x-table.td>

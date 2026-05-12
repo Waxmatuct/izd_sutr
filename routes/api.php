@@ -23,8 +23,8 @@ Route::get('/plan-{year}', [PlanController::class, 'year']);
 
 Route::get('/all/plan-{year}', [PlanController::class, 'yearWithTrashed']);
 
-Route::delete('/book/delete/{id}', [PlanController::class, 'deleteBook']);
+Route::delete('/book/delete/{id}', [PlanController::class, 'deleteBook'])->name('book.destroy');
 
-Route::get('/book/restore/{id}', [PlanController::class, 'restoreBook']);
+Route::get('/book/restore/{id}', [PlanController::class, 'restoreBook'])->name('book.restore');
 
-Route::patch('/book/{id}/patch', [PlanController::class, 'patchStatus']);
+Route::patch('/book/{id}/patch', [PlanController::class, 'patchStatus'])->name('book.patch');

@@ -21,7 +21,7 @@ module.exports = {
             black: colors.black,
             white: colors.white,
             gray: colors.gray,
-            primary: colors.indigo,
+            primary: colors.blue,
             secondary: colors.green,
             red: colors.red,
             green: colors.green,

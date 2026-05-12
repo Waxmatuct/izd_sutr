@@ -12,7 +12,7 @@
             </h1>
             <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <div class="grid gap-4 text-sm sm:grid-cols-3">
-                    <div class="flex flex-col">
+                    {{-- <div class="flex flex-col">
                         <a class="text-center" href="https://disk.yandex.ru/i/apClFj9uriCVmQ">
                             <img src="{{ asset('images/zayavka-na-uchebnie-planovie-izdaniya.png') }}"
                                 alt="Форма заявки на учебные плановые издания">
@@ -25,13 +25,13 @@
                                 alt="Форма заявки на издание за счет средств заказчика">
                         </a>
                         <span class="my-3 text-center">Форма заявки на издание за счет средств заказчика</span>
-                    </div>
+                    </div> --}}
                     <div class="flex flex-col">
                         <a class="text-center" href="https://disk.yandex.ru/i/GflPtZcqrG1WKw">
                             <img src="{{ asset('images/zayavka-na-blanochnuyu-produkciu.png') }}"
-                                alt=" Форма заявки на бланочную продукцию">
+                                alt="Форма заявки на издание бланочной продукции">
                         </a>
-                        <span class="my-3 text-center">Форма заявки на бланочную продукцию</span>
+                        <span class="my-3 text-center">Форма заявки на издание бланочной продукции</span>
                     </div>
                 </div>
 

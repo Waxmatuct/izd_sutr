@@ -8,7 +8,7 @@
     <section class="body-font">
         <div class="mb-5 flex w-full flex-col px-5">
             <h1 class="title-font mb-6 text-center text-3xl font-bold sm:mb-12 sm:text-4xl">
-                План издания учебной, учебно-методической и научной литературы<br>на {{ $year }} год
+                План издания учебной и учебно-методической литературы в электронной форме<br>на {{ $year }} год
             </h1>
             <div class="entry-content mx-auto space-y-4 text-left leading-normal sm:text-lg lg:w-3/4">
                 <p><a href="#plan">План издания учебной и учебно-методической литературы на
@@ -33,7 +33,7 @@
                             приказом № 1100
                         </a> от 16.12.2020);
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="https://disk.yandex.ru/i/apClFj9uriCVmQ" target="_blank" rel="noreferrer noopener">
                             заявка на учебное плановое издание
                         </a>;
@@ -49,7 +49,7 @@
                             согласования (</strong><a href="https://disk.yandex.ru/i/3mEE0evzJ_PYXA" target="_blank"
                             rel="noreferrer noopener">.pdf</a><strong>),
                             подписанным правовым управлением</strong>.
-                    </li>
+                    </li> --}}
                 </ul>
                 <div>
                     <h2 class="mb-5 mt-10 text-2xl font-bold sm:text-3xl">
@@ -75,13 +75,11 @@
                             издания учебной
                             литературы на {{ $year }} год</h2>
                         <p class="text-sm">* Таблица обновлена {{ $date->updated_at->diffForHumans() }}</p>
-                        <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
-                            материально-технического снабжения.</p>
+                        {{-- <p class="text-sm">** Литература приобретает статус «издано» после передачи на склад
+                            материально-технического снабжения.</p> --}}
                         @auth
                             <p class="mt-5 text-sm">
-                                Издано: <strong>{{ $published }}</strong>, на калькуляции:
-                                <strong>{{ $in_calculation }}</strong>, отпечатано:
-                                <strong>{{ $printed }}</strong>, в печати: <strong>{{ $in_print }}</strong>, в
+                                Передано в ЭБС: <strong>{{ $in_library }}</strong>, в
                                 работе: <strong>{{ $in_work }}</strong>
                             </p>
                         @endauth

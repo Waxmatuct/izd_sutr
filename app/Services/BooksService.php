@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Enums\BookStatusesEnum;
 use App\Models\Book;
 use App\Repositories\Books\BooksRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -97,23 +98,25 @@ class BooksService
      */
     public function getStatsOfYear(int $year): Collection
     {
-//        $books = $this->booksRepository->booksOfYear($year)->get();
         $size = $this->booksRepository->booksOfYear($year)->sum('size');
         $sdano_listov = $this->booksRepository->booksOfYearIsHanded($year)->sum('size');
         $sdano = $this->booksRepository->booksOfYearIsHanded($year)->count();
         $perc = $sdano_listov / $size * 100;
         $perc = round($perc);
-        $published = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Издано'])->count();
-        $in_calculation = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'На калькуляции']
+        $in_library = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => BookStatusesEnum::IN_LIBRARY])->count();
+        $published = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => BookStatusesEnum::PUBLISHED])->count();
+        $in_calculation = $this->booksRepository->booksOfYearIsHanded($year)->where(
+            ['status' => BookStatusesEnum::CALCULATING]
         )->count();
-        $printed = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'Отпечатано'])->count();
-        $in_print = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В печати'])->count();
-        $in_work = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => 'В работе'])->count();
+        $printed = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => BookStatusesEnum::PRINTED])->count();
+        $in_print = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => BookStatusesEnum::IN_PRINT])->count();
+        $in_work = $this->booksRepository->booksOfYearIsHanded($year)->where(['status' => BookStatusesEnum::IN_WORK])->count();
 
         return collect([
             'sdano' => $sdano,
             'size' => $size,
             'perc' => $perc,
+            'in_library' => $in_library,
             'published' => $published,
             'in_calculation' => $in_calculation,
             'printed' => $printed,
@@ -143,7 +146,8 @@ class BooksService
     {
         if ($year == 2024) {
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'deleted_at' => null]
                 )->pluck('month_id')->count();
             }
 
@@ -160,7 +164,8 @@ class BooksService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'deleted_at' => null]
                 )->pluck('month_id')->count();
             }
 
@@ -192,7 +197,8 @@ class BooksService
     {
         if ($year == 2024) {
             for ($i = 2; $i < 11; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'deleted_at' => null]
                 )->pluck('is_handed')->sum();
             }
 
@@ -209,7 +215,8 @@ class BooksService
             ]);
         } else {
             for ($i = 1; $i < 10; $i++) {
-                $array[$i] = DB::table('books')->where(['year' => $year, 'month_id' => $i, 'deleted_at' => null]
+                $array[$i] = DB::table('books')->where(
+                    ['year' => $year, 'month_id' => $i, 'deleted_at' => null]
                 )->pluck('is_handed')->sum();
             }
 

@@ -20,18 +20,6 @@
                     <div class="square my-7 w-full rounded-lg p-7 shadow-xl">
                         <bar-chart :value="{{ $counts }}" :handed="{{ $is_handed }}"></bar-chart>
                     </div>
-                    @if (date('Y') - 1 <= $year)
-                        <div class="mx-auto mt-12">
-                            <h2 class="mb-5 text-2xl font-bold sm:text-3xl">Статистика по
-                                структурным подразделениям</h2>
-                            @foreach ($faculties as $faculty)
-                                <a class="inline-block"
-                                    href="{{ route('faculty', ['year' => $year, 'faculty' => $faculty->slug]) }}">
-                                    {{ $faculty->title }}
-                                </a><br>
-                            @endforeach
-                        </div>
-                    @endif
                     <div class="mx-auto mt-12">
                         <h2 id="plan" class="mb-5 text-2xl font-bold sm:text-3xl">План
                             издания учебной
