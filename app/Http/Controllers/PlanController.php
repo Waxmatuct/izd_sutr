@@ -58,7 +58,7 @@ class PlanController extends Controller
         $is_handed = $this->booksService->getCountOfHandedBooksForBarChart($year);
 
         if ($year === 2026) {
-            $faculties = Faculty::whereNotIn('slug', ['nic', 'unpi', 'none'])->get();
+            $faculties = Faculty::whereNotIn('slug', ['nic', 'unpi', 'college', 'none'])->get();
         } else {
             $faculties = Faculty::withTrashed()->get();
         }
