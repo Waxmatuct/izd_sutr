@@ -32,13 +32,16 @@ class ElectronicEdition extends Model
     ];
 
     /**
-     * The attributes that should be cast.
+     * Касты
      *
-     * @var array<string, string>
+     * @return array
      */
-    protected $casts = [
-        'registered_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'registered_at' => 'datetime',
+        ];
+    }
 
     /**
      * @return BelongsTo

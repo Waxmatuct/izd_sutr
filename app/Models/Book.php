@@ -31,12 +31,20 @@ class Book extends Model
         'status',
     ];
 
-    protected $casts = [
-        'is_handed' => 'boolean',
-        'month_id' => BookMonthEnum::class,
-        'year' => 'integer',
-        'status' => BookStatusesEnum::class,
-    ];
+    /**
+     * Касты
+     *
+     * @return array
+     */
+    protected function casts(): array
+    {
+        return [
+            'is_handed' => 'boolean',
+            'month_id' => BookMonthEnum::class,
+            'year' => 'integer',
+            'status' => BookStatusesEnum::class,
+        ];
+    }
 
     protected $appends = ['month'];
 

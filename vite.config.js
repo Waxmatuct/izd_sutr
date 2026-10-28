@@ -3,12 +3,10 @@ import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 import * as path from "path";
 
-const host = "izd.test";
-
 export default defineConfig({
     server: {
-        host,
-        hmr: { host },
+        // host,
+        // hmr: { host },
         cors: true,
     },
     plugins: [

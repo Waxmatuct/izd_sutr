@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Books\BooksRepository;
+use App\Repositories\Books\BooksRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // Перенесенная привязка из старого провайдера
+        $this->app->bind(
+            BooksRepositoryInterface::class,
+            BooksRepository::class
+        );
     }
 
     /**
