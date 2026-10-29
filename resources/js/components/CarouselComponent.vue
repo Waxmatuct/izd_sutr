@@ -1,12 +1,10 @@
 <template>
-    <vue-carousel
-        :data="data"
-        :controls="false"
-        indicator-type="disc"
-    ></vue-carousel>
+    <vue-carousel :data="data" :controls="false" indicator-type="disc"></vue-carousel>
 </template>
 
 <script setup>
+import VueCarousel from "@chenfengyuan/vue-carousel";
+
 const data = [
     '<div class="example-slide"><img src="/images/sutr.jpg"></div>',
     '<div class="example-slide"><img src="/images/slide4.jpg"></div>',

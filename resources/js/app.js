@@ -5,31 +5,30 @@ import "alpinejs";
 import Inputmask from "inputmask";
 
 import { createApp, defineAsyncComponent } from "vue";
-import VueCarousel from "@chenfengyuan/vue-carousel";
 
 const app = createApp({
     components: {
-        NavbarComponent: defineAsyncComponent(() =>
-            import("./components/NavbarComponent.vue")
+        NavbarComponent: defineAsyncComponent(
+            () => import("./components/NavbarComponent.vue"),
         ),
-        StatsComponent: defineAsyncComponent(() =>
-            import("./components/StatsComponent.vue")
+        StatsComponent: defineAsyncComponent(
+            () => import("./components/StatsComponent.vue"),
         ),
-        BooksComponent: defineAsyncComponent(() =>
-            import("./components/BooksComponent.vue")
+        BooksComponent: defineAsyncComponent(
+            () => import("./components/BooksComponent.vue"),
         ),
-        BarChart: defineAsyncComponent(() =>
-            import("./components/BarChart.vue")
+        BarChart: defineAsyncComponent(
+            () => import("./components/BarChart.vue"),
         ),
-        AdminBooks: defineAsyncComponent(() =>
-            import("./components/AdminBooks.vue")
+        AdminBooks: defineAsyncComponent(
+            () => import("./components/AdminBooks.vue"),
         ),
-        CarouselComponent: defineAsyncComponent(() =>
-            import("./components/CarouselComponent.vue")
+        CarouselComponent: defineAsyncComponent(
+            () => import("./components/CarouselComponent.vue"),
         ),
     },
 });
-app.component(VueCarousel.name, VueCarousel);
+
 app.mount("#app");
 
 Inputmask({
