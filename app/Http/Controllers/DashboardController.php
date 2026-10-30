@@ -29,7 +29,7 @@ class DashboardController extends Controller
      */
     public function index(): RedirectResponse
     {
-        return redirect()->route('dashboard.year', '2024');
+        return redirect()->route('dashboard.year', '2026');
     }
 
     /**
@@ -40,12 +40,12 @@ class DashboardController extends Controller
      */
     public function year(int $year): View
     {
-//        $books = $this->booksService->getBooksOfYearWithTrashed($year);
+        //        $books = $this->booksService->getBooksOfYearWithTrashed($year);
 
         return view('dashboard.plan', [
-//            'books' => $books,
+            //            'books' => $books,
             'year' => $year,
-//            'months' => BookMonthEnum::keyLabels(),
+            //            'months' => BookMonthEnum::keyLabels(),
         ]);
     }
 }

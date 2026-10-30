@@ -36,7 +36,7 @@ Route::view('/glossary', 'pages.glossary')->name('glossary');
 Route::view('/help', 'pages.help')->name('help');
 // Route::view('/paid-services', 'pages.paid-services')->name('paid-services');
 Route::view('/types', 'pages.types')->name('types');
-Route::view('/price', 'pages.price')->name('price');
+// Route::view('/price', 'pages.price')->name('price');
 Route::resource('electronic-editions', ElectronicEditionController::class);
 
 Route::middleware(['auth'])->prefix('dashboard')->name('dashboard.')->group(function () {

@@ -69,12 +69,6 @@
                         Каталог ЭИ
                     </a>
                 </li>
-                <li class="mr-3 ml-auto lg:ml-0 w-max">
-                    <a class="inline-block rounded-lg px-4 py-2 no-underline hover:bg-primary-500 hover:text-white"
-                        :href="price" @click="isOpen = false">
-                        Прайс-лист
-                    </a>
-                </li>
                 <li class="mr-3 ml-auto w-max" v-if="loginRouteExists">
                     <div v-if="authUser">
                         <a :href="dashboardUrl"
@@ -94,7 +88,6 @@ import { ref, onMounted } from "vue";
 const authUser = window.authUser;
 const dashboardUrl = route("dashboard.index");
 const homeUrl = route("index");
-const price = route("price");
 const electronicEditions = route("electronic-editions.index");
 const isOpen = ref(false);
 const loginRouteExists = route().has("login");
